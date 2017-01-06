@@ -1,3 +1,4 @@
+import javafortesters.chapter3.practice.AClassWithAMethod;
 import org.junit.Test;
 
 public class ASysOutJUnitTest {
