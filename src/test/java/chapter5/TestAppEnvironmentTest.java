@@ -1,20 +1,30 @@
 package chapter5;
 
-import javafortesters.chapter5.practice.TestAppEnv;
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import static javafortesters.chapter5.practice.TestAppEnv.DOMAIN;
+import static javafortesters.chapter5.practice.TestAppEnv.PORT;
+import static javafortesters.chapter5.practice.TestAppEnv.getUrl;
+
+//import static org.junit.Assert.assertEquals; // static import allows usage of assertEquals method without Assert class instantiation
+
 
 public class TestAppEnvironmentTest {
     @Test
     public void canGetUrlStatically() {
-        String result = "http://google.com";
-        assertEquals("URL does not match",TestAppEnv.getUrl(),result);
+        //    assertEquals("URL does not match", TestAppEnv.getUrl(), "https://192.125.54.84");
+//        Assert.assertEquals("URL does not match", TestAppEnv.getUrl(), "https://192.125.54.84");
+        Assert.assertEquals("URL does not match", getUrl(), "https://192.125.54.84:67");
         // because its static method it can be used without instantiating TestAppEnv object
     }
+
     @Test
-    public void getPortAndDomain(){
-        assertEquals("Domain does not match", "google.com",TestAppEnv.DOMAIN);
-        assertEquals("Port does not match", "67",TestAppEnv.PORT);
+    public void getPortAndDomain() {
+        //assertEquals("Domain does not match", "192.125.54.84", TestAppEnv.DOMAIN);
+        Assert.assertEquals("Domain does not match", "192.125.54.84", DOMAIN);
+        //assertEquals("Port does not match", "67", TestAppEnv.PORT);
+        Assert.assertEquals("Port does not match", "67", PORT);
 
     }
 }
