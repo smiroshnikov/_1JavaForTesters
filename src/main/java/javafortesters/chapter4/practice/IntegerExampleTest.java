@@ -15,10 +15,25 @@ public class IntegerExampleTest {
         assertEquals("autoboxing assignment for 6 ", 6, six.intValue());
 
     }
-    @Test
-    public void toHexExploration(){
-        Integer integer = new Integer(11);
-        assertEquals("Error ","b",integer.toHexString(integer));
 
+    @Test
+    public void toHexExploration() {
+        Integer eleven = new Integer(11);
+        assertEquals("Error ", "b", eleven.toHexString(eleven));
+        Integer ten = new Integer(10);
+        Integer three = new Integer("3");
+        Integer twentyOne = new Integer(21);
+        assertEquals("Error ", "a", ten.toHexString(ten));
+        assertEquals("Error ", "3", three.toHexString(three));
+        assertEquals("Error ", "15", twentyOne.toHexString(twentyOne));
+
+    }
+
+    @Test
+    public void minMaxValueTest() {
+        int maxValue = Integer.MAX_VALUE;
+        int minValue = Integer.MIN_VALUE;
+        assertEquals("Values are incorrect ", -2147483648, minValue);
+        assertEquals("Values are incorrect ", 2147483647, maxValue);
     }
 }
