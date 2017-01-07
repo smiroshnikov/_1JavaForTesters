@@ -19,11 +19,40 @@ public class CatTest1 {
 
     @Test
     public void checkTruthy() {
-        boolean truthy = true;
+        boolean truthy = false;
         if (truthy) {
             assertTrue(truthy);
             assertFalse(!truthy);
+        } else {
+            assertFalse(truthy);
         }
 
+    }
+
+    @Test
+    public void nestedHorror() {
+        boolean truthy = false;
+        boolean falsey = false;
+        if (truthy) {
+            if (!falsey) {
+                if (falsey || truthy) {
+                    assertTrue(" t t", truthy);
+                    assertFalse("f f", falsey);
+                }
+            } else {
+                assertTrue("fail here ?!", truthy);
+                assertFalse(falsey);
+            }
+        }
+        if (!truthy) {
+            if (falsey) {
+                assertTrue(falsey);
+                assertFalse(truthy);
+            } else {
+                assertFalse(falsey);
+                assertFalse(truthy);
+            }
+
+        }
     }
 }
