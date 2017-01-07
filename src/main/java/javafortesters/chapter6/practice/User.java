@@ -3,6 +3,8 @@ package javafortesters.chapter6.practice;
 public class User {
 
     public final static int MINIMAL_PASSWORD_LENGTH = 12;
+    public final static int MAXIMUM_PASSWORD_LENGTH = 21;
+
     private String username;
     private String password;
 

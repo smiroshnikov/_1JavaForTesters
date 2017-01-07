@@ -5,6 +5,8 @@ import javafortesters.chapter6.practice.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class UserTest {
     @Test
@@ -24,8 +26,12 @@ public class UserTest {
         //assertEquals("New password too short" , user.MINIMAL_PASSWORD_LENGTH , user.getPassword().length());
         //static member accessed via instance reference - line above means it is possible to access MINIMAL_PASSWORD_LENGTH
         //without instantiating a user class , hence it is static and final
-        assertEquals("New password too short", User.MINIMAL_PASSWORD_LENGTH, user.getPassword().length());
-        user.setPassword("123456789");
+        user.setPassword("12345678912453");
+        assertFalse("password too short", user.getPassword().length() < User.MINIMAL_PASSWORD_LENGTH);
+        assertFalse("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
+        // pop message if false
+        assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
+        // pop message if true
 
 
     }
