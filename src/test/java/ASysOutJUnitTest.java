@@ -17,7 +17,25 @@ public class ASysOutJUnitTest {
     }
     @Test
     public void compareStrings(){
-        String result = "Kikibojjo";
+        String result = "Kikibojo";
         assertEquals("Error strings differ !","Kikibojo", result);
     }
+    @Test
+    public void twoMinusTwo(){
+        int result =0;
+        assertEquals("Not a 0 !",0,result);
+    }
+    @Test
+    public void fourDivideByTwo(){
+        int result = 4/2;
+        assertEquals("Not as expected !", 4/2,result);
+
+    }
+    @Test
+    public void twoMultiplyByTwo(){
+        int result = 2*2;
+        assertEquals("This is an error message , results do not match ", 2*2,result);
+
+    }
+
 }
