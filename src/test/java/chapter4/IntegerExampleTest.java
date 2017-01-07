@@ -1,4 +1,4 @@
-package javafortesters.chapter4.practice;
+package chapter4;
 
 import org.junit.Test;
 
