@@ -11,6 +11,7 @@ public class User {
     public User() {
         //this.username = "username";
         //this.password = "password";
+        // constructor from constructor
         this("username", "password");
     }
 

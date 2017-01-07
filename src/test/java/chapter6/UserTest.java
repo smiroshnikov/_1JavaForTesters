@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class UserTest {
     @Test
@@ -30,7 +29,7 @@ public class UserTest {
         assertFalse("password too short", user.getPassword().length() < User.MINIMAL_PASSWORD_LENGTH);
         assertFalse("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
         // pop message if false
-        assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
+        //assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
         // pop message if true
 
 
