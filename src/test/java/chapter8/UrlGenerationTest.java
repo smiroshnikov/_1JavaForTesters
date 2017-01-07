@@ -9,11 +9,15 @@ public class UrlGenerationTest {
     @Test
     public void urlValidity() {
         String url = "google.com";
-        url = url.startsWith("https://") ? url : "https://" + url;
+        url = url.startsWith("https://") ? url : addHttps(url);
         assertTrue(url.startsWith("https://"));
-        assertEquals("incorrect url structure", "http://google.com", url);
+        assertEquals("incorrect url structure", "https://google.com", url);
 
 
+    }
+
+    private String addHttps(String url) {
+        return "https://" + url;
     }
 
 }
