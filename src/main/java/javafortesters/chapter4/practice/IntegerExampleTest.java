@@ -13,5 +13,12 @@ public class IntegerExampleTest {
         assertEquals("Passed in String parameter ! ", 5, five.intValue());
         Integer six = 6; // no need for "new" keyword
         assertEquals("autoboxing assignment for 6 ", 6, six.intValue());
+
+    }
+    @Test
+    public void toHexExploration(){
+        Integer integer = new Integer(11);
+        assertEquals("Error ","b",integer.toHexString(integer));
+
     }
 }
