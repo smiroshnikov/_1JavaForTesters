@@ -31,6 +31,19 @@ public class UserTest {
         // pop message if false
         //assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
         // pop message if true
+        User[] users = new User[3];
+
+        User user1 = new User("Black", "12356");
+        User user2 = new User("White", "654321");
+        User user3 = new User("Red", "qazxswedc");
+        users[0] = user1;
+        users[1] = user2;
+        users[2] = user3;
+        for (User username :
+                users) {
+            System.out.println(username.getUsername() + " " + username.getPassword());
+
+        }
 
 
     }
