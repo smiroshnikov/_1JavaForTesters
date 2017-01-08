@@ -4,8 +4,9 @@ import javafortesters.chapter6.practice.OpenUser;
 import javafortesters.chapter6.practice.User;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import java.util.Random;
+
+import static org.junit.Assert.*;
 
 public class UserTest {
     @Test
@@ -31,20 +32,25 @@ public class UserTest {
         // pop message if false
         //assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
         // pop message if true
-        User[] users = new User[3];
+    }
 
-        User user1 = new User("Black", "12356");
-        User user2 = new User("White", "654321");
-        User user3 = new User("Red", "qazxswedc");
-        users[0] = user1;
-        users[1] = user2;
-        users[2] = user3;
-        for (User username :
-                users) {
-            System.out.println(username.getUsername() + " " + username.getPassword());
+    @Test
+    public void validateUsersAndPasswords() {
+        User[] users;
+        // initialize Random once not per test , per class make it final and static as well !
+        Random r = new Random();
+        int randomSeed = r.nextInt(100000);
 
+        //users = User.createUsers(new Random().nextInt(10000));
+
+        users = User.createUsers(randomSeed);
+
+        //System.out.printf("debug message --> created array of [%d] users <--debug message%n ", users.length);
+
+        assertTrue("Invalid array length !", users.length == randomSeed);
+        for (int i = 0; i < users.length; i++) {
+            assertEquals("Incorrect username !", "username" + (i + 1), users[i].getUsername());
+            assertEquals("Incorrect password !", "password" + (i + 1), users[i].getPassword());
         }
-
-
     }
 }

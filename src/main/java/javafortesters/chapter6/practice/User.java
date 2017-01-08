@@ -32,4 +32,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    public static User[] createUsers(int desiredNumberOfUsers) {
+        User[] users;
+        users = new User[desiredNumberOfUsers];
+        for (int i = 0; i < users.length; i++) {
+            users[i] = new User("username" + (i + 1), "password" + (i + 1));
+        }
+        return users;
+    }
 }
