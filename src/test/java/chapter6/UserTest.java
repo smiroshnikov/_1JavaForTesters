@@ -9,6 +9,8 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class UserTest {
+    //TODO MAYBE A BETTER LOOK AT  canConstructANewUser?
+
     @Test
     public void canConstructANewUser() {
         User user = new User();
