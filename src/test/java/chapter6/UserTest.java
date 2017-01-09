@@ -67,7 +67,23 @@ public class UserTest {
         assertEquals(null, weekdays[5]);
         int[] minusOne = new int[30];
         Arrays.fill(minusOne, 12, 25, -1);
+        int[] justABunchOfNumbers = {1, 21, 2, 33, 46, 12, -9, 323, 5, 6456, 6, 7, 8, 9, 23, 90, 23, 1, -345, -345567, -5, 6, -8};
+        Arrays.sort(justABunchOfNumbers);
+        for (int number :
+                justABunchOfNumbers) {
+            System.out.printf("%d%n", number);
+
+        }
 
 
+    }
+
+    @Test
+    public void sortWorkdays() {
+        String[] workdays = {"Monday", "Tuesday", "Wednesday", "Thursday",
+                "Friday"};
+        Arrays.sort(workdays);
+        assertEquals(workdays[0], "Friday");
+        assertEquals(workdays[4], "Wednesday");
     }
 }
