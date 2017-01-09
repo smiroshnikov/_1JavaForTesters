@@ -63,8 +63,10 @@ public class UserTest {
         String[] weekdays = Arrays.copyOf(workdays, 29);
         for (String day : weekdays) {
             System.out.printf("%s%n", day);
-
         }
+        assertEquals(null, weekdays[5]);
+        int[] minusOne = new int[30];
+        Arrays.fill(minusOne, 12, 25, -1);
 
 
     }
