@@ -4,6 +4,7 @@ import javafortesters.chapter6.practice.OpenUser;
 import javafortesters.chapter6.practice.User;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -54,5 +55,17 @@ public class UserTest {
             assertEquals("Incorrect username !", "username" + (i + 1), users[i].getUsername());
             assertEquals("Incorrect password !", "password" + (i + 1), users[i].getPassword());
         }
+    }
+
+    @Test
+    public void arrayMethods() {
+        String[] workdays = {"SUN", "MON", "TUE"};
+        String[] weekdays = Arrays.copyOf(workdays, 29);
+        for (String day : weekdays) {
+            System.out.printf("%s%n", day);
+
+        }
+
+
     }
 }
