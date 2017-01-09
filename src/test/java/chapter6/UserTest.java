@@ -80,10 +80,14 @@ public class UserTest {
 
     @Test
     public void sortWorkdays() {
-        String[] workdays = {"Monday", "Tuesday", "Wednesday", "Thursday",
+        String[] workdays = {"monday", "Tuesday", "Wednesday", "Thursday",
                 "Friday"};
         Arrays.sort(workdays);
         assertEquals(workdays[0], "Friday");
         assertEquals(workdays[4], "Wednesday");
+        for (String day :
+                workdays) {
+            System.out.printf(day);
+        }
     }
 }
