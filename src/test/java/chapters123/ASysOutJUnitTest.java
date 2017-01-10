@@ -22,7 +22,7 @@ public class ASysOutJUnitTest {
     @Test
     public void compareStrings(){
         String result = "Kikibojo";
-        assertEquals("Error strings differ !","Kikibojo", result);
+        assertEquals("Error strings differ !","Kikibojjo", result);
     }
 
     @Test
