@@ -29,43 +29,39 @@ public class ArrayOfArraysTest {
                         {1, 2, 3, 4, 5},
                         {11, 22, 33, 44, 55},
                         {111, 222, 333, 444, 555}};
-        print2DArray(ints);
+        print2DIntArray(ints);
 
 
     }
 
-    public void print2DArray(int[][] A) {
-        for (int[] anInt : A) {
-            if (anInt == null) {
-                System.out.println("null");
+    public void print2DIntArray(int[][] multi) {
+        for (int[] outer : multi) {
+            if (outer == null) {
+                System.out.print("null");
             } else {
-                //System.out.println(ints[0][i]);
-                for (int j = 0; j < A[0].length; j++) {
-                    System.out.print(anInt[j] + ",");
+                for (int inner : outer) {
+                    System.out.print(inner + ",");
                 }
             }
-            System.out.println();
+            System.out.println(" ");
         }
     }
 
     @Test
     public void createRaddedArrayTriangle() {
-        int[][] adskiyTriangle = new int[15][];
-        for (int i = 0; i < adskiyTriangle.length; i++) {
+        int[][] triangularArray = new int[16][];
+        for (int i = 0; i < triangularArray.length; i++) {
+
+            // define length of each rugged array
             int[] innerArray = new int[(i + 1)];
 
-            Arrays.fill(innerArray, i);
-            adskiyTriangle[i] = innerArray;
-
+            for (int j = 0; j < innerArray.length; j++) {
+                innerArray[j] = j; // not so hard !
+            }
+            triangularArray[i] = innerArray;
         }
-        System.out.printf("0 element length is %d%n", adskiyTriangle[0].length);
-        System.out.printf("5 element length is %d%n", adskiyTriangle[5].length);
-        System.out.printf("last element length is %d%n", adskiyTriangle[14].length);
-        print2DArray(adskiyTriangle);
-
+        print2DIntArray(triangularArray);
     }
-
-
 }
 
 
