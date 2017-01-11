@@ -53,4 +53,21 @@ public class CollectionsExamples {
 
 
     }
+
+    @Test
+    public void objectsInCollectionsExample() {
+        Collection workdayz;
+        workdayz = new ArrayList();
+        workdayz.add("Monday");
+        workdayz.add("Tuesday");
+        workdayz.add("Wednesday");
+        workdayz.add("Thursday");
+        workdayz.add("Friday");
+        // for each with objects 
+        for (Object workday :
+                workdayz) {
+            String output = (String) workday; // this is casting
+            System.out.println(output);
+        }
+    }
 }
