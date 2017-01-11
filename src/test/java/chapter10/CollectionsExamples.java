@@ -69,5 +69,11 @@ public class CollectionsExamples {
             String output = (String) workday; // this is casting
             System.out.println(output);
         }
+        Collection<String> weekDays = new <String>ArrayList();
+        weekDays.addAll(workdayz);
+        assertEquals(5, workdayz.size());
+        workdayz.clear();
+        assertTrue(workdayz.isEmpty());
+        assertEquals(0, workdayz.size());
     }
 }
