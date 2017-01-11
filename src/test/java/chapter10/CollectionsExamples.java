@@ -3,10 +3,7 @@ package chapter10;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static junit.framework.Assert.*;
 
@@ -75,5 +72,25 @@ public class CollectionsExamples {
         workdayz.clear();
         assertTrue(workdayz.isEmpty());
         assertEquals(0, workdayz.size());
+        Collection<Integer> numberz = new <Integer>ArrayList();
+        numberz.add(1);
+        numberz.add(2);
+        numberz.add(3);
+        numberz.add(4);
+        numberz.add(5);
+        Collection<Integer> numberzToRemove = new <Integer>ArrayList();
+        numberzToRemove.add(2);
+        numberzToRemove.add(3);
+        numberzToRemove.add(4);
+        numberz.removeAll(numberzToRemove);
+        assertEquals(2, numberz.size());
+        Integer[] integers = new Integer[numberz.size()];
+        numberz.toArray(integers); // filled with Integers
+        // or
+        Object[] numbers = numberz.toArray();
+        assertEquals(2, numbers.length);
+        assertEquals(1, numbers.length);
+
+
     }
 }
