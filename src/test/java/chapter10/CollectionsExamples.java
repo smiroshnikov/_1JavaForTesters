@@ -106,6 +106,9 @@ public class CollectionsExamples {
 
         fullWeek.addAll(weekdays);
         fullWeek.addAll(weekends);
+        assertEquals(7, fullWeek.size());
+        fullWeek.retainAll(weekends);
+
         for (Object day :
                 fullWeek) {
             String output = (String) day;
