@@ -92,7 +92,7 @@ public class CollectionsExamples {
         // or
         Object[] numbers = numberz.toArray();
         assertEquals(2, numbers.length);
-        assertEquals(1, numbers.length);
+        assertEquals(2, numbers.length);
 
 
     }
@@ -134,5 +134,33 @@ public class CollectionsExamples {
         // Here I can use methods that are allowed to List e.g "get"
         extendedUserCollection.addAll(users);
         System.out.println(extendedUserCollection.get(0));
+    }
+
+    @Test
+    public void createAndManipulateCollectionOfUsersClasswork() {
+        Collection<Object> users;
+        users = new ArrayList<>();
+        assertTrue(users.size() == 0);
+        assertTrue(users.isEmpty());
+        Object user1 = null;
+        Object user2 = null;
+        users.add(user1);
+        users.add(user2);
+        assertTrue(users.size() == 2);
+        assertFalse(users.isEmpty());
+        Collection<Object> differentUsers;
+        differentUsers = new ArrayList<>();
+        Object user3 = null, user4 = null;
+        differentUsers.add(user3);
+        differentUsers.add(user4);
+        users.addAll(differentUsers);
+        assertTrue(users.contains(user3));
+        assertTrue(users.contains(user4));
+        differentUsers.removeAll(differentUsers); // this is weird and may cause an exception !
+        assertTrue("Collection not empty ", differentUsers.isEmpty());
+        users.clear();
+        assertTrue("Collection not empty", users.isEmpty());
+
+
     }
 }
