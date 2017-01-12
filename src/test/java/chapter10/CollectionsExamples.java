@@ -216,4 +216,35 @@ public class CollectionsExamples {
 
 
     }
+
+    @Test
+    public void mapExample() {
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1000, "Mojo");
+        map.put(2000, "Jojo");
+        map.put(3000, "Aojo");
+        assertEquals(3, map.size());
+        assertEquals("Aojo", map.get(3000));
+        assertEquals(null, map.get(12));
+        map.remove(3000);
+        assertFalse(map.containsValue("Aojo"));
+        assertEquals(2, map.size());
+        map.clear();
+        assertTrue(map.isEmpty());
+        assertEquals(0, map.size());
+        assertFalse(map.containsValue("not present!"));
+        Collection<String> values = map.values();
+        Set<Integer> keys = map.keySet();
+    }
+
+    @Test
+    public void userMap() {
+        Map<Integer, Object> userMap = new HashMap<>();
+        Object u1 = 12, u2 = 15;
+        userMap.put(1, u1);
+        userMap.put(1, u2);
+        assertTrue("u1 is not here ! ", userMap.containsValue(u2));
+
+
+    }
 }
