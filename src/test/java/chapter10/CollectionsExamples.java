@@ -163,4 +163,30 @@ public class CollectionsExamples {
 
 
     }
+
+    @Test
+    public void listClasswork() {
+        List<String> days = new ArrayList<>();
+        days.add("Monday");
+        days.add("Friday");
+        days.add("Wednesday");
+        days.remove(2);
+
+        List<String> missingDays = new ArrayList<>();
+        missingDays.add("Tuesday");
+        missingDays.add("Wednesday");
+        missingDays.add("Thursday");
+        days.addAll(1, missingDays); // very convenient
+        assertEquals("Invalid amount of days", 5, days.size());
+        days.add("Tuesday");
+        days.add("Tuesday");
+        System.out.printf("last Tuesday is located at %d", days.lastIndexOf("Tuesday")); // cool ! they have a method
+        // for that
+        days.set(6, "Remove me! I am not a day!");
+        assertEquals("Remove me! I am not a day!", days.get(6));
+        List<String> workDays = days.subList(0, 3);
+        assertEquals("Monday", workDays.get(0));
+
+
+    }
 }
