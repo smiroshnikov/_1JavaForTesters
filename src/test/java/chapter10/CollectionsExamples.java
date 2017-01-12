@@ -189,4 +189,21 @@ public class CollectionsExamples {
 
 
     }
+
+    @Test
+    public void userListAssignment() {
+        List<Object> users = new ArrayList<>();
+        String user1 = "a", user2 = "b";
+
+        users.add(user1);
+        assertTrue(users.contains(user1));
+        users.add(0, user2);
+        assertTrue(users.contains(user2));
+        assertEquals(1, users.indexOf(user1));
+        assertEquals(0, users.indexOf(user2));
+        users.remove(user1);
+        assertFalse(users.contains(user1));
+
+
+    }
 }
