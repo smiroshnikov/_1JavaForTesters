@@ -3,7 +3,10 @@ package chapter10;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 import static junit.framework.Assert.*;
 
@@ -90,6 +93,26 @@ public class CollectionsExamples {
         Object[] numbers = numberz.toArray();
         assertEquals(2, numbers.length);
         assertEquals(1, numbers.length);
+
+
+    }
+
+    @Test
+    public void retainExample() {
+        String[] workingDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        Collection<String> weekdays = Arrays.asList(workingDays);
+        List<String> weekends = Arrays.asList("Friday", "Saturday");
+        List fullWeek = new ArrayList();
+
+        fullWeek.addAll(weekdays);
+        fullWeek.addAll(weekends);
+        for (Object day :
+                fullWeek) {
+            String output = (String) day;
+            System.out.println(output);
+
+
+        }
 
 
     }
