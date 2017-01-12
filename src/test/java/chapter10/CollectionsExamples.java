@@ -119,4 +119,20 @@ public class CollectionsExamples {
 
 
     }
+
+    @Test
+    public void collectionRememberMe() {
+        // This code exists as a reminder to understand the
+        // Collections and interfaces
+        Collection<String> users;
+        users = new ArrayList<>();
+        users.add("Can use only Collection methods");
+        // I can use only methods allowed to Collection
+
+        List<String> extendedUserCollection;
+        extendedUserCollection = new ArrayList<>();
+        // Here I can use methods that are allowed to List e.g "get"
+        extendedUserCollection.addAll(users);
+        System.out.println(extendedUserCollection.get(0));
+    }
 }
