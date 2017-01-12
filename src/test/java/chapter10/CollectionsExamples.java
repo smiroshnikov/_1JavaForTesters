@@ -3,10 +3,7 @@ package chapter10;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static junit.framework.Assert.*;
 
@@ -203,6 +200,19 @@ public class CollectionsExamples {
         assertEquals(0, users.indexOf(user2));
         users.remove(user1);
         assertFalse(users.contains(user1));
+
+
+    }
+
+    @Test
+    public void setClasswork() {
+        Set users = new HashSet();
+        users.add("Bob");
+        users.add("Bob");
+        users.add("Bob");
+
+        // duplicates are ignored !
+        assertEquals(1, users.size());
 
 
     }
