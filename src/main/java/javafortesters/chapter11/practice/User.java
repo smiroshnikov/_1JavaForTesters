@@ -18,6 +18,8 @@ public class User {
     }
 
     public void setPassword(String password) {
+        // lets keep it for the sake of the example
+        // exceptions are not intended for validations
         if (password.length() < 7) {
             throw new IllegalArgumentException("Password must be 7 characters at least !");
         }

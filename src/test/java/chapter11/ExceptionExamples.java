@@ -39,4 +39,21 @@ public class ExceptionExamples {
         }
         assertTrue(testUser.getPassword().length() > 6);
     }
+
+    @Test
+    public void tryCatchFinallyNullPointer() {
+        Integer age = null;
+        String ageAsString;
+        String yourAge = "";
+        try {
+            ageAsString = age.toString();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            age = 18;
+            ageAsString = age.toString();
+        } finally {
+            yourAge = "You are " + age.toString() + " years old";
+        }
+        assertEquals("You are 18 years old", yourAge);
+    }
 }
