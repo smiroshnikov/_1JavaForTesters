@@ -1,13 +1,15 @@
 package chapter11;
 
 
+import javafortesters.chapter11.practice.User;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
 public class ExceptionExamples {
 
-    @Test(expected = NullPointerException.class)
+    @Test // If expecting an exception I cannot catch it or test will fail !
+//    @Test(expected = NullPointerException.class)
     public void nullPointerExample() {
 
         Integer age = null;
@@ -22,5 +24,11 @@ public class ExceptionExamples {
         }
         String yourAge = "You are " + ageAsString + " years old";
         assertEquals("You are 18 years old", yourAge);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void userPasswordTest() {
+        User testUser = new User("Yana", "123456");
+
     }
 }
