@@ -5,6 +5,7 @@ import javafortesters.chapter11.practice.User;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class ExceptionExamples {
 
@@ -26,9 +27,16 @@ public class ExceptionExamples {
         assertEquals("You are 18 years old", yourAge);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    //@Test(expected = IllegalArgumentException.class)
+    @Test
     public void userPasswordTest() {
-        User testUser = new User("Yana", "123456");
-
+        User testUser;
+        try {
+            testUser = new User("Yana", "123456");
+        } catch (IllegalArgumentException e) {
+            e.getMessage();
+            testUser = new User("Yana", "1234567890");
+        }
+        assertTrue(testUser.getPassword().length() > 6);
     }
 }

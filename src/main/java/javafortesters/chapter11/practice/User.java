@@ -13,6 +13,10 @@ public class User {
         return username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         if (password.length() < 7) {
             throw new IllegalArgumentException("Password must be 7 characters at least !");
