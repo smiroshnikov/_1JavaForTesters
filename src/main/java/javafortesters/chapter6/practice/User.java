@@ -1,5 +1,6 @@
 package javafortesters.chapter6.practice;
 
+import javafortesters.chapter13.practice.InvalidPassword;
 import javafortesters.chapter5.practice.TestAppEnv;
 
 public class User {
@@ -22,8 +23,8 @@ public class User {
 
     public User(String username, String password) {
         this.username = username;
-        this.password = password;
-
+        setPassword(password);
+        //this.password = password;
     }
 
     public String getUsername() {
@@ -35,6 +36,9 @@ public class User {
     }
 
     public void setPassword(String password) {
+        if (password.length() < 7) {
+            throw new InvalidPassword("Password must be 7 chars at least !");
+        }
         this.password = password;
     }
 
