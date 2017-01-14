@@ -2,7 +2,7 @@ package oracledocs;
 
 import java.util.Objects;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         Monsters monsterList = new Monsters();

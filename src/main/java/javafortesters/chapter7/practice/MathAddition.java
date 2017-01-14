@@ -1,7 +1,7 @@
 package javafortesters.chapter7.practice;
 
 
-public final class MathAddition {
+final class MathAddition {
     /**
      * Add two integers and return  int
      *
