@@ -56,4 +56,20 @@ public class ExceptionExamples {
         }
         assertEquals("You are 18 years old", yourAge);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void tryCatchFinallyClassExample() {
+        Integer age = null;
+        try {
+            System.out.println("1. generate a null pointer exception");
+            System.out.println(age.toString());
+        } catch (NullPointerException e) {
+            System.out.println("2. handle null pointer exception !");
+            throw new IllegalArgumentException("Null pointer became illegal", e);
+        } finally {
+            System.out.println("3. Run this code after finally ");
+            System.out.println("\nThe test will pass because we expect illegal argument exception \nthat we produced while handling " +
+                    "null pointer exception ");
+        }
+    }
 }
