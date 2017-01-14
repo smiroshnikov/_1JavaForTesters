@@ -10,14 +10,13 @@ public class User {
 
     private String username;
     private String password;
-    private TestAppEnv tae = new TestAppEnv();
 
 
     public User() {
         //this.username = "username";
         //this.password = "password";
         // constructor from constructor
-        // constructor without arguemnts
+        // constructor without arguments
         this("username", "password");
     }
 
@@ -50,5 +49,9 @@ public class User {
 
     public String getUrl() {
         return TestAppEnv.getUrl();
+    }
+
+    public String getPermission() {
+        return "Normal";
     }
 }
