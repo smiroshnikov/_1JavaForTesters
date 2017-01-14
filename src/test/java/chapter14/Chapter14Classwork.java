@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 
 import java.util.Objects;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 
@@ -50,9 +51,23 @@ public class Chapter14Classwork {
 
     }
 
+    @Test
+    public void hamcrestTut() {
+        assertThat("3 + 3 = 6 ", 3 + 3, is(6));
+        assertThat(new User(), not(new User()));
+        assertThat("wuieyrwkhfekwejhr", containsString("wej"));
+        assertThat(null, is(nullValue()));
+        assertThat("1000002", startsWith("1"));
+        assertThat("1000002", endsWith("2"));
+        fail();
+
+
+    }
+
     @AfterClass
     public static void completionProcedure() {
         System.out.println("Test Suite completed ! ");
+
     }
 
 }
