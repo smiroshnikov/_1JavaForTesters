@@ -1,5 +1,7 @@
 package javafortesters.chapter6.practice;
 
+import javafortesters.chapter5.practice.TestAppEnv;
+
 public class User {
 
     public final static int MINIMAL_PASSWORD_LENGTH = 12;
@@ -8,17 +10,21 @@ public class User {
 
     private String username;
     private String password;
+    private TestAppEnv tae = new TestAppEnv();
+
 
     public User() {
         //this.username = "username";
         //this.password = "password";
         // constructor from constructor
+        // constructor without arguemnts
         this("username", "password");
     }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+
     }
 
     public String getUsername() {
@@ -33,7 +39,6 @@ public class User {
         this.password = password;
     }
 
-
     public static User[] createUsers(int desiredNumberOfUsers) {
         User[] users;
         users = new User[desiredNumberOfUsers];
@@ -41,5 +46,9 @@ public class User {
             users[i] = new User("username" + (i + 1), "password" + (i + 1));
         }
         return users;
+    }
+
+    public String getUrl() {
+        return TestAppEnv.getUrl();
     }
 }
