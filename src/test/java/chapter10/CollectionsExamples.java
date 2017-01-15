@@ -5,7 +5,8 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
+
 
 public class CollectionsExamples {
     @Test
