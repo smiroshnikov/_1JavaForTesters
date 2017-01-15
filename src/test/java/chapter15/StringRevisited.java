@@ -3,6 +3,8 @@ package chapter15;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -76,10 +78,36 @@ public class StringRevisited {
         assertThat(hello.indexOf('z'), is(-1));
     }
 
+
     @Test
     public void classwork5() {
         //TODO this is a candidate for QA interview
+        /* Write a method, which takes a String and a substring as parameters
+        and returns a List<Integer> where each Integer is the location of the
+        substring in the String.*/
+        //assertThat(allOccurrencesInAString("Hello fella!", "l"),
+        //      is(new ArrayList<>(Arrays.asList(1, 2, 3, 4))));
+        List<Integer> pM = new ArrayList<>();
+        pM = allOccurrencesInAString("Hello fella", "l");
+        for (int element :
+                pM) {
+            System.out.println(element);
 
+        }
+    }
+
+    public List<Integer> allOccurrencesInAString(String fullString, String requiredLetter) {
+        List<Integer> result = new ArrayList<>();
+        int i = 0;
+        do {
+            if (fullString.indexOf(requiredLetter) != -1) {
+                i = fullString.indexOf(requiredLetter);
+                result.add(i);
+                i += 1;
+            }
+            System.out.println(i);
+        } while (i < fullString.length());
+        return result;
 
     }
 
