@@ -62,7 +62,25 @@ public class StringRevisited {
         hello = "Hello fella!";
         assertThat(hello.regionMatches(true, 6, "fez", 0, 2),
                 is(true));
+        assertThat(hello.toLowerCase().regionMatches(true, 9, "young lady".toLowerCase(),
+                6, 2), is(true));
+    }
+
+    @Test
+    public void classwork4() {
+        String h = "Hellllloooo";
+        assertThat(h.indexOf('l'), is(2));
+        assertThat(h.lastIndexOf('l'), is(6));
+        String hello = "Hello fella!";
+        assertThat(hello.lastIndexOf('l', 10), is(9));
+        assertThat(hello.indexOf('z'), is(-1));
+    }
+
+    @Test
+    public void classwork5() {
+        //TODO this is a candidate for QA interview
 
 
     }
+
 }
