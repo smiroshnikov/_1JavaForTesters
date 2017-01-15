@@ -2,6 +2,8 @@ package chapter15;
 
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -25,8 +27,26 @@ public class StringRevisited {
         for (byte b :
                 bArray) {
             System.out.println(b);
-
         }
+    }
+
+    @Test
+    public void canConvertBytesUTF8() throws UnsupportedEncodingException {
+        byte[] b8Array = "hello there".getBytes("UTF-8");
+        for (byte b :
+                b8Array) {
+            System.out.println(b);
+        }
+    }
+
+    @Test
+    public void classwork2() {
+        String empty = "";
+        assertThat(empty.length(), is(0));
+        char[] cArray = {'2', '3'};
+        assertThat(new String(cArray), is("23"));
+        byte[] b8Array = {111, 101};
+        System.out.println(new String(b8Array));
 
 
     }
