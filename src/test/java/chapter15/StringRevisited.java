@@ -47,6 +47,21 @@ public class StringRevisited {
         assertThat(new String(cArray), is("23"));
         byte[] b8Array = {111, 101};
         System.out.println(new String(b8Array));
+    }
+
+    @Test
+    public void classwork3() {
+        String hello = "Hello";
+        assertThat(hello.compareTo("Hello"), is(0));
+        assertThat(hello.compareTo("hello") < 0, is(true));
+        assertThat(hello.compareToIgnoreCase("hello"), is(0));
+        assertThat(hello.contentEquals("Hello"), is(true));
+        assertThat(hello.toLowerCase().contentEquals("hello"), is(true));
+        assertThat(hello.endsWith(""), is(true));
+        assertThat(hello.startsWith("He"), is(true));
+        hello = "Hello fella!";
+        assertThat(hello.regionMatches(true, 6, "fez", 0, 2),
+                is(true));
 
 
     }
