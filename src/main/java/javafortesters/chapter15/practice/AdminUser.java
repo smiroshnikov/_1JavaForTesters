@@ -5,4 +5,12 @@ package javafortesters.chapter15.practice;
 
 public class AdminUser extends User {
 
+    public AdminUser() {
+        super("admin", "p4ssw0r6!");
+    }
+
+    public String getPermission() {
+        return "elevated";
+    }
+
 }

@@ -6,7 +6,8 @@ import javafortesters.chapter12.practice.ReadOnlyUser;
 import javafortesters.chapter6.practice.AdminUser;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class Chapter12Tests {
     @Test
