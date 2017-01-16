@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringUtilityHelpers {
-    public static List<Integer> returnNumberOfOccurrences(String full, String letter) {
+    public static List<Integer> letterOccurrences(String full, String letter) {
         List<Integer> occurrences = new ArrayList<>();
         for (int i = 0; i < full.length(); i++) {
             if (full.indexOf(letter, i) != -1) {
@@ -15,7 +15,7 @@ public class StringUtilityHelpers {
         return occurrences;
     }
 
-    public static List<Integer> returnNumberOfOccInReverse(String full, String letter) {
+    public static List<Integer> letterOccurrencesReverse(String full, String letter) {
         List<Integer> occurrences = new ArrayList<>();
         for (int i = full.length(); i >= 0; i--) {
             if (full.lastIndexOf(letter, i) != -1) {

@@ -3,8 +3,6 @@ package chapter15;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -78,36 +76,26 @@ public class StringRevisited {
         assertThat(hello.indexOf('z'), is(-1));
     }
 
-
     @Test
     public void classwork5() {
-        //TODO this is a candidate for QA interview
-        /* Write a method, which takes a String and a substring as parameters
-        and returns a List<Integer> where each Integer is the location of the
-        substring in the String.*/
-        //assertThat(allOccurrencesInAString("Hello fella!", "l"),
-        //      is(new ArrayList<>(Arrays.asList(1, 2, 3, 4))));
-        List<Integer> pM = new ArrayList<>();
-        pM = allOccurrencesInAString("Hello fella", "l");
-        for (int element :
-                pM) {
-            System.out.println(element);
+        // TODO REMEMBER THIS!
+        /*
+            An example scenario for the use of Regular Expressions might be that we want to expand
+            the password validation on our User class:
+            • password must contain a digit
+            • password must contain an uppercase letter
+         */
+        //String mustIncludeADigit = ".*[0123456789]+.*";
+        // a better definition
+        String mustIncludeADigit = ".*[0-9]+.*";
+        assertThat("12345678".matches(mustIncludeADigit), is(true));
+        assertThat("1nvalid".matches(mustIncludeADigit), is(true));
+        assertThat("invalid0".matches(mustIncludeADigit), is(true));
+        assertThat("invalid".matches(mustIncludeADigit), is(false));
+        String mustIncludeUpperCase = ".*[A-Z]+.*";
+        assertThat("valiD".matches(mustIncludeUpperCase), is(true));
 
-        }
-    }
 
-    public List<Integer> allOccurrencesInAString(String fullString, String requiredLetter) {
-        List<Integer> result = new ArrayList<>();
-        int i = 0;
-        do {
-            if (fullString.indexOf(requiredLetter) != -1) {
-                i = fullString.indexOf(requiredLetter);
-                result.add(i);
-                i += 1;
-            }
-            System.out.println(i);
-        } while (i < fullString.length());
-        return result;
 
     }
 
