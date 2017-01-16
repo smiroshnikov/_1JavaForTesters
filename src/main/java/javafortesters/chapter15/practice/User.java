@@ -28,7 +28,7 @@ public class User {
 
     public void setPassword(String password) {
         if (password.length() < 8) {
-            throw new IllegalArgumentException("password too short!");
+            throw new IncorrectPasswordException("password too short!");
         }
         this.password = password;
     }

@@ -4,11 +4,12 @@ package chapter15;
 // TODO this is interview candidate
 
 import javafortesters.chapter15.practice.AdminUser;
+import javafortesters.chapter15.practice.IncorrectPasswordException;
 import javafortesters.chapter15.practice.ReadOnlyUser;
 import javafortesters.chapter15.practice.User;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class UserTest {
     @Test
@@ -36,16 +37,21 @@ public class UserTest {
         assertEquals("read only", roUser.getPermission());
     }
 
-    @Test
-    // here decide expect ? fail ? handle ?
-    public void createCustomUser() {
+    @Test(expected = IncorrectPasswordException.class)
+    public void createUserWithIncorrectPassword() {
+
         User user = new User("Max", "123456");
-
-
-        assertEquals("Max", user.getUsername());
-
-
+        fail("An exception should have been thrown");
     }
 
+    @Test(expected = IncorrectPasswordException.class)
+    public void createAdminWithIncorrectPassword() {
+        AdminUser adminUser = new AdminUser("Bob", "123456");
+    }
+
+    @Test(expected = IncorrectPasswordException.class)
+    public void createReadOnlyWithIncorrectPassword() {
+        ReadOnlyUser user = new ReadOnlyUser("Stan", "");
+    }
 
 }
