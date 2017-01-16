@@ -4,7 +4,6 @@ public class User {
     String username;
     String password;
 
-
     public User() {
         // no arguments - default values
         this("username", "password");
@@ -12,7 +11,7 @@ public class User {
 
     public User(String username, String password) {
         this.username = username;
-        this.password = password;
+        setPassword(password);
     }
 
     public String getUsername() {
@@ -25,5 +24,12 @@ public class User {
 
     public String getPermission() {
         return "normal";
+    }
+
+    public void setPassword(String password) {
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("password too short!");
+        }
+        this.password = password;
     }
 }

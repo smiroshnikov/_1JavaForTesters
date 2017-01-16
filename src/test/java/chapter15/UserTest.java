@@ -4,6 +4,7 @@ package chapter15;
 // TODO this is interview candidate
 
 import javafortesters.chapter15.practice.AdminUser;
+import javafortesters.chapter15.practice.ReadOnlyUser;
 import javafortesters.chapter15.practice.User;
 import org.junit.Test;
 
@@ -26,4 +27,25 @@ public class UserTest {
         assertEquals("elevated", admin.getPermission());
 
     }
+
+    @Test
+    public void createDefaultROUser() {
+        ReadOnlyUser roUser = new ReadOnlyUser();
+        assertEquals("username", roUser.getUsername());
+        assertEquals("password", roUser.getPassword());
+        assertEquals("read only", roUser.getPermission());
+    }
+
+    @Test
+    // here decide expect ? fail ? handle ?
+    public void createCustomUser() {
+        User user = new User("Max", "123456");
+
+
+        assertEquals("Max", user.getUsername());
+
+
+    }
+
+
 }
