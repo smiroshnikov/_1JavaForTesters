@@ -9,6 +9,7 @@ import javafortesters.chapter15.practice.ReadOnlyUser;
 import javafortesters.chapter15.practice.User;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -49,9 +50,23 @@ public class UserTest {
         AdminUser adminUser = new AdminUser("Bob", "123456");
     }
 
-    @Test(expected = IncorrectPasswordException.class)
+    //@Test(expected = IncorrectPasswordException.class)
+    @Test
     public void createReadOnlyWithIncorrectPassword() {
-        ReadOnlyUser user = new ReadOnlyUser("Stan", "");
+
+        try {
+            ReadOnlyUser readOnlyUser = new ReadOnlyUser("Stan", "");
+            fail("An exception should have been thrown");
+        } catch (IncorrectPasswordException e) {
+            System.out.printf(e.getMessage());
+            System.out.printf("\nUser with invalid password creation was prevented ! !\n".toUpperCase());
+            System.out.printf("\nProceeding to next test step!");
+        } finally {
+            ReadOnlyUser readOnlyUser = new ReadOnlyUser("Stan", "PerfectSomething1!");
+            assertThat(readOnlyUser.getPassword().length() > 8, is(true));
+            System.out.println("\nTC finished");
+        }
     }
+
 
 }
