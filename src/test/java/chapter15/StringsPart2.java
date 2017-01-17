@@ -44,6 +44,8 @@ public class StringsPart2 {
 
     @Test
     public void csvSplit() {
+        //I frequently use split to parse simple CSV, or tab delimited files. I’ve also used it to parse
+        //HTML and XML, without bringing in other libraries.
         String csvFile = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,17,123,23,4,5,6,7," +
                 "8,3,23,5,6,7,8,0,534,345,5,5,-67,-56,7,-0.345,8,3,23,5,6,7,8,0,534,345,5," +
                 "5,-67,-56,7,-0.345,8,3,23,5,6,7,8,0,534,345,5,5,-67,-56,7,-0.345,8,3,23,5,6,7," +
@@ -52,8 +54,15 @@ public class StringsPart2 {
         for (String m :
                 measurements) {
             System.out.println(m);
-
         }
+    }
+
+    @Test
+    public void workingWithStringBuilder() {
+        StringBuilder builder = new StringBuilder();
+        System.out.println(builder.append("hey there ").replace(4, 9, "Sergei  Miroshnikov !").delete(24, 26));
+
+
     }
 
 }
