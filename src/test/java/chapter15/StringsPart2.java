@@ -29,5 +29,17 @@ public class StringsPart2 {
         System.out.println(String.format(normalText, "Bob", "ran", 6, "onions"));
     }
 
+    @Test
+    public void splittingIpAddress() {
+        String fullIP = "https://192.168.1.1:8080";
+        System.out.println(fullIP.substring(8));
+        String ipList = "192.168.10.10,192.168.12.48,192.168.13.157,192.166.187.132";
+        String[] addresses = ipList.split(",");
+        for (String address :
+                addresses) {
+            System.out.println(address);
+        }
+
+    }
 
 }
