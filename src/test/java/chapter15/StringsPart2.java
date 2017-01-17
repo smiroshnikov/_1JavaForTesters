@@ -61,6 +61,16 @@ public class StringsPart2 {
     public void workingWithStringBuilder() {
         StringBuilder builder = new StringBuilder();
         System.out.println(builder.append("hey there ").replace(4, 9, "Sergei  Miroshnikov !").delete(24, 26));
+        StringBuilder sb = new StringBuilder();
+        assertThat(sb.capacity(), is(16));
+        sb.append("12345678123456781232342378462783647823648726347892649218734891237");
+        System.out.println(sb.capacity());
+        StringBuilder sblen = new StringBuilder(1024);
+        assertThat(sblen.toString().length(), is(0));
+        sblen.ensureCapacity(4056);
+        for (int i = 0; i < sblen.capacity(); i++) {
+            sblen.append(0);
+        }
 
 
     }
