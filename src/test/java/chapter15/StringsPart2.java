@@ -68,9 +68,13 @@ public class StringsPart2 {
         StringBuilder sblen = new StringBuilder(1024);
         assertThat(sblen.toString().length(), is(0));
         sblen.ensureCapacity(4056);
-        for (int i = 0; i < sblen.capacity(); i++) {
+        for (int i = 0; i < sblen.capacity() - 4000; i++) {
             sblen.append(0);
         }
+        System.out.println(sblen.toString());
+        System.out.printf("current capacity is %d %n", sblen.capacity());
+        sblen.trimToSize();
+        System.out.printf("current capacity is %d %n", sblen.capacity());
 
 
     }
