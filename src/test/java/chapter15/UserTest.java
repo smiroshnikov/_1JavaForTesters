@@ -13,6 +13,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class UserTest {
+
     @Test
     public void createDefaultUser() {
         User u = new User();
@@ -50,7 +51,16 @@ public class UserTest {
         AdminUser adminUser = new AdminUser("Bob", "123456");
     }
 
-    //@Test(expected = IncorrectPasswordException.class)
+    @Test(expected = IncorrectPasswordException.class)
+    public void createUserWithBadLowerCasePassword() {
+        User user = new User("Max Smirnov", "qwwertyuioplkj1h");
+    }
+
+    @Test(expected = IncorrectPasswordException.class)
+    public void createUserWithBadUpperCasePassword() {
+        User user = new User("Max Smirnov", "Qweoipoewrit");
+    }
+
     @Test
     public void createReadOnlyWithIncorrectPassword() {
 
