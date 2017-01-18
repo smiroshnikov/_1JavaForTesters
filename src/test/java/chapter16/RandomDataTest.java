@@ -112,8 +112,29 @@ public class RandomDataTest {
         System.out.printf("'95P' %d%n", deviation1 + deviation2);
         System.out.printf("'99P' %d%n", deviation1 + deviation2 + deviation3);
         System.out.printf("Anomalious values detected %d", anomalies);
+    }
+
+    @Test
+    public void gaussianIntegers() {
+        Random generate = new Random();
+        int age;
+        ArrayList<Integer> ages = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            age = (int) (generate.nextGaussian() * 5) + 35;
+            ages.add(age);
+        }
+        int[] x = new int[100];
+        Collections.sort(ages);
+        for (int a :
+                ages) {
+            System.out.println(a);
+
+        }
 
     }
 
 
 }
+
+
+
