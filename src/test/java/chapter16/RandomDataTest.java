@@ -27,10 +27,23 @@ public class RandomDataTest {
         for (byte b :
                 randomBytes) {
             System.out.println(b);
-
         }
-
-
     }
+
+    @Test
+    public void randomBoundaries() {
+        Random r = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int x = r.nextInt(Integer.MAX_VALUE) + Integer.MIN_VALUE;
+            long l = r.nextLong();
+            System.out.println(x);
+            System.out.println(l);
+            assertThat(l < Long.MAX_VALUE, is(true));
+            assertThat(l > Long.MIN_VALUE, is(true));
+            assertThat(x < Integer.MAX_VALUE, is(true));
+            assertThat(x > Integer.MIN_VALUE, is(true));
+        }
+    }
+
 
 }
