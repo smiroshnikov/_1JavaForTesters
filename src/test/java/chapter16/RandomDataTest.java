@@ -119,20 +119,35 @@ public class RandomDataTest {
         Random generate = new Random();
         int age;
         ArrayList<Integer> ages = new ArrayList<>();
+
         for (int i = 0; i < 100; i++) {
             age = (int) (generate.nextGaussian() * 5) + 35;
             ages.add(age);
         }
-        int[] x = new int[100];
         Collections.sort(ages);
         for (int a :
                 ages) {
             System.out.println(a);
-
         }
 
     }
 
+    @Test
+    public void mapTest() {
+        Random generate = new Random();
+
+        HashMap<Integer, Integer> ages = new HashMap<>();
+        for (int i = 0; i < 100; i++) {
+            int age = (int) (generate.nextGaussian() * 5) + 35;
+            int counter = 0;
+            ages.put(age, counter);
+            if (ages.containsValue(age)) {
+                ages.put(age, counter += 1);
+            }
+        }
+        System.out.println(ages.get(35));
+
+    }
 
 }
 
