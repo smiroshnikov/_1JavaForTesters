@@ -2,7 +2,7 @@ package chapter16;
 
 import org.junit.Test;
 
-import java.util.Random;
+import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -23,7 +23,8 @@ public class RandomDataTest {
         System.out.println(r.nextLong());
         Boolean randomBoolean = r.nextBoolean();
         System.out.println(randomBoolean);
-        byte[] randomBytes = new byte[r.nextInt(100)];
+        byte[] randomBytes = new byte[10];
+        System.out.printf("ln %d%n", randomBytes.length);
         r.nextBytes(randomBytes);
         for (byte b :
                 randomBytes) {
@@ -71,6 +72,18 @@ public class RandomDataTest {
         assertThat(result < 1.0d, is(true));
         assertThat(result > 0d, is(true));
 
+    }
+
+    @Test
+    public void fifteenToTwenty() {
+        Random r = new Random();
+        Set<Integer> result = new HashSet<>();
+        for (int i = 0; i < 1000; i++) {
+            //System.out.println(r.nextInt(6) + 15);
+            result.add(r.nextInt(6) + 15);
+        }
+        assertThat(result.size(), is(6));
+        assertEquals(result, new HashSet<>(Arrays.asList(15, 16, 17, 18, 19, 26)));
     }
 
 

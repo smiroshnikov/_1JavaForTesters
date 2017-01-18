@@ -75,8 +75,18 @@ public class StringsPart2 {
         System.out.printf("current capacity is %d %n", sblen.capacity());
         sblen.trimToSize();
         System.out.printf("current capacity is %d %n", sblen.capacity());
+        char[] ca = {' ', '=', '<', '№', '3'};
+        sblen.append(ca);
+        System.out.printf("current capacity is %d %n", sblen.capacity());
+        //assertEquals(" =<№3", sblen.toString());
+        sblen.insert(0, "START_TAG#");
+        assertThat(sblen.toString().startsWith("START_TAG#"), is(true));
+    }
 
-
+    @Test
+    public void reverseName() {
+        StringBuilder builder = new StringBuilder("Sergei Miroshnikov!");
+        System.out.println(builder.reverse().toString());
     }
 
 }
