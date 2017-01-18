@@ -6,6 +6,7 @@ import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 
 public class RandomDataTest {
     @Test
@@ -45,5 +46,22 @@ public class RandomDataTest {
         }
     }
 
+    @Test
+    public void womansBrain() {
+        Random woman = new Random();
+        int yesCount = 0;
+        int noCount = 0;
+        for (int i = 0; i < 1000; i++) {
+            boolean decision = woman.nextBoolean();
+            if (decision) {
+                yesCount += 1;
+            } else {
+                noCount += 1;
+            }
+        }
+        System.out.println(String.format("She said yes %d ", yesCount));
+        System.out.println(String.format("She said no %d ", noCount));
+        assertEquals(yesCount + noCount, 1000);
+    }
 
 }
