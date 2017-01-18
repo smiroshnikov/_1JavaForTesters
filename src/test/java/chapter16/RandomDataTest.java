@@ -86,5 +86,34 @@ public class RandomDataTest {
         assertEquals(result, new HashSet<>(Arrays.asList(15, 16, 17, 18, 19, 26)));
     }
 
+    @Test
+    public void gaussianUnderstanding() {
+        Random r = new Random();
+        int deviation1 = 0;
+        int deviation2 = 0;
+        int deviation3 = 0;
+        int anomalies = 0;
+
+        for (int i = 0; i < 10000; i++) {
+            double result = r.nextGaussian();
+            System.out.printf("%f %n", result);
+            if (1.0d > result && result > -1.0d) {
+                deviation1 += 1;
+            } else if ((2.0d > result && result > 1.0d) || (result < -1.0d && result > -2.0d)) {
+                deviation2 += 1;
+            } else if ((3.0d > result && result > 2.0d) || (result < -2.0d && result > -3.0d)) {
+                deviation3 += 1;
+            } else {
+                anomalies += 1;
+                System.out.printf("ANOMALY --> %f", result);
+            }
+        }
+        System.out.printf("'70P' %d%n", deviation1);
+        System.out.printf("'95P' %d%n", deviation1 + deviation2);
+        System.out.printf("'99P' %d%n", deviation1 + deviation2 + deviation3);
+        System.out.printf("Anomalious values detected %d", anomalies);
+
+    }
+
 
 }
