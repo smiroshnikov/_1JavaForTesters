@@ -64,4 +64,14 @@ public class RandomDataTest {
         assertEquals(yesCount + noCount, 1000);
     }
 
+    @Test
+    public void floatTest() {
+        Random random = new Random();
+        float result = random.nextFloat();
+        assertThat(result < 1.0d, is(true));
+        assertThat(result > 0d, is(true));
+
+    }
+
+
 }
