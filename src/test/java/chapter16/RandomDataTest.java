@@ -135,17 +135,25 @@ public class RandomDataTest {
     @Test
     public void mapTest() {
         Random generate = new Random();
-
         HashMap<Integer, Integer> ages = new HashMap<>();
-        for (int i = 0; i < 100; i++) {
-            int age = (int) (generate.nextGaussian() * 5) + 35;
-            int counter = 0;
-            ages.put(age, counter);
-            if (ages.containsValue(age)) {
-                ages.put(age, counter += 1);
+        Integer max = 1;
+        // Boxing same as new Integer(1); turns 1 into New Integer
+        for (int i = 0; i < 40000; i++) {
+            Integer age  =(int)( (generate.nextGaussian() * 5) + 35);
+
+            if (ages.get(age) != null) {
+                ages.put(age, ages.get(age) + 1);
+            } else {
+                ages.put(age, 1);
             }
+            // UnBoxing automaically to int
         }
-        System.out.println(ages.get(35));
+
+        for (Map.Entry<Integer, Integer> integerIntegerEntry : ages.entrySet()) {
+            //Entry looks like this {key,value}
+            System.out.println(integerIntegerEntry.getKey() + "--->" + integerIntegerEntry.getValue());
+        }
+
 
     }
 
