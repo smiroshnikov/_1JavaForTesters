@@ -136,10 +136,9 @@ public class RandomDataTest {
     public void mapTest() {
         Random generate = new Random();
         HashMap<Integer, Integer> ages = new HashMap<>();
-        Integer max = 1;
         // Boxing same as new Integer(1); turns 1 into New Integer
         for (int i = 0; i < 40000; i++) {
-            Integer age  =(int)( (generate.nextGaussian() * 5) + 35);
+            Integer age = (int) ((generate.nextGaussian() * 5) + 35);
 
             if (ages.get(age) != null) {
                 ages.put(age, ages.get(age) + 1);
@@ -153,7 +152,25 @@ public class RandomDataTest {
             //Entry looks like this {key,value}
             System.out.println(integerIntegerEntry.getKey() + "--->" + integerIntegerEntry.getValue());
         }
+    }
 
+    @Test
+    public void agesDistributionRevised() {
+        Random r = new Random();
+        TreeMap<Integer, Integer> ages = new TreeMap<>();
+        // sorted , omiting repeatable elements ?
+        for (int i = 0; i < 100; i++) {
+            int age = (int) ((r.nextGaussian() * 7) + 20);
+//            System.out.println(age);
+            if (ages.get(age) != null) {
+                ages.put(age, ages.get(age) + 1);
+            } else {
+                ages.put(age, 1);
+            }
+        } // end of for
+        for (Map.Entry<Integer, Integer> ageIXEntry : ages.entrySet()) {
+            System.out.println(ageIXEntry.getKey() + "-appears " + ageIXEntry.getValue() + "times");
+        }
 
     }
 
