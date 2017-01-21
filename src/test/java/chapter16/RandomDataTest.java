@@ -178,6 +178,31 @@ public class RandomDataTest {
     public void seedWithRandom() {
         Random r = new Random(1234567L);
         assertEquals(1042961893, r.nextInt());
+        assertEquals(-6749250865724111202L, r.nextLong());
+        System.out.println(r.nextDouble());
+        System.out.println(r.nextGaussian());
+        System.out.println(r.nextFloat());
+        System.out.println(r.nextBoolean());
+        long currentSeed = System.currentTimeMillis();
+        System.out.println("seed used " + currentSeed);
+        // this could be used for dungeon/alchemy static random generation
+        Random sysRandomSeed = new Random(currentSeed);
+        System.out.println(sysRandomSeed.nextLong());
+    }
+
+    @Test
+    public void randomString() {
+        Random random = new Random();
+        String validValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+        // nice trick !
+        int rndIndex;
+        for (int i = 0; i < 100; i++) {
+            rndIndex = random.nextInt(validValues.length());
+            char rChar = validValues.charAt(rndIndex);
+            System.out.println(rChar);
+        }
+
+
     }
 
 }
