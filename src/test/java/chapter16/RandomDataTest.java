@@ -174,6 +174,12 @@ public class RandomDataTest {
 
     }
 
+    @Test
+    public void seedWithRandom() {
+        Random r = new Random(1234567L);
+        assertEquals(1042961893, r.nextInt());
+    }
+
 }
 
 
