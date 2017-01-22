@@ -191,19 +191,23 @@ public class RandomDataTest {
     }
 
     @Test
-    public void randomString() {
+    public void randomStringGeneration() {
+        // TODO this is a prototype for random name generator for dungeon game
+        // TODO  also can be used to generate random usernames and passwords
         Random random = new Random();
         String validValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
         // nice trick !
         int rndIndex;
+        String result = null;
         for (int i = 0; i < 100; i++) {
             rndIndex = random.nextInt(validValues.length());
             char rChar = validValues.charAt(rndIndex);
             System.out.println(rChar);
+            result += rChar;
         }
-
-
+        System.out.println(result);
     }
+
 
 }
 
