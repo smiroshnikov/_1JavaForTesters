@@ -61,5 +61,25 @@ public class DatesAndTimesLesson {
 
     }
 
+    @Test
+    public void stupidSolution() {
+        String initialUserID = "user" +
+                System.currentTimeMillis();
+        System.out.println(initialUserID);
+        String userID = initialUserID;
+        for (int i = 0; i < 10; i++) {
+            String charReplacement;
+            if (new Random().nextBoolean()) {
+                charReplacement = ("" + ((char) ('A' + i))).toLowerCase();
+            } else {
+                charReplacement = "" + ((char) ('A' + i));
+            }
+            String intoReplace = String.valueOf(i);
+            userID = userID.replace(intoReplace, charReplacement);
+
+        }
+        System.out.println(userID);
+    }
+
 
 }
