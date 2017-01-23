@@ -2,6 +2,7 @@ package chapter17;
 
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.Random;
 
 // Interview Alert
@@ -79,6 +80,12 @@ public class DatesAndTimesLesson {
 
         }
         System.out.println(userID);
+    }
+
+    @Test
+    public void dateExample() {
+        Date date = new Date();
+        System.out.println(date);
     }
 
 
