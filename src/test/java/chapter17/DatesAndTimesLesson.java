@@ -191,8 +191,22 @@ public class DatesAndTimesLesson {
 
         assertThat(isItSunday.get(Calendar.MONTH), is(11));
         assertThat(isItSunday.get(Calendar.DAY_OF_WEEK), is(1));
-        assertThat(isItSunday.get(Calendar.DAY_OF_YEAR), is(34955555));
+        assertThat(isItSunday.get(Calendar.DAY_OF_YEAR), is(349));
 
+        isItSunday.add(Calendar.DAY_OF_WEEK, -1);
+        assertThat(isItSunday.get(Calendar.DAY_OF_WEEK), is(7));
+    }
+
+    @Test
+    public void doesItMovesYear() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2013, Calendar.DECEMBER, 15, 23, 39, 54);
+        cal.roll(Calendar.DAY_OF_MONTH, 17);
+        System.out.println("used roll " + cal.getTime());
+
+        cal.set(2013, Calendar.DECEMBER, 15, 23, 39, 54);
+        cal.add(Calendar.DAY_OF_MONTH, 17);
+        System.out.println("used add " + cal.getTime());
 
     }
 }
