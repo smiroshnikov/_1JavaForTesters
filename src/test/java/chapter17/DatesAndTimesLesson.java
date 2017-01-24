@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Random;
 
 import static org.hamcrest.core.Is.is;
@@ -170,17 +171,16 @@ public class DatesAndTimesLesson {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, 2079);
         calendar.set(Calendar.MONTH, 7);
-        calendar.set(Calendar.DAY_OF_MONTH, 13);
-        calendar.set(Calendar.HOUR, 23);
+        calendar.set(Calendar.DAY_OF_MONTH, 14);
+        calendar.set(Calendar.HOUR, 11);
         calendar.set(Calendar.MINUTE, 20);
         calendar.set(Calendar.SECOND, 1);
         calendar.set(Calendar.MILLISECOND, 14);
-
-        System.out.println("Calendar object - container " + calendar.getTime());
-        System.out.println("Date object -  info " + hunderedBirthday);
-
-        System.out.println("Happy motherfucking birthday ! \n");
-        System.out.println("Hope you got your cybernetic golden wireless penis! \n");
+        // found a solution
+        if (Objects.equals(String.valueOf(calendar.getTime()), String.valueOf(hunderedBirthday))) {
+            System.out.println("Happy motherfucking birthday ! \n");
+            System.out.println("Hope you got your cybernetic golden wireless penis! \n");
+        }
     }
 
     @Test
@@ -191,7 +191,7 @@ public class DatesAndTimesLesson {
 
         assertThat(isItSunday.get(Calendar.MONTH), is(11));
         assertThat(isItSunday.get(Calendar.DAY_OF_WEEK), is(1));
-        assertThat(isItSunday.get(Calendar.DAY_OF_YEAR), is(349));
+        assertThat(isItSunday.get(Calendar.DAY_OF_YEAR), is(34955555));
 
 
     }
