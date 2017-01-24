@@ -88,5 +88,21 @@ public class DatesAndTimesLesson {
         System.out.println(date);
     }
 
+    @Test
+    public void dateMoreExamples() {
+        Date eqDate1 = new Date();
+        Date eqDate2 = new Date(System.currentTimeMillis());
+        System.out.println(eqDate1 + " " + eqDate2);
+        System.out.println(eqDate1.toString());
+        Date date = new Date();
+
+        long oneWeekFromNowTime = date.getTime();
+        oneWeekFromNowTime = oneWeekFromNowTime + (1000 * 60 * 60 * 24 * 7);
+        Date oneWeekFromNow = new Date(oneWeekFromNowTime);
+        System.out.println(oneWeekFromNow + " future!");
+        oneWeekFromNow.setTime(date.getTime());
+        System.out.println(oneWeekFromNow.toString());
+    }
+
 
 }
