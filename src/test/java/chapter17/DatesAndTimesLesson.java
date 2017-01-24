@@ -2,8 +2,13 @@ package chapter17;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 // Interview Alert
 // In addition to working with dates, I also use the Date/Time functionality to:
@@ -102,6 +107,59 @@ public class DatesAndTimesLesson {
         System.out.println(oneWeekFromNow + " future!");
         oneWeekFromNow.setTime(date.getTime());
         System.out.println(oneWeekFromNow.toString());
+    }
+
+    @Test
+    public void simpleDateExample() {
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        Date date = new Date(0L);
+        // apply pattern
+        sdf.applyPattern("dd/d/yyyy");
+        // format
+        System.out.println(sdf.format(date));
+        assertThat(sdf.format(date), is("01/1/1970"));
+
+    }
+
+    @Test
+    public void calendarExple() {
+        Calendar cal = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 1);
+        System.out.println(cal.toString());
+        System.out.println(cal2.toString());
+    }
+
+    @Test
+    public void calendarTry2() {
+        Calendar oneWeekFromNow = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
+        System.out.println("\"cal\" -> current time & date " + cal.getTime().toString());
+
+        oneWeekFromNow.setTime(cal.getTime()); //set to current date
+
+        System.out.println("\"oneWeekFromNow\" -> current time & date " + oneWeekFromNow.getTime().toString());
+
+        oneWeekFromNow.add(Calendar.DATE, 51);
+
+        System.out.println("\"oneWeekFromNow\" -> moved 51 day into the future !  " + oneWeekFromNow.getTime().toString());
+
+        // tests
+
+        assertThat(oneWeekFromNow.after(cal), is(true));
+
+        assertThat(cal.before(oneWeekFromNow), is(true));
+
+        assertThat(cal.compareTo(oneWeekFromNow), is(-1));
+
+        // equality
+        assertThat(oneWeekFromNow.compareTo(cal), is(0));
+
+        oneWeekFromNow.setTime(cal.getTime()); //set to current date
+
+        assertThat(oneWeekFromNow.compareTo(cal), is(1));
+
+
     }
 
 
