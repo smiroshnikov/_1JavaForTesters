@@ -122,7 +122,7 @@ public class DatesAndTimesLesson {
     }
 
     @Test
-    public void calendarExple() {
+    public void calendarExample() {
         Calendar cal = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal.add(Calendar.MONTH, 1);
@@ -150,17 +150,38 @@ public class DatesAndTimesLesson {
 
         assertThat(cal.before(oneWeekFromNow), is(true));
 
-        assertThat(cal.compareTo(oneWeekFromNow), is(-1));
+        assertThat("HERE! ", cal.compareTo(oneWeekFromNow), is(-1));
 
         // equality
-        assertThat(oneWeekFromNow.compareTo(cal), is(0));
+        assertThat(oneWeekFromNow.compareTo(cal), is(1));
 
         oneWeekFromNow.setTime(cal.getTime()); //set to current date
 
-        assertThat(oneWeekFromNow.compareTo(cal), is(1));
+        assertThat(oneWeekFromNow.compareTo(cal), is(0));
 
 
     }
 
+    @Test
+    public void calendarExample3() {
+        Date hunderedBirthday = new Date();
+        hunderedBirthday.setTime(3459270001000L);
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2079);
+        calendar.set(Calendar.MONTH, 7);
+        calendar.set(Calendar.DAY_OF_MONTH, 13);
+        calendar.set(Calendar.HOUR, 23);
+        calendar.set(Calendar.MINUTE, 20);
+        calendar.set(Calendar.SECOND, 1);
+        calendar.set(Calendar.MILLISECOND, 14);
+
+        System.out.println(calendar.getTime());
+        System.out.println("WTF>!" + hunderedBirthday);
+
+        if (calendar.getTime() == (hunderedBirthday)) {
+            System.out.println("Happy motherfucking birthday ! \n");
+            System.out.println("Hope you got your cybernetic golden wireless penis! \n");
+        }
+    }
 }
