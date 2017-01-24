@@ -176,12 +176,24 @@ public class DatesAndTimesLesson {
         calendar.set(Calendar.SECOND, 1);
         calendar.set(Calendar.MILLISECOND, 14);
 
-        System.out.println(calendar.getTime());
-        System.out.println("WTF>!" + hunderedBirthday);
+        System.out.println("Calendar object - container " + calendar.getTime());
+        System.out.println("Date object -  info " + hunderedBirthday);
 
-        if (calendar.getTime() == (hunderedBirthday)) {
-            System.out.println("Happy motherfucking birthday ! \n");
-            System.out.println("Hope you got your cybernetic golden wireless penis! \n");
-        }
+        System.out.println("Happy motherfucking birthday ! \n");
+        System.out.println("Hope you got your cybernetic golden wireless penis! \n");
+    }
+
+    @Test
+    public void classwork() {
+        Calendar isItSunday = Calendar.getInstance();
+        isItSunday.set(2013, 11, 15);
+        System.out.println(isItSunday.getTime().toString());
+
+        assertThat(isItSunday.get(Calendar.MONTH), is(11));
+        assertThat(isItSunday.get(Calendar.DAY_OF_WEEK), is(1));
+        assertThat(isItSunday.get(Calendar.DAY_OF_YEAR), is(349));
+
+
     }
 }
+
