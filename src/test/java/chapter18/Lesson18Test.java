@@ -45,7 +45,15 @@ public class Lesson18Test {
         //"property_files/" +
         //"static_example.properties";
         Properties sys = System.getProperties();
-        sys.list(System.out);
+        System.out.println(sys.getProperty("file.separator"));
+        System.out.println(sys.getProperty("os.name"));
+        System.out.println(sys.getProperty("os.version"));
+        System.out.println(sys.getProperty("os.arch"));
+        System.out.println(sys.getProperty("user.name"));
+        System.out.println(sys.getProperty("user.home"));
+        float value = 102.0f;
+        System.out.println(value);
+
 
     }
 
