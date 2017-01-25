@@ -2,6 +2,9 @@ package chapter18;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -53,6 +56,22 @@ public class Lesson18Test {
         System.out.println(sys.getProperty("user.home"));
         float value = 102.0f;
         System.out.println(value);
+
+
+    }
+
+    @Test
+    public void tempFileExample() throws IOException {
+        String tempDir = System.getProperty("java.io.tmpdir");
+        System.out.println(tempDir);
+        String tempResouceFilePath = new File(tempDir, "tempFileForPropertiesStore.properties").getAbsolutePath();
+        Properties saved = new Properties();
+        saved.setProperty("prop1", "hello");
+        saved.setProperty("prop2", "Ser");
+
+        FileOutputStream outputFile = new FileOutputStream(tempResouceFilePath);
+        saved.store(outputFile, "This is a line that I do not understand ! ");
+        outputFile.close();
 
 
     }
