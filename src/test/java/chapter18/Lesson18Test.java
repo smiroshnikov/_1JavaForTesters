@@ -70,9 +70,14 @@ public class Lesson18Test {
         Properties saved = new Properties();
         saved.setProperty("prop1", "hello");
         saved.setProperty("prop2", "Ser");
+        saved.setProperty("prop3", "Yan");
+        saved.setProperty("prop4", "Tro");
+        saved.setProperty("prop5", "Tat");
+        saved.setProperty("prop6", "Ryb");
+        saved.setProperty("prop7", "Vov");
 
         FileOutputStream outputFile = new FileOutputStream(tempResouceFilePath);
-        saved.store(outputFile, "This is a line that I do not understand ! ");
+        saved.store(outputFile, "This file contains important people for Troy!");
         outputFile.close();
 
         FileReader propertyFileReader =
@@ -86,6 +91,12 @@ public class Lesson18Test {
 
         assertThat(loaded.getProperty("prop1"), is("hello"));
         assertThat(loaded.getProperty("prop2"), is("Ser"));
+        assertThat(loaded.getProperty("prop3"), is("Yan"));
+        assertThat(loaded.getProperty("prop4"), is("Tro"));
+        assertThat(loaded.getProperty("prop5"), is("Tat"));
+        assertThat(loaded.getProperty("prop6"), is("Ryb"));
+        assertThat(loaded.getProperty("prop7"), is("Vov"));
+
         assertFalse("File does not exist !", new File(tempResouceFilePath).delete());
 
 
