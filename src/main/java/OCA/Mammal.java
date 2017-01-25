@@ -1,6 +1,9 @@
 package OCA;
 
 abstract class Mammal {
+    private static int $;
+
+
     public static void main(String[] args) {
         System.out.println(new Capybara().hasFur());
         int x = 0;
@@ -9,8 +12,9 @@ abstract class Mammal {
         }
         String message = x > 5 ? "Greater than" : "Less than";
         System.out.println(message + "," + x);
+        String a_b;
         boolean b;
-
+        System.out.println($);
 
     }
 
