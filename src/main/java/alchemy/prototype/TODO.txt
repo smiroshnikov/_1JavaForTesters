@@ -1,0 +1,5 @@
+Often, the reason you got a question wrong on the exam is that you did not fully understand the concept.
+Many topics in Java have subtle rules that you often need to see for yourself to truly understand. For
+example, you cannot write a class that implements two interfaces that define the same default method unless
+you override the default method in the class. Writing and attempting to compile your own sample interfaces
+and classes that reference the default method may illuminate this concept far better than we could ever explain it.
