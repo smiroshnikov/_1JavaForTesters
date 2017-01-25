@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -11,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertFalse;
 
 public class Lesson18Test {
     @Test
@@ -72,6 +74,19 @@ public class Lesson18Test {
         FileOutputStream outputFile = new FileOutputStream(tempResouceFilePath);
         saved.store(outputFile, "This is a line that I do not understand ! ");
         outputFile.close();
+
+        FileReader propertyFileReader =
+                new FileReader(tempResouceFilePath);
+        Properties loaded = new Properties();
+        try {
+            loaded.load(propertyFileReader);
+        } finally {
+            propertyFileReader.close();
+        }
+
+        assertThat(loaded.getProperty("prop1"), is("hello"));
+        assertThat(loaded.getProperty("prop2"), is("Ser"));
+        assertFalse("File does not exist !", new File(tempResouceFilePath).delete());
 
 
     }
