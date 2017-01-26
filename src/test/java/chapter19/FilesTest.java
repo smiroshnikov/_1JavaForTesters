@@ -39,5 +39,15 @@ public class FilesTest {
 
     }
 
+    @Test
+    public void listRootsExample() {
+        File[] roots = File.listRoots();
+        for (File f :
+                roots) {
+            System.out.println(f.getAbsolutePath());
+
+        }
+    }
+
 
 }
