@@ -3,6 +3,8 @@ package chapter19;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -67,9 +69,16 @@ public class FilesTest {
         File meTempFile = new File(String.valueOf(System.getProperties().getProperty("java.io.tmpdir")),
                 "secretTMPFile" + String.valueOf(System.currentTimeMillis()) + ".tmp");
         System.out.println(meTempFile.getAbsolutePath());
+        System.out.println("filename = " + meTempFile.getName());
+        assertThat(meTempFile.getName().startsWith("secret"), is(true));
         assertThat(meTempFile.createNewFile(), is(true));
         assertThat(meTempFile.delete(), is(true));
         assertThat(meTempFile.exists(), is(false));
+    }
+
+    @Test
+    public void pathExample() {
+        Path aPath = Paths.get(System.getProperty("java.io.tmpdir"), "1", "2", "3");
 
     }
 
