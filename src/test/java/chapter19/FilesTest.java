@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.io.*;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 public class FilesTest {
 
     private static File filesLesson1() throws IOException {
@@ -47,6 +50,27 @@ public class FilesTest {
             System.out.println(f.getAbsolutePath());
 
         }
+    }
+
+    @Test
+    public void aNewFileDoesNotCreateAFile() throws IOException {
+        File aTempFile = new File("d:/tempJavaForTesters.txt");
+        assertThat(aTempFile.exists(), is(false));
+        // File also has static methods for temp files
+        File tempFile = File.createTempFile("___", null, null);
+        tempFile.deleteOnExit();
+
+    }
+
+    @Test
+    public void createMyCustomTemFile() throws IOException {
+        File meTempFile = new File(String.valueOf(System.getProperties().getProperty("java.io.tmpdir")),
+                "secretTMPFile" + String.valueOf(System.currentTimeMillis()) + ".tmp");
+        System.out.println(meTempFile.getAbsolutePath());
+        assertThat(meTempFile.createNewFile(), is(true));
+        assertThat(meTempFile.delete(), is(true));
+        assertThat(meTempFile.exists(), is(false));
+
     }
 
 
