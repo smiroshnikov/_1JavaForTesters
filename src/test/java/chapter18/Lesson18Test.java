@@ -42,6 +42,7 @@ public class Lesson18Test {
         properties.list(System.out);
         assertThat(properties.getProperty("gender"), is(notNullValue()));
         assertThat(properties.getProperty("permission", "Admin"), is("Admin"));
+
         String workingDirectory = System.getProperty("user.dir");
         System.out.println(workingDirectory);
         // I can define a new path for resource files
@@ -67,6 +68,7 @@ public class Lesson18Test {
         String tempDir = System.getProperty("java.io.tmpdir");
         System.out.println(tempDir);
         String tempResouceFilePath = new File(tempDir, "tempFileForPropertiesStore.properties").getAbsolutePath();
+        // good example for file usage is defrag
         Properties saved = new Properties();
         saved.setProperty("prop1", "hello");
         saved.setProperty("prop2", "Ser");
@@ -98,8 +100,6 @@ public class Lesson18Test {
         assertThat(loaded.getProperty("prop7"), is("Vov"));
 
         assertFalse("File does not exist !", new File(tempResouceFilePath).delete());
-
-
     }
 
 }
