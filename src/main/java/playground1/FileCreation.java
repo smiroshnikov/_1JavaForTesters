@@ -29,6 +29,8 @@ public class FileCreation {
         System.out.println("file exists after stream.write used ? " + secretData.exists());
         outputStream.close();
         System.out.println("file exists  , stream closed ? " + secretData.exists());
+        // commented deletion , need for next tutorial existing file
+        // TODO create CSV to toy with
         //System.out.println("file deleted " + secretData.delete());
     }
 }
