@@ -1,8 +1,7 @@
 package playground1;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 public class FilesRepetition {
@@ -12,28 +11,34 @@ public class FilesRepetition {
         String randomString = "";
         Random R = new Random();
         for (int i = 0; i < desiredLength; i++) {
-            randomString += ALPHABET.charAt(R.nextInt(ALPHABET.length()));
+            randomString += "\n" + ALPHABET.charAt(R.nextInt(ALPHABET.length()));
         }
         return randomString;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         File pointerToFile = new File("myFile.txt");
-        System.out.println("file created " + pointerToFile.exists());
-        try {
-            if (pointerToFile.createNewFile()) {
-                System.out.println("file created @ " + pointerToFile.getAbsolutePath());
-                System.out.println("is it a directory ? " + pointerToFile.isDirectory());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println(pointerToFile.exists());
-            //System.out.println("file deleted " + pointerToFile.delete());
+//        System.out.println("file created " + pointerToFile.exists());
+//        try {
+//            if (pointerToFile.createNewFile()) {
+//                System.out.println("file created @ " + pointerToFile.getAbsolutePath());
+//                System.out.println("is it a directory ? " + pointerToFile.isDirectory());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            System.out.println(pointerToFile.exists());
+//            //System.out.println("file deleted " + pointerToFile.delete());
+//        }
+
+        //OutputStream stream = new FileOutputStream(pointerToFile);
+        //OutputStream stream1 = new PrintStream(pointerToFile);
+        PrintWriter print = new PrintWriter(new BufferedWriter(new FileWriter(pointerToFile)));
+
+        for (int i = 0; i < 10000; i++) {
+            String content = generateRandomString(new Random().nextInt(20));
+            print.println(content);
         }
-        String content = generateRandomString(12);
-        System.out.println(content);
-
-
+        print.close();
     }
 }
