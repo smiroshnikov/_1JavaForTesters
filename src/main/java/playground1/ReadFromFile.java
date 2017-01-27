@@ -20,8 +20,6 @@ public class ReadFromFile {
             System.out.println(line.toUpperCase());
         }
         bufferedReader.close();
-
-
     }
 
 }

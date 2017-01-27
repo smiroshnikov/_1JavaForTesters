@@ -76,7 +76,7 @@ public class StringRevisited {
 
     @Test
     public void classwork5() {
-        // TODO REMEMBER THIS!
+        // TODO REGEX in STRINGS
         /*
             An example scenario for the use of Regular Expressions might be that we want to expand
             the password validation on our User class:

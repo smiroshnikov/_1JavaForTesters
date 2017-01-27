@@ -8,8 +8,8 @@ import java.io.OutputStream;
 
 public class FileCreation {
     public static void main(String[] args) throws IOException {
-        // TODO why do I need to add IOException to method signature ?
-        // TODO what is a method signature ?
+        // TODO why do I need to add IOException to method signature ? It is my desision where to process exception
+        // TODO what is a method signature ? To chto v skobkah
         File secretData = new File("secretPassword.txt");
         System.out.println(secretData.getCanonicalPath()); // System dependent
         System.out.println(secretData.getAbsoluteFile());

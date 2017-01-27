@@ -64,8 +64,6 @@ public class DatesAndTimesLesson {
             }
             System.out.println(finalUsername);
         }
-
-
     }
 
     @Test

@@ -17,6 +17,7 @@ public class FilesRepetition {
     }
 
     public static void main(String[] args) throws IOException {
+
         File pointerToFile = new File("myFile.txt");
 //        System.out.println("file created " + pointerToFile.exists());
 //        try {
