@@ -92,8 +92,10 @@ public class FilesTest {
         System.out.println(aDirectory.getAbsolutePath());
         assertThat(aDirectory.mkdir(), is(false));
         assertThat(aDirectory.mkdirs(), is(true));
+        assertThat(aDirectory.isFile(), is(false));
+        assertThat(aDirectory.isDirectory(), is(true));
         // will delete only "here" part of the path
-        assertThat(aDirectory.delete(), is(true));
+        //assertThat(aDirectory.delete(), is(true));
 
     }
 
