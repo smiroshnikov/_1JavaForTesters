@@ -78,7 +78,17 @@ public class FilesTest {
 
     @Test
     public void pathExample() {
-        Path aPath = Paths.get(System.getProperty("java.io.tmpdir"), "1", "2", "3");
+        Path aPath = Paths.get(System.getProperty("java.io.tmpdir"), "1", "2", "3", "_ _% $%", "1");
+        System.out.println(aPath.toAbsolutePath());
+    }
+
+    @Test
+    public void directoryManipulation() {
+        // TODO converting Paths to File
+        String tempDirectory = System.getProperty("java.io.tmpdir");
+        File aDirectory = Paths.get(tempDirectory, Long.toString(System.currentTimeMillis()),
+                "sergIndex", "Iidwuurliik", "was", "here").toFile();
+        System.out.println(aDirectory.getAbsolutePath());
 
     }
 

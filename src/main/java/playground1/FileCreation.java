@@ -15,7 +15,7 @@ public class FileCreation {
         System.out.println(secretData.getCanonicalPath()); // System dependent
         System.out.println(secretData.getAbsoluteFile());
         System.out.println("file exists ? " + secretData.exists());
-        // TODO secretData.createNewFile() is not used .. I wonder why
+        // TODO secretData.createNewFile() is not used .. I wonder why READ every stream doc !!!
         // Streams are used not only for files , but for other things as well
         String secretFileContent = "abcdefbuiysjkhgdfksjdhfskjhk" +
                 "jklsdhfkjsdhfkjshdfkjsdhfkjhsdjsauhdhgfjkashdfjh" +
