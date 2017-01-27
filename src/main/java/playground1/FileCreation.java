@@ -8,7 +8,8 @@ import java.io.OutputStream;
 
 public class FileCreation {
     public static void main(String[] args) throws IOException {
-        // TODO why do I need to add IOException to method signature ? It is my desision where to process exception
+        // TODO why do I need to add IOException to method signature ? It is my desision where
+        // TODO to process exception
         // TODO what is a method signature ? To chto v skobkah
         File secretData = new File("secretPassword.txt");
         System.out.println(secretData.getCanonicalPath()); // System dependent
@@ -25,7 +26,7 @@ public class FileCreation {
         // IDE suggested INT?
         //outputStream.write(Integer.parseInt(secretFileContent));
         outputStream.write(secretFileContent.getBytes());
-        // TODO why if I used getBytes file content is not 01010101110100001
+        // TODO why if I used getBytes file content is not 01010101110100001 A - byte not bit !
         System.out.println("file exists after stream.write used ? " + secretData.exists());
         outputStream.close();
         System.out.println("file exists  , stream closed ? " + secretData.exists());
