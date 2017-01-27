@@ -95,8 +95,39 @@ public class FilesTest {
         assertThat(aDirectory.isFile(), is(false));
         assertThat(aDirectory.isDirectory(), is(true));
         // will delete only "here" part of the path
-        //assertThat(aDirectory.delete(), is(true));
+        assertThat(aDirectory.delete(), is(true));
 
+    }
+
+    @Test
+    public void whyShouldIUsePath() throws IOException {
+        File aFile = new File(System.getProperty("java.io.tempdir"), "1.txt");
+        // this also works and curently provides exactly same path absolute/cannonical
+        aFile = new File(aFile, "1");
+        aFile = new File(aFile, "2");
+        aFile = new File(aFile, "3");
+        aFile = new File(aFile, "4");
+        aFile = new File(aFile, "1");
+        System.out.println(aFile.getAbsoluteFile());
+        System.out.println(aFile.getCanonicalPath());
+
+    }
+
+    @Test
+    public void highLevelTextFileManipulations() throws IOException {
+        // "null" as a second argument means .tmp value
+        File outputFile = File.createTempFile("test", null);
+        System.out.println(outputFile.getAbsolutePath());
+        System.out.println(outputFile.getCanonicalPath());
+        FileWriter writer = new FileWriter(outputFile);
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        PrintWriter printWriter = new PrintWriter(bufferedWriter);
+        printWriter.println("===============");
+        printWriter.println("blah blah blah!");
+        printWriter.println("clah blah blah!");
+        printWriter.println("dlah blah blah!");
+        printWriter.println("flah blah blah!");
+        printWriter.close();
     }
 
 

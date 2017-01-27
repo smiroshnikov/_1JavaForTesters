@@ -64,6 +64,8 @@ public class DatesAndTimesLesson {
             }
             System.out.println(finalUsername);
         }
+
+
     }
 
     @Test
@@ -107,6 +109,7 @@ public class DatesAndTimesLesson {
         oneWeekFromNow.setTime(date.getTime());
         System.out.println(oneWeekFromNow.toString());
     }
+
 
     @Test
     public void simpleDateExample() {
