@@ -86,9 +86,14 @@ public class FilesTest {
     public void directoryManipulation() {
         // TODO converting Paths to File
         String tempDirectory = System.getProperty("java.io.tmpdir");
+        System.out.println(tempDirectory);
         File aDirectory = Paths.get(tempDirectory, Long.toString(System.currentTimeMillis()),
                 "sergIndex", "Iidwuurliik", "was", "here").toFile();
         System.out.println(aDirectory.getAbsolutePath());
+        assertThat(aDirectory.mkdir(), is(false));
+        assertThat(aDirectory.mkdirs(), is(true));
+        // will delete only "here" part of the path
+        assertThat(aDirectory.delete(), is(true));
 
     }
 
