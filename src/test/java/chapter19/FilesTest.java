@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -123,10 +124,24 @@ public class FilesTest {
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         PrintWriter printWriter = new PrintWriter(bufferedWriter);
         printWriter.println("===============");
-        printWriter.println("blah blah blah!");
+        printWriter.println("Automation report " + new Date(System.currentTimeMillis()).toString());
         printWriter.println("clah blah blah!");
         printWriter.println("dlah blah blah!");
         printWriter.println("flah blah blah!");
+        assertThat(outputFile.exists(),is(true));
+
+        printWriter.close();
+        // this is annoying but important the whole idea was
+        // to add more data to file after it was closed
+        // TODO ask Max what is the difference between instantiation and what is below
+        writer = new FileWriter(outputFile,true);
+        bufferedWriter = new BufferedWriter(writer);
+        printWriter = new PrintWriter(bufferedWriter);
+
+        printWriter.println("this is additional line ");
+        printWriter.println("this is additional line ");
+        printWriter.println("this is additional line ");
+        printWriter.println("this is additional line ");
         printWriter.close();
     }
 
