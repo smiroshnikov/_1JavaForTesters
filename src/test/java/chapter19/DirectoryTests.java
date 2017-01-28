@@ -84,4 +84,20 @@ public class DirectoryTests {
 
     }
 
+    @Test
+    public void myMove() throws IOException {
+        // TODO go over a file constructor untill I will feel comfortable enough
+        File myFolder = new File(System.getProperty("java.io.tmpdir") +
+                System.currentTimeMillis() + "FU", "fuck");
+        System.out.println(myFolder.getAbsolutePath());
+        System.out.println("Folder created ... " + myFolder.mkdirs());
+        File fileWithSecretContent = createBatchFile(new File(System.getProperty("java.io.tmpdir") + "secret.orig"),
+                new String[]{"fuck", "you"});
+        File destination = new File(myFolder.getCanonicalPath(), "secret.copy");
+        Files.copy(fileWithSecretContent.toPath(), destination.toPath());
+        File moveDestination = new File(myFolder.getCanonicalPath(), "secret.move");
+        Files.move(fileWithSecretContent.toPath(), moveDestination.toPath());
+
+    }
+
 }
