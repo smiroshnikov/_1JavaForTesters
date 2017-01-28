@@ -25,8 +25,17 @@ public class DirectoryTests {
         if (fileList != null) {
             for (File f :
                     fileList) {
-                System.out.println(f.toString());
+                if (f.isDirectory()){
+                    System.out.println("DIR->" + f.toString());
+                }
+                System.out.println("FIL->" + f.toString());
             }
         }
+    }
+
+    @Test
+    public void permissionsExample() {
+
+
     }
 }
