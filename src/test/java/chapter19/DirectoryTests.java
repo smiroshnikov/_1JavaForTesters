@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.io.*;
 import java.util.Date;
-import java.util.StringTokenizer;
 
 public class DirectoryTests {
 

@@ -1,3 +1,4 @@
 Deploy VM in Xen , VMWare , Virtual Box , Doker
 Trim "Hamlet" to Hamlet only
 Find file , create it - fill with data , change permission execute if possible and them hide/copy/delete
+Create shutdowner virus that checks what OS is running and based on that performs shutdown via cli
