@@ -3,8 +3,7 @@ package chapter19;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.StringTokenizer;
 
@@ -43,15 +42,24 @@ public class DirectoryTests {
 
     @Test
     public void permissionsExample() throws IOException {
-        File littleSpy = new File(System.getProperty("java.io.tmpdir"), "spy.bat");
+        String[] fileContent = {"@echo off", "echo YOU HAVE BEEN HACKED BY 11dwuur11k.", "pause"};
+        File littleSpy = createBatchFile(new File(System.getProperty("java.io.tmpdir"), "spyFORIidwuurliik.bat"), fileContent);
         System.out.println(littleSpy.getAbsolutePath());
-        System.out.println("File created " + littleSpy.createNewFile());
-        String fileContent = "\t\n" +
-                "@echo off\n" +
-                "echo Hello world.\n" +
-                "pause";
-
+        System.out.println("x permission granted ...[" + littleSpy.setExecutable(true) + "]");
 
 
     }
+
+    private File createBatchFile(File file, String[] fileContent) throws IOException {
+        FileWriter writer = new FileWriter(file);
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        PrintWriter printWriter = new PrintWriter(bufferedWriter);
+        for (String line :
+                fileContent) {
+            printWriter.println(line);
+        }
+        printWriter.close();
+        return file;
+    }
+
 }
