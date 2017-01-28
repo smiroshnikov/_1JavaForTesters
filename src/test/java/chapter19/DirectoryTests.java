@@ -11,6 +11,9 @@ public class DirectoryTests {
     public void listTempDirectory() {
         // shows files in specific directory
         File tempDir = new File(System.getProperty("java.io.tmpdir"));
+        // TODO the code below for some reason creates a file and further program execution results in NullPointerException
+        //File tempDir = new File(System.getProperty("java.io.tmpdir"+"123"));
+
         File[] fileList = tempDir.listFiles();
         String[] stringFileList = tempDir.list();
         if (stringFileList != null) {
