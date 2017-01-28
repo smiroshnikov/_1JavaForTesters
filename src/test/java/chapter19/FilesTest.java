@@ -186,8 +186,12 @@ public class FilesTest {
     public void spaceCalculations() {
         File victim = new File(System.getProperty("java.io.tmpdir") +
                 "test524827089091670596.tmp");
-        System.out.println("free space @ location in GB  " + victim.getFreeSpace() / 1024 / 1024 / 1024);
-        System.out.println("file length in bytes " + (victim.length()));
+        //System.out.println(victim.listRoots()[0]);
+        System.out.println(File.listRoots()[0]);
+        System.out.printf("Disk %s size is %d GB %n", File.listRoots()[0].toString(), victim.getTotalSpace() / 1024 / 1024 / 1024);
+        System.out.printf("Free space on %s is %d GB %n", File.listRoots()[0].toString(), victim.getFreeSpace() / 1024 / 1024 / 1024);
+        System.out.printf("Created file size is %d bytes", (victim.length()));
+
     }
 
 }
