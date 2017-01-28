@@ -191,7 +191,45 @@ public class FilesTest {
         System.out.printf("Disk %s size is %d GB %n", File.listRoots()[0].toString(), victim.getTotalSpace() / 1024 / 1024 / 1024);
         System.out.printf("Free space on %s is %d GB %n", File.listRoots()[0].toString(), victim.getFreeSpace() / 1024 / 1024 / 1024);
         System.out.printf("Created file size is %d bytes", (victim.length()));
+        System.out.printf("Space avaliable for my text file is " + victim.getUsableSpace() / 1024 / 1024 / 1024 + " GB");
+    }
 
+    @Test
+    public void spaceTestSolution() throws IOException {
+        File dataFile = writeTheTestDataFile(200);
+        System.out.println(dataFile.getAbsolutePath());
+        System.out.println(expectedFileSize(200));
+        File emptyFile = writeTheTestDataFile(0);
+        System.out.println(emptyFile.getAbsolutePath());
+        System.out.println(expectedFileSize(0));
+
+
+    }
+
+    /**
+     * @param lines integer that defines number of lines in file
+     * @return length of each line + system endline size multiplied by lines
+     */
+    private long expectedFileSize(int lines) {
+        String lineEnd = System.lineSeparator();
+        return ("line xxx".length() + lineEnd.length() * lines);
+    }
+
+    /**
+     * @param lines Integer - desired number of lines in an output file
+     * @return file with user defined number of lines
+     * @throws IOException that is handled in main
+     */
+    private File writeTheTestDataFile(int lines) throws IOException {
+        File outputFile = File.createTempFile("forReading" + lines + "_", null);
+        PrintWriter print = new PrintWriter(
+                new BufferedWriter(
+                        new FileWriter(outputFile)));
+        for (int line = 0; line < lines; line++) {
+            print.println("line" + lines);
+        }
+        print.close();
+        return outputFile;
     }
 
 }
