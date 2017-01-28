@@ -4,7 +4,11 @@ package chapter19;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Date;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class DirectoryTests {
 
@@ -16,7 +20,7 @@ public class DirectoryTests {
         //File tempDir = new File(System.getProperty("java.io.tmpdir"+"123"));
 
         File[] fileList = tempDir.listFiles();
-        String[] stringFileList = tempDir.list();
+//        String[] stringFileList = tempDir.list();
 //        if (stringFileList != null) {
 //            for (String s : stringFileList) {
 //                System.out.println(s);
@@ -43,9 +47,11 @@ public class DirectoryTests {
     public void permissionsExample() throws IOException {
         // TODO execution of file "ProcessBuilder" or "Process"
         String[] fileContent = {"@echo off", "echo YOU HAVE BEEN HACKED BY 11dwuur11k.", "pause"};
-        File littleSpy = createBatchFile(new File(System.getProperty("java.io.tmpdir"), "spyFORIidwuurliik.bat"), fileContent);
+        File littleSpy = createBatchFile(new File(System.getProperty("java.io.tmpdir"),
+                "spyFORIidwuurliik.bat"), fileContent);
         System.out.println(littleSpy.getAbsolutePath());
         System.out.println("x permission granted ...[" + littleSpy.setExecutable(true) + "]");
+        assertThat(littleSpy.exists(), is(true));
 
     }
 
@@ -59,6 +65,17 @@ public class DirectoryTests {
         }
         printWriter.close();
         return file;
+    }
+
+    @Test
+    public void copyFileSample() throws IOException {
+
+        File copyThis = createBatchFile(new File("test.txt"), new String[]{"fuck", "you"});
+        System.out.println(copyThis.getAbsolutePath());
+        File toThis = new File(copyThis.getCanonicalPath() + ".copy");
+        Files.copy(copyThis.toPath(), toThis.toPath());
+
+
     }
 
 }
