@@ -42,11 +42,11 @@ public class DirectoryTests {
 
     @Test
     public void permissionsExample() throws IOException {
+        // TODO execution of file "ProcessBuilder" or "Process"
         String[] fileContent = {"@echo off", "echo YOU HAVE BEEN HACKED BY 11dwuur11k.", "pause"};
         File littleSpy = createBatchFile(new File(System.getProperty("java.io.tmpdir"), "spyFORIidwuurliik.bat"), fileContent);
         System.out.println(littleSpy.getAbsolutePath());
         System.out.println("x permission granted ...[" + littleSpy.setExecutable(true) + "]");
-
 
     }
 
