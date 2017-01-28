@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -128,13 +129,13 @@ public class FilesTest {
         printWriter.println("clah blah blah!");
         printWriter.println("dlah blah blah!");
         printWriter.println("flah blah blah!");
-        assertThat(outputFile.exists(),is(true));
+        assertThat(outputFile.exists(), is(true));
 
         printWriter.close();
         // this is annoying but important the whole idea was
         // to add more data to file after it was closed
         // TODO ask Max what is the difference between instantiation and what is below
-        writer = new FileWriter(outputFile,true);
+        writer = new FileWriter(outputFile, true);
         bufferedWriter = new BufferedWriter(writer);
         printWriter = new PrintWriter(bufferedWriter);
 
@@ -143,6 +144,42 @@ public class FilesTest {
         printWriter.println("this is additional line ");
         printWriter.println("this is additional line ");
         printWriter.close();
+    }
+
+    @Test
+    public void writingDirectlyWthFileWriter() throws IOException {
+        // TODO clarify everything regarding exception delegation !
+        // So I have added exception handling to method signature and ?
+        // Where it will be handled ? In main ? How ? there is no try catch in main ...
+        File outputFile = File.createTempFile("filewriterExample", null);
+        System.out.println(outputFile.getAbsoluteFile());
+        System.out.println("this is tempdir ->" + System.getProperty("java.io.tmpdir"));
+        // this is raw test writer
+        FileWriter fileWriter = new FileWriter(outputFile);
+        fileWriter.write("line 1 info ");
+        fileWriter.write("line 2 info ");
+        fileWriter.write("line 3 info ");
+        fileWriter.close();
+    }
+
+    @Test
+    public void readingFilesExample() throws IOException {
+        //"FileReader" is a wrapper around InputStreamReader and FileInputStream which
+        //uses the default character encoding stream.
+        //"BufferedReader" makes the reading more efficient
+        // will fail on any other env due to missing file and different timestamp
+        // just wanted different file !
+        //File inputFile = new File(System.getProperty("java.io.tmpdir") +
+        //"filewriterExample8697030070110782251.tmp");
+        File inputFile = new File(System.getProperty("java.io.tmpdir") +
+                "test524827089091670596.tmp");
+
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+        reader.close();
     }
 
 
