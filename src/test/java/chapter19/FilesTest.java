@@ -182,5 +182,12 @@ public class FilesTest {
         reader.close();
     }
 
+    @Test
+    public void spaceCalculations() {
+        File victim = new File(System.getProperty("java.io.tmpdir") +
+                "test524827089091670596.tmp");
+        System.out.println("free space @ location in GB  " + victim.getFreeSpace() / 1024 / 1024 / 1024);
+        System.out.println("file length in bytes " + (victim.length()));
+    }
 
 }
