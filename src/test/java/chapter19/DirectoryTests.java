@@ -7,6 +7,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Date;
 
+import static java.nio.file.StandardCopyOption.ATOMIC_MOVE;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -73,8 +75,12 @@ public class DirectoryTests {
         File copyThis = createBatchFile(new File("test.txt"), new String[]{"fuck", "you"});
         System.out.println(copyThis.getAbsolutePath());
         File toThis = new File(copyThis.getCanonicalPath() + ".copy");
+        if (toThis.exists()) {
+            System.out.println(".copy duplicate already existed ... deleting \n" + toThis.delete());
+        }
         Files.copy(copyThis.toPath(), toThis.toPath());
-
+        toThis = new File(copyThis.getCanonicalPath() + ".moved");
+        Files.move(copyThis.toPath(), toThis.toPath(), REPLACE_EXISTING, ATOMIC_MOVE);
 
     }
 
