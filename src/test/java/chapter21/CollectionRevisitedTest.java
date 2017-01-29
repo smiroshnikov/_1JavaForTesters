@@ -1,6 +1,7 @@
 package chapter21;
 
 
+import javafortesters.chapter15.practice.User;
 import org.junit.Test;
 
 import java.util.SortedSet;
@@ -51,6 +52,41 @@ public class CollectionRevisitedTest {
                 alphaset.subSet("3", "f")) { //"f" not included
             System.out.println(e);
         }
+    }
+
+    @Test(expected = ClassCastException.class)
+    // У нас есть USer , давайте впизьдячим его в SoretedSet вроде идея классная,
+    // но Java не знает как сравнивать юзеров. Не знает бедная как решить кто больше а кто меньше... надо помочь
+    // Должен быть определен Comparator for User class
+    public void blowWithException() {
+        User bob = new User("Gandon", "Telefon123");
+        SortedSet<User> userSortedSet = new TreeSet<>();
+        userSortedSet.add(bob);
+    }
+
+    @Test
+    public void addUsersToSortedSet() {
+        User bob = new User("Bob", "pA55Word"); // 11
+        User bob2 = new User("Bobb", "pA55Word"); // 11
+        User tiny = new User("TinyTim", "Hhe1lo000"); //12
+        User rich = new User("Richie", "RichieRichieRich1"); // 22
+        User sun = new User("sun", "11111Ztzu"); // 6
+        User mrBeer = new User("Stafford", "syyyyyySS1s"); // 11
+        SortedSet<User> userSortedSet = new TreeSet<>(new UserComparator());
+        userSortedSet.add(bob);
+        userSortedSet.add(tiny);
+        userSortedSet.add(rich);
+        userSortedSet.add(sun);
+        userSortedSet.add(mrBeer);
+        userSortedSet.add(bob2);
+        User[] users = new User[userSortedSet.size()];
+        // TODO useful conversion !
+        userSortedSet.toArray(users);
+        for (User u :
+                users) {
+            System.out.println(u.getUsername());
+        }
+
     }
 
 
