@@ -38,5 +38,23 @@ public class MathAndBigDecimal {
         System.out.println(randomHugeFuckingInteger);
     }
 
+    @Test
+    public void convertToBigD() {
+        BigDecimal fromInt = new BigDecimal(5);
+        BigDecimal fromLong = new BigDecimal(5L);
+        BigDecimal fromStr = new BigDecimal("5");
+        BigDecimal fromBigInteger = new BigDecimal(BigInteger.valueOf(5));
+        System.out.printf(fromInt.toString());
+        System.out.printf(fromLong.toString());
+        System.out.printf(fromStr.toString());
+        System.out.printf(fromBigInteger.toString());
+    }
+
+    @Test
+    public void arithmeticBasic() {
+        BigDecimal bD = BigDecimal.ZERO;
+        System.out.println((((bD.add(BigDecimal.TEN)).multiply(BigDecimal.valueOf(2))).subtract(BigDecimal.TEN)).divide(BigDecimal.valueOf(2)));
+    }
+
 
 }
