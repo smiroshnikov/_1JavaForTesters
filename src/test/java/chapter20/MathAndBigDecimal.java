@@ -6,6 +6,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertTrue;
+
 public class MathAndBigDecimal {
     @Test
     public void workingWithNumbers() {
@@ -53,7 +57,17 @@ public class MathAndBigDecimal {
     @Test
     public void arithmeticBasic() {
         BigDecimal bD = BigDecimal.ZERO;
-        System.out.println((((bD.add(BigDecimal.TEN)).multiply(BigDecimal.valueOf(2))).subtract(BigDecimal.TEN)).divide(BigDecimal.valueOf(2)));
+        System.out.println((((bD.add(BigDecimal.TEN)).multiply(BigDecimal.valueOf(2))).subtract(BigDecimal.TEN))
+                .divide(BigDecimal.valueOf(2)));
+        assertThat(BigDecimal.ONE.equals(new BigDecimal(1.0)), is(true));
+        assertThat(BigDecimal.ONE.equals(new BigDecimal(1)), is(true));
+
+        assertThat(BigDecimal.TEN.compareTo(BigDecimal.ONE), is(1)); //10>1
+        assertThat(BigDecimal.ONE.compareTo(BigDecimal.TEN), is(-1)); //1<10
+        assertThat(BigDecimal.ONE.equals(BigDecimal.TEN), is(false)); //1==10
+        assertTrue(BigDecimal.ONE.compareTo(BigDecimal.TEN) <= 0);
+
+
     }
 
 
