@@ -3,6 +3,8 @@ package chapter20;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Random;
 
 public class MathAndBigDecimal {
     @Test
@@ -24,7 +26,17 @@ public class MathAndBigDecimal {
         BigDecimal bdPence = (new BigDecimal("5.0").subtract(new BigDecimal("0.3"))
                 .subtract(new BigDecimal("0.47")).subtract(new BigDecimal("1.73")));
         System.out.println("%n BD " + bdPence.toString());
-
-
     }
+
+    @Test
+    public void printAMegaFuckingHugeNumber() {
+        // Excellent !
+        BigInteger b = new BigInteger("900000987876878934753409850099000495343400459034250000054556000001102020203");
+        // this is Random , no doubt
+        BigInteger randomHugeFuckingInteger = new BigInteger(b.bitLength(), new Random());
+        System.out.println(b);
+        System.out.println(randomHugeFuckingInteger);
+    }
+
+
 }
