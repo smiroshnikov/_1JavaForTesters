@@ -4,9 +4,6 @@ import javafortesters.chapter15.practice.User;
 
 import java.util.Comparator;
 
-/**
- * Created by Iidwuurliik on 1/29/2017.
- */
 public class UserComparator implements Comparator {
 
     @Override
