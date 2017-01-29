@@ -86,6 +86,7 @@ public class DirectoryTests {
 
     @Test
     public void myMove() throws IOException {
+        // Working creating , copying  and moving a file with permissions if required
         // TODO go over a file constructor untill I will feel comfortable enough
         File myFolder = new File(System.getProperty("java.io.tmpdir") +
                 System.currentTimeMillis() + "FU", "fuck");
@@ -97,6 +98,7 @@ public class DirectoryTests {
         Files.copy(fileWithSecretContent.toPath(), destination.toPath());
         File moveDestination = new File(myFolder.getCanonicalPath(), "secret.move");
         Files.move(fileWithSecretContent.toPath(), moveDestination.toPath());
+        System.out.println(fileWithSecretContent.getCanonicalPath());
 
     }
 

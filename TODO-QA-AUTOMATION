@@ -3,3 +3,8 @@ Trim "Hamlet" to Hamlet only
 Find file , create it - fill with data , change permission execute if possible and them hide/copy/delete
 Create shutdowner virus that checks what OS is running and based on that performs shutdown via cli
 Ho over SD automation and see what can be scrapped
+
+[E2E]
+Automated test - create 10,000 large (6~10 mb files ) and upload to Google Drive
+[E2E]
+Working with BigDecimal - mortgage calculator  pick a couple
