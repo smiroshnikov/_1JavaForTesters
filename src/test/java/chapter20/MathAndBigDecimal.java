@@ -10,6 +10,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertTrue;
 
+// Use BigDecimal when working with currency values or when you need accuracy in the
+// calculations, and avoiding rounding
+
 public class MathAndBigDecimal {
     @Test
     public void workingWithNumbers() {
@@ -66,7 +69,13 @@ public class MathAndBigDecimal {
         assertThat(BigDecimal.ONE.compareTo(BigDecimal.TEN), is(-1)); //1<10
         assertThat(BigDecimal.ONE.equals(BigDecimal.TEN), is(false)); //1==10
         assertTrue(BigDecimal.ONE.compareTo(BigDecimal.TEN) <= 0);
+    }
 
+    @Test
+    public void mathExample() {
+        assertThat(Math.abs(-349503945), is(349503945));
+        assertThat(Math.max(-3.5, 0.0), is(0d));
+        System.out.println(Math.random());
 
     }
 
