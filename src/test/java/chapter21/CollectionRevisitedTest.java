@@ -113,13 +113,20 @@ public class CollectionRevisitedTest {
     public void duplicateUserComparator() {
         SortedSet<SimpleUser> userSet = new TreeSet<>(new DupeSimpleUserComparator());
         SimpleUser mojo = new SimpleUser("abc", "123456");
-        SimpleUser jojo = new SimpleUser("abc", "123456");
-        SimpleUser dojo = new SimpleUser("abcx", "123456");
+        SimpleUser jojo = new SimpleUser("cd", "123456");
+        SimpleUser dojo = new SimpleUser("bbc", "123456");
 
         userSet.add(mojo);
         userSet.add(jojo);
         userSet.add(dojo);
         System.out.println(userSet.size());
+        SimpleUser[] users = new SimpleUser[userSet.size()];
+        userSet.toArray(users);
+        for (SimpleUser u :
+                users) {
+            System.out.println(u.getUsername());
+
+        }
         assertEquals("user set size mismatch ", userSet.size(), 3);
 
     }
