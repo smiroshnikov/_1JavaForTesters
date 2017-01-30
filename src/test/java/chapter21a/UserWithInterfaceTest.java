@@ -61,6 +61,9 @@ public class UserWithInterfaceTest {
 
     @Test
     public void userSortedMap() {
+
+        // TODO how to iterate over SortedSet
+
         User bob = new User("bob", "123456");
         User cob = new User("cob", "123456");
         User dob = new User("vob", "123456");
@@ -76,6 +79,19 @@ public class UserWithInterfaceTest {
             System.out.println("Author -> " + entry.getKey().getUsername().toUpperCase() + " book " + entry.getValue());
         }
 
+        Set<User> userSetFromUserMap = new TreeSet<>(userMap.keySet());
 
+        System.out.println(userSetFromUserMap.size());
+
+        User[] userArray = new User[userSetFromUserMap.size()];
+
+        userSetFromUserMap.toArray(userArray);
+        // NullPointerException Why ? Arrays is not empty
+        // because I forgot to populate userArray
+
+        for (User u :
+                userArray) {
+            System.out.println(u.getUsername());
+        }
     }
 }
