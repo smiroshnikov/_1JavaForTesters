@@ -4,6 +4,8 @@ import javafortesters.chapter21a.practice.User;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -92,6 +94,8 @@ public class UserWithInterfaceTest {
         for (User u :
                 userArray) {
             System.out.println(u.getUsername());
+            LogRecord rec = new LogRecord(Level.ALL, "-->");
+            rec.getMessage();
         }
     }
 }
