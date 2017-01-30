@@ -2,9 +2,18 @@ Deploy VM in Xen , VMWare , Virtual Box , Doker
 Trim "Hamlet" to Hamlet only
 Find file , create it - fill with data , change permission execute if possible and them hide/copy/delete
 Create shutdowner virus that checks what OS is running and based on that performs shutdown via cli
-Ho over SD automation and see what can be scrapped
+Go over SD automation and see what can be scrapped
 
 [E2E]
 Automated test - create 10,000 large (6~10 mb files ) and upload to Google Drive
 [E2E]
 Working with BigDecimal - mortgage calculator  pick a couple
+[Simple tests for warm up]
+-1000000 Users JUNIT TEST {Provide a better scenario}
+[Country code test]
+- look in the book for testers
+[Url Generation test]
+- look in the book for testers , maybe add file parsing , something worthy of interview
+[User Permission test]
+Look in the book , in the code - so far this is too simple
+

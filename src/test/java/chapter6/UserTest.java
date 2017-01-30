@@ -33,7 +33,7 @@ public class UserTest {
         assertFalse("password too short", user.getPassword().length() < User.MINIMAL_PASSWORD_LENGTH);
         assertFalse("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
         // pop message if false
-        //assertTrue("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
+        //assertTrue("password too long", user.getPassword().length() > SimpleUser.MAXIMUM_PASSWORD_LENGTH);
         // pop message if true
     }
 
@@ -44,7 +44,7 @@ public class UserTest {
         Random r = new Random();
         int randomSeed = r.nextInt(100000);
 
-        //users = User.createUsers(new Random().nextInt(10000));
+        //users = SimpleUser.createUsers(new Random().nextInt(10000));
 
         users = User.createUsers(randomSeed);
 

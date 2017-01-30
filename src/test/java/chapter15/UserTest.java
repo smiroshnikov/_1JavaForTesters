@@ -69,7 +69,7 @@ public class UserTest {
             fail("An exception should have been thrown");
         } catch (IncorrectPasswordException e) {
             System.out.printf(e.getMessage());
-            System.out.printf("\nUser with invalid password creation was prevented ! !\n".toUpperCase());
+            System.out.printf("\nSimpleUser with invalid password creation was prevented ! !\n".toUpperCase());
             System.out.printf("\nProceeding to next test step!");
         } finally {
             ReadOnlyUser readOnlyUser = new ReadOnlyUser("Stan", "PerfectSomething1!");

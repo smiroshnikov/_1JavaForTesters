@@ -1,4 +1,4 @@
-package chapter21;
+package javafortesters.chapter21.practice;
 
 import javafortesters.chapter15.practice.User;
 
@@ -8,7 +8,7 @@ public class UserComparator implements Comparator {
 
     @Override
     public int compare(Object oUser1, Object oUser2) {
-        User user1 = (User) oUser1; // casting from object to User !
+        User user1 = (User) oUser1; // casting from object to SimpleUser !
         User user2 = (User) oUser2;
         int userComparator1 = user1.getPassword().length() +
                 user1.getUsername().length();

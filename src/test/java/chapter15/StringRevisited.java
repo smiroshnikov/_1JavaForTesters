@@ -79,7 +79,7 @@ public class StringRevisited {
         // TODO REGEX in STRINGS
         /*
             An example scenario for the use of Regular Expressions might be that we want to expand
-            the password validation on our User class:
+            the password validation on our SimpleUser class:
             • password must contain a digit
             • password must contain an uppercase letter
          */

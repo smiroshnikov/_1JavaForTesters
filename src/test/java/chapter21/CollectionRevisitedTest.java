@@ -1,7 +1,10 @@
 package chapter21;
 
-
 import javafortesters.chapter15.practice.User;
+import javafortesters.chapter21.practice.AdminSimpleUser;
+import javafortesters.chapter21.practice.SimpleUser;
+import javafortesters.chapter21.practice.SimpleUserComparator;
+import javafortesters.chapter21.practice.UserComparator;
 import org.junit.Test;
 
 import java.util.SortedSet;
@@ -9,7 +12,6 @@ import java.util.TreeSet;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-
 
 public class CollectionRevisitedTest {
     @Test
@@ -55,9 +57,9 @@ public class CollectionRevisitedTest {
     }
 
     @Test(expected = ClassCastException.class)
-    // У нас есть USer , давайте впизьдячим его в SoretedSet вроде идея классная,
+    // У нас есть SimpleUser , давайте впизьдячим его в SoretedSet вроде идея классная,
     // но Java не знает как сравнивать юзеров. Не знает бедная как решить кто больше а кто меньше... надо помочь
-    // Должен быть определен Comparator for User class
+    // Должен быть определен Comparator for SimpleUser class
     public void blowWithException() {
         User bob = new User("Gandon", "Telefon123");
         SortedSet<User> userSortedSet = new TreeSet<>();
@@ -86,6 +88,23 @@ public class CollectionRevisitedTest {
                 users) {
             System.out.println(u.getUsername());
         }
+    }
+
+    @Test
+    public void addUsersTOSortedSetRevisited() {
+        AdminSimpleUser bob = new AdminSimpleUser("1234325", "sdfsdf");
+        AdminSimpleUser dod = new AdminSimpleUser("2234325", "sdfsdf");
+        SortedSet<SimpleUser> simpleUserSet = new TreeSet<>(new SimpleUserComparator());
+        simpleUserSet.add(bob);
+        simpleUserSet.add(dod);
+
+        SimpleUser[] userList = new SimpleUser[simpleUserSet.size()];
+        simpleUserSet.toArray(userList);
+        for (SimpleUser e :
+                userList) {
+            System.out.println(e.getUsername());
+        }
+
 
     }
 
