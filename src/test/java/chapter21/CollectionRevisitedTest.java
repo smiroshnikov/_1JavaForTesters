@@ -128,7 +128,6 @@ public class CollectionRevisitedTest {
 
         }
         assertEquals("user set size mismatch ", userSet.size(), 3);
-
     }
 
 
