@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -89,8 +90,10 @@ public class CollectionRevisitedTest {
 
     @Test
     public void addUsersTOSortedSetRevisited() {
-        AdminSimpleUser bob = new AdminSimpleUser("1234325", "sdfsdf");
-        AdminSimpleUser dod = new AdminSimpleUser("2234325", "sdfsdf");
+        AdminSimpleUser bob = new AdminSimpleUser("Bob", "sdfsdf");
+        AdminSimpleUser dod = new AdminSimpleUser("Dod", "sdfsdf");
+        AdminSimpleUser gog = new AdminSimpleUser("Dod", "sdfsdf");
+
         // TODO Warning is regarding TreeSet implementation - review this later - defensive programming
         SortedSet<SimpleUser> simpleUserSet = new TreeSet<>(new SimpleUserComparator());
         simpleUserSet.add(bob);
@@ -117,6 +120,9 @@ public class CollectionRevisitedTest {
         userSet.add(jojo);
         userSet.add(dojo);
         System.out.println(userSet.size());
+        assertEquals("user set size mismatch ", userSet.size(), 3);
+
     }
+
 
 }

@@ -17,6 +17,8 @@ public class SimpleUserComparator implements Comparator {
         if (val == 0) {
             val = u1.getUsername().compareTo(u2.getUsername());
         }
+        System.out.println("Compare " + u1.getUsername() + " with " +
+                u2.getUsername() + " = " + val);
         return val;
     }
 }
