@@ -1,10 +1,7 @@
 package chapter21;
 
 import javafortesters.chapter15.practice.User;
-import javafortesters.chapter21.practice.AdminSimpleUser;
-import javafortesters.chapter21.practice.SimpleUser;
-import javafortesters.chapter21.practice.SimpleUserComparator;
-import javafortesters.chapter21.practice.UserComparator;
+import javafortesters.chapter21.practice.*;
 import org.junit.Test;
 
 import java.util.SortedSet;
@@ -94,6 +91,7 @@ public class CollectionRevisitedTest {
     public void addUsersTOSortedSetRevisited() {
         AdminSimpleUser bob = new AdminSimpleUser("1234325", "sdfsdf");
         AdminSimpleUser dod = new AdminSimpleUser("2234325", "sdfsdf");
+        // TODO Warning is regarding TreeSet implementation - review this later - defensive programming
         SortedSet<SimpleUser> simpleUserSet = new TreeSet<>(new SimpleUserComparator());
         simpleUserSet.add(bob);
         simpleUserSet.add(dod);
@@ -108,5 +106,17 @@ public class CollectionRevisitedTest {
 
     }
 
+    @Test
+    public void duplicateUserComparator() {
+        SortedSet<SimpleUser> userSet = new TreeSet<>(new DupeSimpleUserComparator());
+        SimpleUser mojo = new SimpleUser("abc", "123456");
+        SimpleUser jojo = new SimpleUser("abc", "123456");
+        SimpleUser dojo = new SimpleUser("abcx", "123456");
+
+        userSet.add(mojo);
+        userSet.add(jojo);
+        userSet.add(dojo);
+        System.out.println(userSet.size());
+    }
 
 }

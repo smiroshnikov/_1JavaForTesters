@@ -13,6 +13,7 @@ public class SimpleUserComparator implements Comparator {
         int val = user1Comparator - user2Comparator;
         // if this check is commented out and I have users with same name length and same password length
         // the second user is concidered duplicate and sortedSet does not allow duplicates
+        // TODO  test with larger collection of Simple Users , pick 2 SimpleUsers with 3 chars in name etc...
         if (val == 0) {
             val = u1.getUsername().compareTo(u2.getUsername());
         }
