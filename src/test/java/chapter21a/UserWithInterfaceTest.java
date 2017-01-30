@@ -58,4 +58,24 @@ public class UserWithInterfaceTest {
 
 
     }
+
+    @Test
+    public void userSortedMap() {
+        User bob = new User("bob", "123456");
+        User cob = new User("cob", "123456");
+        User dob = new User("vob", "123456");
+
+        SortedMap<User, String> userMap = new TreeMap<>(new javafortesters.chapter21a.practice.UserComparator());
+
+        userMap.put(bob, "Great book of Bob");
+        userMap.put(cob, "Mutilating for dummies ");
+        userMap.put(dob, "How to become radical fanatic in 24 days");
+
+        for (Map.Entry<User, String> entry :
+                userMap.entrySet()) {
+            System.out.println("Author -> " + entry.getKey().getUsername().toUpperCase() + " book " + entry.getValue());
+        }
+
+
+    }
 }
