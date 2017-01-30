@@ -41,7 +41,10 @@ public class User implements Comparable {
         if (val == 0) {
             val = this.getUsername().compareTo(user2.getUsername());
         }
+        System.out.println("Compare " + this.getUsername() + " with " +
+                user2.getUsername() + " = " + val);
         return val;
+
     }
 }
 
