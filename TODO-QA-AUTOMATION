@@ -1,3 +1,12 @@
+[SIMPLE MUST ]
+Navigate pages
+Sign up
+Login/ Logout
+Simple MVCToDO
+USer ALready exists
+==========================================
+[Nice to have]
+
 Deploy VM in Xen , VMWare , Virtual Box , Doker
 Trim "Hamlet" to Hamlet only
 Find file , create it - fill with data , change permission execute if possible and them hide/copy/delete
@@ -17,3 +26,10 @@ Working with BigDecimal - mortgage calculator  pick a couple
 [User Permission test]
 Look in the book , in the code - so far this is too simple
 
+[All from this list]
+Applications to test against described in more detail
+http://google-gruyere.appspot.com/part1
+http://google-gruyere.appspot.com/start
+https://hack.me/ http://demo.testfire.net/
+Lists of Apps to Test Against
+http://blog.taddong.com/2011/10/hacking-vulnerable-web-applications.html
