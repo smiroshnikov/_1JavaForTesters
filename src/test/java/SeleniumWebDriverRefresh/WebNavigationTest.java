@@ -1,10 +1,9 @@
 package SeleniumWebDriverRefresh;
 
 import com.iidruurliik.driver.SirDriver;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.io.FileNotFoundException;
 
 public class WebNavigationTest {
 
@@ -12,8 +11,9 @@ public class WebNavigationTest {
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\MicrosoftWebDriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\geckodriver.exe";
 
-    @Before
-    public void chromeDriverPathSetup() throws FileNotFoundException {
+
+    @BeforeClass
+    public static void chromeDriverPathSetup() {
         // TODO recall how to check if file present in path  !
         // Add unable to proceed , failing test blah-blah
         if (System.getProperty("webdriver.chrome.driver") == null) {
@@ -25,30 +25,18 @@ public class WebNavigationTest {
         if (System.getProperty("webdriver.gecko.driver") == null) {
             System.setProperty("webdriver.gecko.driver", FIREFOX_DRIVER_PATH);
         }
-        //System.out.println(System.getProperty("webdriver.chrome.driver"));
     }
-
-
-//    @BeforeClass
-//    //TODO why BeforeClass and AfterClass are static
-//    public static void createDriver() {
-//        driver = new ChromeDriver();
-//    }
-
-//    @Test
-//    public void navigateToURL() {
-//        driver.navigate().to("gmail.com");
-//        assertTrue("Invalid title", driver.getTitle().contains("Gmail"));
-//    }
 
     @Test
     public void fastStartFirefoxWithStaticMethod() {
-        // TODO use my custom static get method
+        // Very inconvenient , just a performance workaround but wont provide anny flexibility for testing
         SirDriver.get("http://google.com");
+        SirDriver.get("http://microsoft.com");
     }
 
-//    @AfterClass
-//    public static void quitDriver() {
-//        driver.quit();
-//    }
+    @AfterClass
+    public static void quitDriver() {
+        // Very inconvenient , just a performance workaround but wont provide anny flexibility for testing
+        SirDriver.closeAndQuit();
+    }
 }
