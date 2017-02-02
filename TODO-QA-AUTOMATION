@@ -53,3 +53,10 @@ static class
 
 [Selenium]
 Lets abstract Firefox driver instantiation and proovide a static method "get"
+
+[IntelliJ]
+IMPORTANT NOTES ,
+Webdriver is an Interface common to ChromeDriver , EdgeDriver ,FirefoxDriver and HtmlUnitDriver
+use CTRL + SPACE
+to solve javadoc issues just download the fucking sources
+CTRL + N (My classes), finally found you !

@@ -12,13 +12,6 @@ import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertTrue;
 
-/*
-    IMPORTANT NOTES , Webdriver is anm Interface common to ChromeDriver , EdgeDriver , FirefoxDriver and
-     HtmlUnitDriver
-     use CTRL + SPACE
-     to solve javadoc issues just download the fucking sources
-     CTRL + N (My classes), finally found you !
- */
 
 public class OpenBrowsersToGoogleTest {
 
