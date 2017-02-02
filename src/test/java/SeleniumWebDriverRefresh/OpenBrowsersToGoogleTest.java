@@ -1,4 +1,4 @@
-package web.tests;
+package SeleniumWebDriverRefresh;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +12,13 @@ import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertTrue;
 
+/*
+    IMPORTANT NOTES , Webdriver is anm Interface common to ChromeDriver , EdgeDriver , FirefoxDriver and
+     HtmlUnitDriver
+     use CTRL + SPACE
+     to solve javadoc issues just download the fucking sources
+     CTRL + N (My classes), finally found you !
+ */
 
 public class OpenBrowsersToGoogleTest {
 
@@ -51,13 +58,19 @@ public class OpenBrowsersToGoogleTest {
     public void startFireFoxWebDriver() {
         WebDriver firefoxDriver = new FirefoxDriver();
         firefoxDriver.navigate().to("https://www.google.com/");
+        // Browser version might advance ahead of driver  and various compatibility issue can prevent firefox
+        // to close after "close" and quit is required !
         firefoxDriver.close();
+        firefoxDriver.quit();
     }
 
     @Test
     public void startEdgeDriver() {
         WebDriver edgeDriver = new EdgeDriver();
         edgeDriver.navigate().to("http://linux.org");
+        // so far no difference how do I add external documentation to IntelijIdea
+        edgeDriver.get("www.microsoft.com"); // get follows redirects
+
         edgeDriver.close();
 
     }
@@ -66,6 +79,8 @@ public class OpenBrowsersToGoogleTest {
     public void headleassHTMLTest() {
         WebDriver headless = new HtmlUnitDriver();
         headless.navigate().to("http://google.com");
+        headless.navigate().refresh();
+
         assertTrue("Incorrect title !", headless.getTitle().startsWith("Goo"));
 
     }

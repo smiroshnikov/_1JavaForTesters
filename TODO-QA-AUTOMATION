@@ -34,3 +34,22 @@ https://hack.me/ http://demo.testfire.net/
 Lists of Apps to Test Against
 http://blog.taddong.com/2011/10/hacking-vulnerable-web-applications.html
 
+[Maven CLI]
+mvn clean compile
+mvn test
+I would use maven to execute bulk of automated Java tests scheduled overnight or so
+
+[JUnit]
+@Before // before EACH test - might be usefull if test execution order is random or unknown
+@After  // after EACH test - might be usefull if test execution order is random or unknown
+@BeforeClass // once per test class - in the very beginning - used for expecive setup
+@AfterClass  // once per test class - at the end - used for expecive setup
+
+
+[Java]
+static variable
+static method  (e.g in static methods I cannot uses non static variable - non static field cannot be referenced from static content )
+static class
+
+[Selenium]
+Lets abstract Firefox driver instantiation and proovide a static method "get"
