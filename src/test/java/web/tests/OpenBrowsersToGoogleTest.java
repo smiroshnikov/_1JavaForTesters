@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.io.FileNotFoundException;
 
@@ -58,6 +59,14 @@ public class OpenBrowsersToGoogleTest {
         WebDriver edgeDriver = new EdgeDriver();
         edgeDriver.navigate().to("http://linux.org");
         edgeDriver.close();
+
+    }
+
+    @Test
+    public void headleassHTMLTest() {
+        WebDriver headless = new HtmlUnitDriver();
+        headless.navigate().to("http://google.com");
+        assertTrue("Incorrect title !", headless.getTitle().startsWith("Goo"));
 
     }
 }
