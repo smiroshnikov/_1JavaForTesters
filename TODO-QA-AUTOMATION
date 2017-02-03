@@ -60,3 +60,9 @@ Webdriver is an Interface common to ChromeDriver , EdgeDriver ,FirefoxDriver and
 use CTRL + SPACE
 to solve javadoc issues just download the fucking sources
 CTRL + N (My classes), finally found you !
+.notnull - ROCKS , made me to waste 30 minutes (debug helped)
+
+
+[Important lessons learned]
+.notnull is cool but was irrelevant
+
