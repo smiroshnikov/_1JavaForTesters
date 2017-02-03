@@ -7,14 +7,18 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertTrue;
 
 public class NavigationClassworkTest {
 
-    public static WebDriver driver;
-    public static final String CHROME_DRIVER_PATH = "c:\\Webdrivers\\chromedriver.exe";
+    private static WebDriver driver;
+    private static final String CHROME_DRIVER_PATH = "c:\\Webdrivers\\chromedriver.exe";
+    private static final String PROTOCOL = "http";
+    private static final String DOMAIN = "compendiumdev.co.uk";
+    private static final String ROOT_URL = PROTOCOL + "://" + DOMAIN;
+
 
     @BeforeClass
     public static void setDriver() {
@@ -25,6 +29,57 @@ public class NavigationClassworkTest {
         driver = new ChromeDriver();
     }
 
+    @Test
+    public void navigateWithGet() {
+        driver.get(ROOT_URL + "/selenium");
+        assertTrue(driver.getTitle().startsWith("Selenium Simplified"));
+    }
+
+    @Test
+    public void navigateWithNAvigateTo() {
+        driver.navigate().to(ROOT_URL + "/selenium/search.php");
+        assertTrue(driver.getTitle().startsWith("Selenium Simplified Search Engine"));
+    }
+
+    @Test
+    public void navigateBackAndForward() {
+        driver.navigate().to(ROOT_URL + "/selenium/basic_html_form.html");
+        assertTrue(driver.getTitle().startsWith("HTML Form Elements"));
+
+        driver.navigate().to(ROOT_URL + "/selenium/basic_web_page.html");
+        assertTrue(driver.getTitle().startsWith("Basic Web Page Title"));
+
+        driver.navigate().back();
+        assertTrue(driver.getTitle().startsWith("HTML Form Elements"));
+
+        driver.navigate().forward();
+        assertTrue(driver.getTitle().startsWith("Basic Web Page Title"));
+    }
+
+    @Test
+    public void navigateWithRefresh() {
+        driver.navigate().to(ROOT_URL + "/selenium/refresh.php");
+        final String refreshTitleConstant = "Refreshed Page on ";
+        assertTrue(driver.getTitle().startsWith(refreshTitleConstant));
+
+        // separating epoch timestamp from the title
+        long startTime = Long.parseLong(driver.getTitle().replaceFirst(refreshTitleConstant, ""));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {/*ignore interrupt*/}
+        driver.navigate().refresh();
+        assertTrue(driver.getTitle().startsWith(refreshTitleConstant));
+
+        long endTime = Long.parseLong(driver.getTitle().replaceFirst(refreshTitleConstant, ""));
+        // very fucking nice ! actually testing that title advances with time ! very nice true QA thinking !
+        assertTrue("expected" + endTime + ">" + startTime, endTime > startTime);
+        System.out.println("expected " + endTime + " > " + startTime);
+
+
+    }
+
+
+    @Ignore
     @Test
     public void navigateCompendiumdev() throws InterruptedException {
         driver.get("http://compendiumdev.co.uk/selenium");
@@ -51,9 +106,10 @@ public class NavigationClassworkTest {
 
         driver.navigate().to("http://compendiumdev.co.uk/selenium/refresh.php");
         driver.navigate().refresh();
-        assertTrue("Epoch time differs", driver.getTitle().contains("Refreshed Page on " + Long.toString(System.currentTimeMillis()).substring(0, 9)));
-        Thread.sleep(2000);
+        assertTrue("Epoch time differs", driver.getTitle().contains("Refreshed Page on " + Long.toString(System.currentTimeMillis()).substring(0, 8)));
 
+
+        Thread.sleep(2000);
     }
 
     @Ignore
