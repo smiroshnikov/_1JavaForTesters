@@ -1,15 +1,18 @@
-package SeleniumWebDriverRefresh;
+package SeleniumWebDriverRefresh.part0.D.minus4;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 
 public class NavigationClassworkTest {
 
@@ -123,6 +126,10 @@ public class NavigationClassworkTest {
         assertThat(driver.getTitle().contains("Basic Web Page Title"), is(true));
         assertThat(driver.getCurrentUrl(), is("http://compendiumdev.co.uk/selenium/basic_web_page.html"));
         assertThat(driver.getPageSource().contains("A paragraph of text"), is(true));
+        // Locating a web element
+        WebElement para1 = driver.findElement(By.id("para1"));
+        assertEquals(para1.getText(), "A paragraph of text");
+
 
     }
 

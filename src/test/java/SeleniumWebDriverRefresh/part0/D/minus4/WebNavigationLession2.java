@@ -1,4 +1,4 @@
-package SeleniumWebDriverRefresh;
+package SeleniumWebDriverRefresh.part0.D.minus4;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

@@ -61,9 +61,22 @@ use CTRL + SPACE
 to solve javadoc issues just download the fucking sources
 CTRL + N (My classes), finally found you !
 .notnull - ROCKS , made me to waste 30 minutes (debug helped)
-
+ctrl + alt + shift + N
+ctrl + shift + N
+ctrl  + N
 
 [Important lessons learned]
 .notnull is cool but was irrelevant
 .null would have worked much better :)
+
+[CITY Interview]
+Repeat strign manipulation
+Repeat OrderedSet HashMap , whole Collections chapters
+Repeat My best tests
+
+work with API,
+sort some data (try CVS , JSON )
+
+[DOM]
+DOM - document object model
 
