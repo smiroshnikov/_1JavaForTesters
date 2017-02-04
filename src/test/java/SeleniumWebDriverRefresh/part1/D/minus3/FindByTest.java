@@ -49,6 +49,9 @@ public class FindByTest {
         assertTrue("Find by name test failed", requiredElement.getText().contentEquals("This is b paragraph text"));
         requiredElement = driver.findElement(By.linkText("jump to para 12"));
         assertEquals("Find by linkedText test failed", "jump to para 12", requiredElement.getText());
+        requiredElement = driver.findElement(By.partialLinkText("para 20"));
+        assertThat(requiredElement.getText(), is("jump to para 20"));
+
     }
 
     @AfterClass
