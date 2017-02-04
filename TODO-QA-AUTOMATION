@@ -50,6 +50,7 @@ I would use maven to execute bulk of automated Java tests scheduled overnight or
 static variable
 static method  (e.g in static methods I cannot uses non static variable - non static field cannot be referenced from static content )
 static class
+checked and unchecked exceptions diference
 
 [Selenium]
 Lets abstract Firefox driver instantiation and proovide a static method "get"
