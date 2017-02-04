@@ -74,8 +74,6 @@ public class NavigationClassworkTest {
         // very fucking nice ! actually testing that title advances with time ! very nice true QA thinking !
         assertTrue("expected" + endTime + ">" + startTime, endTime > startTime);
         System.out.println("expected " + endTime + " > " + startTime);
-
-
     }
 
 
@@ -117,6 +115,15 @@ public class NavigationClassworkTest {
     public void stringCastration() {
         String tooLong = "1486156774642";
         System.out.println(tooLong.substring(0, 9));
+    }
+
+    @Test
+    public void interrogationPractice1() {
+        driver.get("http://compendiumdev.co.uk/selenium/basic_web_page.html");
+        assertThat(driver.getTitle().contains("Basic Web Page Title"), is(true));
+        assertThat(driver.getCurrentUrl(), is("http://compendiumdev.co.uk/selenium/basic_web_page.html"));
+        assertThat(driver.getPageSource().contains("A paragraph of text"), is(true));
+
     }
 
 
