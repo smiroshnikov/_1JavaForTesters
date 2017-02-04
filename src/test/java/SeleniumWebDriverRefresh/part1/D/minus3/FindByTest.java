@@ -51,6 +51,12 @@ public class FindByTest {
         assertEquals("Find by linkedText test failed", "jump to para 12", requiredElement.getText());
         requiredElement = driver.findElement(By.partialLinkText("para 20"));
         assertThat(requiredElement.getText(), is("jump to para 20"));
+        requiredElement = driver.findElement(By.className("nestedDiv"));
+        // By.classname returns them all !
+        assertThat("Find by class failed", requiredElement.getText(), is("nested para text\n" +
+                "nested para text\nnested para text\nnested para text\nnested para text\nnested para text\nnested para " +
+                "text\nnested para text\nnested para text\nnested para text\nnested para text\nnested para text\nnested " +
+                "para text\nnested para text\nnested para text\nnested para text"));
 
     }
 
