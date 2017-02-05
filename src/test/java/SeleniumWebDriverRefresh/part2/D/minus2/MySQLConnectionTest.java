@@ -4,7 +4,8 @@ import java.sql.*;
 
 class MySQLConnectionTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        String dbURL = "jdbc:mysql://localhost:3306/emp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String dbURL = "jdbc:mysql://localhost:3306/emp?useUnicode=true&useJDBCCompliantTimezoneShift=true&" +
+                "useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
         String username = "Iidwuurliik";
         String password = "123456";
         String mySQLquery = "SELECT * FROM emp.indusgandon";
