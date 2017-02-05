@@ -51,6 +51,9 @@ static variable
 static method  (e.g in static methods I cannot uses non static variable - non static field cannot be referenced from static content )
 static class
 checked and unchecked exceptions diference
+[JDBC]
+very simple connect to database with JDBC
+"http://www.guru99.com/database-testing-using-selenium-step-by-step-guide.html"
 
 [Selenium]
 Lets abstract Firefox driver instantiation and proovide a static method "get"
