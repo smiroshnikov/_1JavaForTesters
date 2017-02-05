@@ -16,7 +16,6 @@ class MySQLConnectionTest {
         while (employeeList.next()) {
             String employeeName = employeeList.getString(1);
             String employeeAge = employeeList.getString(2);
-
             System.out.println("Name : " + employeeName + " Age :" + employeeAge);
         }
         // close DB
