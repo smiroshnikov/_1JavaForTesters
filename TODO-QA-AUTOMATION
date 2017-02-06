@@ -72,8 +72,10 @@ ctrl  + N
 [Important lessons learned]
 .notnull is cool but was irrelevant
 .null would have worked much better :)
-Prepare demo code ahead in separate folder
+TODO Prepare demo code ahead in separate folder
 TODO TODO-MVC  is a must
+TODO create wonderfull enum with image filters  and precalculated hash
+TODO Login/Logout
 
 [CITY Interview]
 Repeat strign manipulation

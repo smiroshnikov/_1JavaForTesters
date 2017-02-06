@@ -8,15 +8,19 @@ class MySQLConnectionTest {
                 "useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
         String username = "Iidwuurliik";
         String password = "123456";
-        String mySQLquery = "SELECT * FROM emp.indusgandon";
+        String mySQLquery = "SELECT * FROM emp.contacts";
         Class.forName("com.mysql.cj.jdbc.Driver"); // why ? load my sql driver?
         Connection connection = DriverManager.getConnection(dbURL, username, password);
         Statement statement = connection.createStatement();
         ResultSet employeeList = statement.executeQuery(mySQLquery);
         while (employeeList.next()) {
-            String employeeName = employeeList.getString(1);
-            String employeeAge = employeeList.getString(2);
-            System.out.println("Name : " + employeeName + " Age :" + employeeAge);
+            String employeeID = employeeList.getString(1);
+            String employeeName = employeeList.getString(2);
+            String employeeAge = employeeList.getString(3);
+            String employeePhone = employeeList.getString(4);
+            String employeeEmail = employeeList.getString(5);
+
+            System.out.println("Name : " + employeeName + "'s" + " email to spam with ads  ->: " + employeeEmail);
         }
         // close DB
         connection.close();
