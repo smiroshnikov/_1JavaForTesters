@@ -40,6 +40,7 @@ public class TodOMVCTest {
         // apparently whaen i was missing "#" in link , my flow was fucked up . Its only 00-05 glad it took only aboout a fucking hour !
         // sendKeys(Keys.Enter) was completely ignored
         driver.get("http://todomvc.com/examples/react/#/");
+        driver.manage().window().maximize();
         WebElement newTodo = driver.findElement(By.className("new-todo"));
         newTodo.sendKeys("write a todo list ");
         newTodo.sendKeys(Keys.RETURN);
