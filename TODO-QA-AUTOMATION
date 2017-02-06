@@ -72,6 +72,8 @@ ctrl  + N
 [Important lessons learned]
 .notnull is cool but was irrelevant
 .null would have worked much better :)
+Prepare demo code ahead in separate folder
+TODO TODO-MVC  is a must
 
 [CITY Interview]
 Repeat strign manipulation
@@ -83,4 +85,6 @@ sort some data (try CVS , JSON )
 
 [DOM]
 DOM - document object model
+
+
 
