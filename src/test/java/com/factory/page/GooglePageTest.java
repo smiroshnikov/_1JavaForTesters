@@ -6,8 +6,10 @@ import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElement;
 
 /**
  * Page Objects and Page Factory sample
@@ -22,6 +24,10 @@ public class GooglePageTest {
     private static WebDriver driver;
     // page objects as kindly mentioned by FE dev from Cloudinary
     GooglePage page = new GooglePage(driver);
+
+    public void assertThat(ExpectedCondition<Boolean> condition) {
+        (new WebDriverWait(driver, 3)).until(condition);
+    }
 
     @BeforeClass
     public static void driverSetup() {
@@ -43,11 +49,9 @@ public class GooglePageTest {
     public void searchText() {
         driver.get(TEST_URL);
         page.searchField.sendKeys("selenium", Keys.ENTER);
-        (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(page.firstResult, "Selenium"));
+        assertThat(textToBePresentInElement(page.firstResult, "Selenium"));
         page.searchField.sendKeys(" chemical element", Keys.ENTER);
-        (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(page.firstResult, "Selenium"));
+        assertThat(textToBePresentInElement(page.firstResult, "Selenium"));
     }
 
     @AfterClass
