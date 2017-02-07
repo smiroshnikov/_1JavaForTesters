@@ -11,6 +11,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class GoogleTest {
 
     private static final String TEST_URL = "http://google.com/ncr";
@@ -43,29 +47,52 @@ public class GoogleTest {
         // driver.close();
     }
 
+
+    // QA wise I do not really agree with the separation below , I will build the same way as I do in python @work
+    // separate instantiation and pages , object , helper classes and DB connections to separate files and
+    // leave pure test logic to be easily understood and modified , however for the sake of rapid learning
+    // lets have it messy way around
+
     public WebElement searchField() {
+        // stil would like to try this as variable and not finction
         return driver.findElement(By.name("q"));
+    }
+
+    public void search(String text) {
+        // maybe , maybe helper class , not sure yet , neeed to test on Cloudinary website for really interesting results
+        driver.findElement(By.name("q")).sendKeys(text, Keys.ENTER);
     }
 
     @Test
     public void searchText() {
         driver.get(TEST_URL);
         driver.manage().window().maximize();
+        // implicit wait has disadvantages , a better wait is described below if I really need a loop
+        // Thread.sleep(3000); is the worst possible way to wait
         //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        searchField().sendKeys("selenium", Keys.ENTER);
+        //searchField().sendKeys("selenium", Keys.ENTER);
+
+        search("Selenium");
         //checking if elements are present , located with XPATH and waitying 4 seconds until elements displayed
         (new WebDriverWait(driver, 4)).until(
                 ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a")));
         // OK finally have validated some results
         (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a"), "Selenium - Web Browser Automation"));
+                ExpectedConditions.textToBePresentInElement(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a"),
+                        "Selenium - Web Browser Automation"));
         // third try to validate via css path
         (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(By.cssSelector(".r>a"), "Selenium - Web Browser Automation"));
+                ExpectedConditions.textToBePresentInElement(By.cssSelector(".r>a"),
+                        "Selenium - Web Browser Automation"));
+        assertThat(driver.findElement(By.cssSelector(".r>a")).getText(), is("Selenium - Web Browser Automation"));
+        // a mess , but for the sake of learning lets keep it for now
+        searchField().sendKeys(" chemical element",Keys.ENTER);
+        (new WebDriverWait(driver,2)).until(
+                ExpectedConditions.textToBePresentInElementValue(By.xpath(".//*[@id='rso']/div/div/div[1]/div/div/div/span/em[2]/text()"),"chemical element"));
+        //assertTrue(driver.findElement(By.cssSelector(".st>em")).isDisplayed());
 
-        //System.out.println(driver.findElement(By.linkText("Selenium")));
-        // stopped @ 36:35
-        // https://www.youtube.com/watch?v=zCjNOIp7p3c
+
+
     }
 
 }
