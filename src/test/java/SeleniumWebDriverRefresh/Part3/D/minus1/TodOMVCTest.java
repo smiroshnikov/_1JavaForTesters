@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 /**
  * todoMVC proof of concept
  */
@@ -33,6 +34,11 @@ public class TodOMVCTest {
         driver = new ChromeDriver();
     }
 
+    @AfterClass
+    public static void closeDriver() {
+        driver.close();
+    }
+
     @Test
     public void createTask() throws InterruptedException {
         //Configuration.browser = "chrome";
@@ -55,11 +61,6 @@ public class TodOMVCTest {
         Thread.sleep(1000);
 
 
-    }
-
-    @AfterClass
-    public static void closeDriver() {
-        //driver.close();
     }
 
 }

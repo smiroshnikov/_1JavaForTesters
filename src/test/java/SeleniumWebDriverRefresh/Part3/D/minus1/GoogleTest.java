@@ -3,14 +3,14 @@ package SeleniumWebDriverRefresh.Part3.D.minus1;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-/**
- * Created by miross1 on 2/6/2017.
- */
 public class GoogleTest {
 
     private static final String TEST_URL = "http://google.com/ncr";
@@ -40,14 +40,30 @@ public class GoogleTest {
 
     @AfterClass
     public static void closeDriver() {
-        driver.close();
+        // driver.close();
+    }
+
+    public WebElement searchField() {
+        return driver.findElement(By.name("q"));
     }
 
     @Test
     public void searchText() {
         driver.get(TEST_URL);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        searchField().sendKeys("selenium", Keys.ENTER);
+        //checking if elements are present , located with XPATH and waitying 4 seconds until elements displayed
+        (new WebDriverWait(driver, 4)).until(
+                ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a")));
+        // OK finally have validated some results
+        (new WebDriverWait(driver, 3)).until(
+                ExpectedConditions.textToBePresentInElement(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a"), "Selenium - Web Browser Automation"));
+        // third try to validate via css path
+        (new WebDriverWait(driver, 3)).until(
+                ExpectedConditions.textToBePresentInElement(By.cssSelector(".r>a"), "Selenium - Web Browser Automation"));
+
+        //System.out.println(driver.findElement(By.linkText("Selenium")));
         // stopped @ 36:35
         // https://www.youtube.com/watch?v=zCjNOIp7p3c
     }
