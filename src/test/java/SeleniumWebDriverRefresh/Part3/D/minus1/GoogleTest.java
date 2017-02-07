@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -66,7 +65,7 @@ public class GoogleTest {
     @Test
     public void searchText() {
         driver.get(TEST_URL);
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         // implicit wait has disadvantages , a better wait is described below if I really need a loop
         // Thread.sleep(3000); is the worst possible way to wait
         //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -77,21 +76,23 @@ public class GoogleTest {
         (new WebDriverWait(driver, 4)).until(
                 ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a")));
         // OK finally have validated some results
+        // might replace asserts at this point , I am checking that page elelemts are displayed in order to proceed to
+        // further flow, I dont really expect to assert yet .
         (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a"),
+                ExpectedConditions.textToBePresentInElementLocated(By.xpath(".//*[@id='rso']/div[1]/div/div/h3/a"),
                         "Selenium - Web Browser Automation"));
         // third try to validate via css path
         (new WebDriverWait(driver, 3)).until(
-                ExpectedConditions.textToBePresentInElement(By.cssSelector(".r>a"),
+                ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".r>a"),
                         "Selenium - Web Browser Automation"));
         assertThat(driver.findElement(By.cssSelector(".r>a")).getText(), is("Selenium - Web Browser Automation"));
         // a mess , but for the sake of learning lets keep it for now
-        searchField().sendKeys(" chemical element",Keys.ENTER);
-        (new WebDriverWait(driver,2)).until(
-                ExpectedConditions.textToBePresentInElementValue(By.xpath(".//*[@id='rso']/div/div/div[1]/div/div/div/span/em[2]/text()"),"chemical element"));
-        //assertTrue(driver.findElement(By.cssSelector(".st>em")).isDisplayed());
+        searchField().sendKeys(" chemical element", Keys.ENTER);
 
-
+        // used not @Deprecatecdx method
+        (new WebDriverWait(driver, 2)).until(
+                ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".st>em"), "Selenium"));
+        // page factory + page object
 
     }
 
