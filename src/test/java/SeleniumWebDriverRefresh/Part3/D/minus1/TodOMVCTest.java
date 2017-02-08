@@ -16,7 +16,7 @@ import static org.hamcrest.core.Is.is;
 
 
 /**
- * todoMVC proof of concept
+ * todoMVC proof of concept, dont have time for Object Page and Page Factory
  */
 
 public class TodOMVCTest {
@@ -84,7 +84,6 @@ public class TodOMVCTest {
                 completeButtons) {
             taskComletion.click();
         }
-
     }
 
     @Test
@@ -105,11 +104,12 @@ public class TodOMVCTest {
     public void deleteTask() {
     }
 
-
     @Test
     public void editExistingTask() {
         // too hard
         List<WebElement> tasks = driver.findElements(By.cssSelector(".todo-list li label"));
+        tasks.get(1).click();
+        tasks.get(1).sendKeys(" more text ");
     }
 
 }
