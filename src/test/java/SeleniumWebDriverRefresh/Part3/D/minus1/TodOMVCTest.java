@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 
 /**
  * todoMVC proof of concept
@@ -43,11 +45,12 @@ public class TodOMVCTest {
     public void createTask() throws InterruptedException {
         //Configuration.browser = "chrome";
         //open("http://todomvc.com/examples/troopjs_require/");
-        // apparently whaen i was missing "#" in link , my flow was fucked up . Its only 00-05 glad it took only aboout a fucking hour !
+        // apparently when i was missing "#" in link , my flow was fucked up . Its only 00-05 glad it took only aboout a fucking hour !
         // sendKeys(Keys.Enter) was completely ignored
         driver.get("http://todomvc.com/examples/react/#/");
         driver.manage().window().maximize();
-        WebElement newTodo = driver.findElement(By.className("new-todo"));
+        //WebElement newTodo = driver.findElement(By.className("new-todo"));
+        WebElement newTodo = driver.findElement(By.cssSelector(".new-todo"));
         newTodo.sendKeys("write a todo list ");
         newTodo.sendKeys(Keys.RETURN);
         newTodo.sendKeys("go to sleep");
@@ -57,10 +60,13 @@ public class TodOMVCTest {
         newTodo.sendKeys("forget DELL-EMC as my worst fucking nightmare ");
         newTodo.sendKeys(Keys.RETURN);
 
-
-        Thread.sleep(1000);
-
-
+        List<WebElement> tasks = driver.findElements(By.cssSelector(".todo-list li label"));
+        // finally
+        for (WebElement task :
+                tasks) {
+            System.out.printf(task.getText());
+        }
+        Thread.sleep(1000); // replace
     }
 
 }

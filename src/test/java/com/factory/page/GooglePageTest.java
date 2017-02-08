@@ -58,6 +58,4 @@ public class GooglePageTest {
     public static void closeDriver() {
         driver.close();
     }
-
-
 }
