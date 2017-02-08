@@ -14,6 +14,9 @@ public class GooglePage {
     @FindBy(css = ".r>a")
     WebElement firstResult;
 
+    @FindBy(css = "._zXc>b")
+    WebElement foodResult;
+
     public GooglePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
