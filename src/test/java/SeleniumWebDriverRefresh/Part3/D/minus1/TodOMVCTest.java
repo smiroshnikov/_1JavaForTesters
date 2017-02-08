@@ -16,7 +16,18 @@ import static org.hamcrest.core.Is.is;
 
 
 /**
- * todoMVC proof of concept, dont have time for Object Page and Page Factory
+ * todoMVC proof of concept, don't have time for Object Page and Page Factory beauty
+ * This is a simple sanity test plan that I am writing @22:32 night before interview
+ * Every test incldes result validation , for now with assertions ,
+ * Test 1 - Create a task
+ * Test 2 - Create Multiple tasks (with Random Strings just for the fun ) , check "items left counter"
+ * Test 3 - Mark task as complete
+ * Test 4 - Mark all tasks as comlete
+ * Test 5 - Mark completed task as uncomplete
+ * Test 6 - Delete Task
+ * Test 7 - Delete all
+ * Test 8 - Switch to Active count
+ * Test 9 - Switch to Completed
  */
 
 public class TodOMVCTest {
@@ -71,7 +82,7 @@ public class TodOMVCTest {
                 tasks) {
             System.out.printf("task text : %s %n", task.getText());
         }
-//        Thread.sleep(1000); // replace
+//        Thread.sleep(1000); // replace with WebDriverWait and until this is too ugly and not needed
         assertThat("Expecting a first task text ", tasks.get(0).getText(), is("Write a todo list"));
         assertThat("expecting total of 4 tasks", tasks.size(), is(4));
 //        WebElement deleteButton = driver.findElement(By.cssSelector(".toggle"));

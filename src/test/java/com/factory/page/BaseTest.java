@@ -38,7 +38,8 @@ public class BaseTest {
 
     @AfterClass
     public static void closeDriver() {
-        //driver.close();
+        driver.manage().deleteAllCookies();
+        driver.close();
     }
 
     /**
