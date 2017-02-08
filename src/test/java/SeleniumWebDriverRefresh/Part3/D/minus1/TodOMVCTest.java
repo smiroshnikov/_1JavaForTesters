@@ -108,6 +108,7 @@ public class TodOMVCTest {
     public void completeTasksFromWebElementList() {
         List<WebElement> deleteButtons = driver.findElements(By.className(".toggle"));
         deleteButtons.get(2).click();
+        deleteButtons.get(2).clear();
     }
 
 

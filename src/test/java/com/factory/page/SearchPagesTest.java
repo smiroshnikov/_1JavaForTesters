@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentI
 
 public class SearchPagesTest extends BaseTest {
 
-    // googlePage objects as kindly mentioned by FE dev from Cloudinary
+    // googlePage objects a
 
     GooglePage googlePage = new GooglePage(driver);
     YahooPage yahooPage = new YahooPage(driver);
