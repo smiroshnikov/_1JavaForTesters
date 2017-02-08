@@ -21,9 +21,11 @@ public class SearchPagesTest extends BaseTest {
 
         assertThat(textToBePresentInElement(googlePage.firstResult, "Selenium"));
 
-        googlePage.searchMore(" food");
+        googlePage.followFirstResult();
 
-        assertThat(textToBePresentInElement(googlePage.foodResult, "Top 10 Foods High in Selenium"));
+//        googlePage.searchMore(" food");
+//
+//        assertThat(textToBePresentInElement(googlePage.foodResult, "Top 10 Foods High in Selenium"));
     }
 
     @Test
