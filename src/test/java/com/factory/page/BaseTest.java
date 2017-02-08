@@ -2,35 +2,26 @@ package com.factory.page;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElement;
+import java.net.URL;
 
 /**
- * Page Objects and Page Factory sample
+ * Separated driver setup and initialization
  */
+public class BaseTest {
 
-public class GooglePageTest {
-
-    private static final String TEST_URL = "http://google.com/ncr";
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
-    private static WebDriver driver;
-    // page objects as kindly mentioned by FE dev from Cloudinary
-    GooglePage page = new GooglePage(driver);
-
-    public void assertThat(ExpectedCondition<Boolean> condition) {
-        (new WebDriverWait(driver, 3)).until(condition);
-    }
+    static WebDriver driver;
 
     @BeforeClass
     public static void driverSetup() {
+        // checks if webdriver is not defined is System.properties sets to webdriver location
         // DB connection should be executed here as well
 
         if (System.getProperty("webdriver.chrome.driver") == null) {
@@ -45,17 +36,31 @@ public class GooglePageTest {
         driver = new ChromeDriver();
     }
 
-    @Test
-    public void searchText() {
-        driver.get(TEST_URL);
-        page.searchField.sendKeys("selenium", Keys.ENTER);
-        assertThat(textToBePresentInElement(page.firstResult, "Selenium"));
-        page.searchField.sendKeys(" chemical element", Keys.ENTER);
-        assertThat(textToBePresentInElement(page.firstResult, "Selenium"));
-    }
-
     @AfterClass
     public static void closeDriver() {
-        driver.close();
+        //driver.close();
+    }
+
+    /**
+     * Opens provided URL with Selenium driver.get command
+     *
+     * @param url String
+     */
+    public void open(String url) {
+        driver.get(url);
+    }
+
+    public void open(URL url) {
+        driver.get(url.toString());
+    }
+
+    /**
+     * Waits a fixed amount time (e.g 2 secs) and re-tries every 500 ms to locate an element passed with ExpectedCondition
+     * replaces assert functionality
+     *
+     * @param condition boolean - false if element is not found
+     */
+    public void assertThat(ExpectedCondition<Boolean> condition) {
+        (new WebDriverWait(driver, 2)).until(condition);
     }
 }
