@@ -44,7 +44,7 @@ public class BaseTest {
     }
 
     public static int getRandFrom1to20() {
-        return RANDOM.nextInt(200) + 35;
+        return RANDOM.nextInt(20000) + 35;
     }
 
     public static String getRandWord() {
