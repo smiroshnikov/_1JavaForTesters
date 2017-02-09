@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class TodOMVCTest {
         // different slector , just test my css skills :)
         //WebElement newTodo = driver.findElement(By.className("new-todo"));
         WebElement newTodo = driver.findElement(By.cssSelector(".new-todo"));
-        newTodo.sendKeys("Write a todo list");
+        newTodo.sendKeys("Write a todo list - delete me later ");
         newTodo.sendKeys(Keys.RETURN);
         newTodo.sendKeys("Go to sleep, and sleep 6 hours at least");
         newTodo.sendKeys(Keys.RETURN);
@@ -77,13 +78,13 @@ public class TodOMVCTest {
         newTodo.sendKeys(Keys.RETURN);
 
         List<WebElement> tasks = driver.findElements(By.cssSelector(".todo-list li label"));
-        // finally
-        for (WebElement task :
-                tasks) {
-            System.out.printf("task text : %s %n", task.getText());
-        }
+//        // finally
+//        for (WebElement task :
+//                tasks) {
+//            System.out.printf("task text : %s %n", task.getText());
+//        }
 //        Thread.sleep(1000); // replace with WebDriverWait and until this is too ugly and not needed
-        assertThat("Expecting a first task text ", tasks.get(0).getText(), is("Write a todo list"));
+        assertThat("Expecting a first task text ", tasks.get(0).getText(), is("Write a todo list - delete me later"));
         assertThat("expecting total of 4 tasks", tasks.size(), is(4));
 //        WebElement deleteButton = driver.findElement(By.cssSelector(".toggle"));
 //        deleteButton.click();
@@ -97,30 +98,35 @@ public class TodOMVCTest {
         }
     }
 
-    @Test
-    public void completeTaskSingleElement() {
-        // works !
-        WebElement deleteButton = driver.findElement(By.cssSelector(".toggle"));
-        deleteButton.click();
-    }
-
-    @Test
-    public void completeTasksFromWebElementList() {
-        List<WebElement> deleteButtons = driver.findElements(By.className(".toggle"));
-        deleteButtons.get(2).click();
-        deleteButtons.get(2).clear();
-    }
+//    @Test
+//    public void deleteTaskSingleElement() {
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(driver.findElement(By.xpath("/html/body/section/div/section/ul/li[1]/div/label")));
+//        WebElement deleteButton = driver.findElement(By.cssSelector(".destroy"));
+//        deleteButton.click();
+//    }
 
 
-    @Test
-    public void deleteTask() {
-    }
+//    @Test
+//    public void completeTasksFromWebElementList() {
+//        List<WebElement> deleteButtons = driver.findElements(By.className(".toggle"));
+//        deleteButtons.get(2).click();
+//        deleteButtons.get(2).clear();
+//    }
+
+
+//    @Test
+//    public void deleteTask() {
+//    }
 
     @Test
     public void editExistingTask() {
         // too hard
         List<WebElement> tasks = driver.findElements(By.cssSelector(".todo-list li label"));
-        tasks.get(1).click();
+        //tasks.get(1).click();
+        Actions action = new Actions(driver);
+        action.doubleClick(tasks.get(1));
+        action.perform();
         tasks.get(1).sendKeys(" more text ");
     }
 
