@@ -2,6 +2,7 @@ package city.after;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 
 /**
  * "TODO MVC test
@@ -25,6 +26,14 @@ public class TODOmvcTest extends BaseTest {
     public void addMultipleTasks() {
         for (int i = 0; i < getRandFrom1to20(); i++) {
             mvcPage.enterTask(getRandWord());
+        }
+    }
+
+    @Test
+    public void markAllAsCompleted() {
+        for (WebElement t :
+                mvcPage.allTasksToggle) {
+            t.click();
         }
 
     }
