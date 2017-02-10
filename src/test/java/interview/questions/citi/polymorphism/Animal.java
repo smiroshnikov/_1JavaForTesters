@@ -5,6 +5,6 @@ package interview.questions.citi.polymorphism;
  */
 public class Animal {
     public void move() {
-        System.out.printf("empty move ");
+        System.out.printf("moving... ");
     }
 }

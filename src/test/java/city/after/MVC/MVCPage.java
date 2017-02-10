@@ -25,6 +25,12 @@ public class MVCPage {
     })
     List<WebElement> allTasksToggle;
 
+    @FindBy(css = ".clear-completed")
+    WebElement clearCompleted;
+
+    @FindBy(xpath = "html/body/section/div/section/ul/li[1]/div/label")
+    WebElement firstTask;
+
 
     public MVCPage(WebDriver driver) {
         // whats happening behing the scenes
@@ -35,4 +41,5 @@ public class MVCPage {
     public void enterTask(String taskText) {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
     }
+
 }
