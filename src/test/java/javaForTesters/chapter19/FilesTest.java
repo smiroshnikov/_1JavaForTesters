@@ -59,7 +59,7 @@ public class FilesTest {
     public void aNewFileDoesNotCreateAFile() throws IOException {
         File aTempFile = new File("d:/tempJavaForTesters.txt");
         assertThat(aTempFile.exists(), is(false));
-        // File also has static methods for temp files
+        // File also has staticQuestions methods for temp files
         File tempFile = File.createTempFile("___", null, null);
         tempFile.deleteOnExit();
 

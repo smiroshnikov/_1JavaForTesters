@@ -27,8 +27,8 @@ public class UserTest {
         user.setPassword("PaZZwor6");
         assertEquals("setter password expected", "PaZZwor6", user.getPassword());
         //assertEquals("New password too short" , user.MINIMAL_PASSWORD_LENGTH , user.getPassword().length());
-        //static member accessed via instance reference - line above means it is possible to access MINIMAL_PASSWORD_LENGTH
-        //without instantiating a user class , hence it is static and final
+        //staticQuestions member accessed via instance reference - line above means it is possible to access MINIMAL_PASSWORD_LENGTH
+        //without instantiating a user class , hence it is staticQuestions and final
         user.setPassword("12345678912453");
         assertFalse("password too short", user.getPassword().length() < User.MINIMAL_PASSWORD_LENGTH);
         assertFalse("password too long", user.getPassword().length() > User.MAXIMUM_PASSWORD_LENGTH);
@@ -40,7 +40,7 @@ public class UserTest {
     @Test
     public void validateUsersAndPasswords() {
         User[] users;
-        // initialize Random once not per test , per class make it final and static as well !
+        // initialize Random once not per test , per class make it final and staticQuestions as well !
         Random r = new Random();
         int randomSeed = r.nextInt(100000);
 

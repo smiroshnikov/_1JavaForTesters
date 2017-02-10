@@ -10,7 +10,7 @@ public class ClassOnlyTest {
     public void preventInstantiationTest() {
 
         System.out.printf(ClassOnly.classMessage);
-        assertEquals("Expect a static call ", "only the lonely", ClassOnly.classMessage);
+        assertEquals("Expect a staticQuestions call ", "only the lonely", ClassOnly.classMessage);
 
     }
 }

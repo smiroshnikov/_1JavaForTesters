@@ -185,7 +185,7 @@ public class RandomDataTest {
         System.out.println(r.nextBoolean());
         long currentSeed = System.currentTimeMillis();
         System.out.println("seed used " + currentSeed);
-        // this could be used for dungeon/alchemy static random generation
+        // this could be used for dungeon/alchemy staticQuestions random generation
         Random sysRandomSeed = new Random(currentSeed);
         System.out.println(sysRandomSeed.nextLong());
     }

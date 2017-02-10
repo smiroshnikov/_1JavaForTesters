@@ -7,7 +7,7 @@ import static javafortesters.chapter5.practice.TestAppEnv.DOMAIN;
 import static javafortesters.chapter5.practice.TestAppEnv.PORT;
 import static javafortesters.chapter5.practice.TestAppEnv.getUrl;
 
-//import static org.junit.Assert.assertEquals; // static import allows usage of assertEquals method without Assert class instantiation
+//import staticQuestions org.junit.Assert.assertEquals; // staticQuestions import allows usage of assertEquals method without Assert class instantiation
 
 
 public class TestAppEnvironmentTest {
@@ -16,7 +16,7 @@ public class TestAppEnvironmentTest {
         //    assertEquals("URL does not match", TestAppEnv.getUrl(), "https://192.125.54.84");
 //        Assert.assertEquals("URL does not match", TestAppEnv.getUrl(), "https://192.125.54.84");
         Assert.assertEquals("URL does not match", getUrl(), "https://192.125.54.84:67");
-        // because its static method it can be used without instantiating TestAppEnv object
+        // because its staticQuestions method it can be used without instantiating TestAppEnv object
     }
 
     @Test

@@ -45,7 +45,7 @@ public class EnumTest {
 
     /*
     public can access from a different class
-    static means to be called on a type e.g System.getProperty() is called on a type without instantiating a class
+    staticQuestions means to be called on a type e.g System.getProperty() is called on a type without instantiating a class
     final means constant
      */
 

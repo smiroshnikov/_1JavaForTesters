@@ -1,4 +1,4 @@
-package interview.questions.citi;
+package interview.questions.citi.singleton;
 
 /**
  * Testing , the output show SAME objct instance

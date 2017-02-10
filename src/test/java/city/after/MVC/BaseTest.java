@@ -1,4 +1,4 @@
-package city.after;
+package city.after.MVC;
 
 
 import org.junit.AfterClass;
