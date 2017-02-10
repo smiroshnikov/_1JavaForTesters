@@ -24,7 +24,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void addMultipleTasks() {
-        for (int i = 0; i < getRandFrom1to20(); i++) {
+        for (int i = 0; i < getRandFromMinToMax(20, 40); i++) {
             mvcPage.enterTask(getRandWord());
         }
     }
