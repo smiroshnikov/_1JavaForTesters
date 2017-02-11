@@ -7,7 +7,6 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 /**
  * "TODO MVC test
@@ -54,7 +53,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void b_UpdateTask() {
-        Actions action = new Actions(driver);
+        //Actions action = new Actions(driver);
         // does action gooutside ? , to BaseTest?
         action.doubleClick(mvcPage.todoEdit).perform();
         //doADoubleClick(mvcPage.todoEdit);
@@ -78,7 +77,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void h_deleteTask() {
-        Actions action = new Actions(driver);
+        //Actions action = new Actions(driver);
         // had to move , had to click , and had to delete
         action.moveToElement(mvcPage.todoEdit);
         mvcPage.todoEdit.click();

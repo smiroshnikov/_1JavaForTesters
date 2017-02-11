@@ -5,6 +5,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.Random;
 
@@ -15,7 +16,7 @@ public class BaseTest {
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     static WebDriver driver;
-    //static Actions action = new Actions(driver);
+    static Actions action;
     static final Random RANDOM = new Random(System.currentTimeMillis());
 
 
@@ -33,6 +34,7 @@ public class BaseTest {
             System.setProperty("webdriver.edge.driver", EDGE_DRIVER_PATH);
         }
         driver = new ChromeDriver();
+        action = new Actions(driver);
     }
 
     @AfterClass
