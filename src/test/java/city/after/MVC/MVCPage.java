@@ -60,6 +60,7 @@ public class MVCPage {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
     }
 
+    // this method is useless , either fix or remove
     public void enterTaskText(WebElement task, String text) {
         task.sendKeys(text, Keys.ENTER);
     }
