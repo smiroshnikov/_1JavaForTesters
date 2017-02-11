@@ -20,6 +20,9 @@ public class MVCPage {
     @FindBy(css = ".destroy")
     WebElement deleteTask;
 
+    @FindBy(css = "body > section > div > section > ul > li > div > label")
+    WebElement todoEdit;
+
     @FindAll({
             @FindBy(css = ".toggle")
     })
@@ -27,10 +30,6 @@ public class MVCPage {
 
     @FindBy(css = ".clear-completed")
     WebElement clearCompleted;
-
-    @FindBy(xpath = "html/body/section/div/section/ul/li[1]/div/label")
-    WebElement firstTask;
-
 
     public MVCPage(WebDriver driver) {
         // whats happening behing the scenes

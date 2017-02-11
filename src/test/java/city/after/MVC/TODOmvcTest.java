@@ -1,7 +1,9 @@
 package city.after.MVC;
 
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 /**
  * "TODO MVC test
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TODOmvcTest extends BaseTest {
 
     MVCPage mvcPage = new MVCPage(driver);
@@ -20,41 +23,37 @@ public class TODOmvcTest extends BaseTest {
         driver.manage().window().maximize();
     }
 
+
     @Test
-    public void addTask() {
-        mvcPage.enterTask("Commit Code ! ");
+    public void caddMultipleTasks() {
+        for (int i = 0; i < getRandFromMinToMax(20, 100); i++) {
+            mvcPage.enterTask(getRandWord());
+        }
     }
 
     @Test
-    public void editTask() {
-        // TODO solve this ! keep solving
+    public void dmarkAllAsCompleted() {
+        for (WebElement t :
+                mvcPage.allTasksToggle) {
+            t.click();
+        }
+    }
+
+    @Test
+    public void eclearCompleted() {
+        mvcPage.clearCompleted.click();
+    }
+
+    @Test
+    public void aAddTask() {
+        mvcPage.enterTask("Молоко ");
+    }
+
+    @Test
+    public void bTaskToEdit() {
         Actions action = new Actions(driver);
-        WebElement todoView = driver.findElement(By.cssSelector("body > section > div > section > ul > li > div > label"));
-
-        action.doubleClick(todoView).perform();
+        action.doubleClick(mvcPage.todoEdit).perform();
         driver.findElement(By.className("edit"))
-                .sendKeys(" blah blah ", Keys.ENTER);
+                .sendKeys(" и банан ", Keys.ENTER);
     }
-
-//    @Test
-//    public void addMultipleTasks() {
-//        for (int i = 0; i < getRandFromMinToMax(20, 100); i++) {
-//            mvcPage.enterTask(getRandWord());
-//        }
-//    }
-//
-//    @Test
-//    public void markAllAsCompleted() {
-//        for (WebElement t :
-//                mvcPage.allTasksToggle) {
-//            t.click();
-//        }
-//    }
-//
-//    @Test
-//    public void clearCompleted() {
-//        mvcPage.clearCompleted.click();
-//    }
-
-
 }
