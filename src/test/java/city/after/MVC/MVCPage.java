@@ -1,5 +1,19 @@
 package city.after.MVC;
 
+
+/*
+Selenium TOTO MVC  - Sanity Flow
+Create task
+Update task content
+Mark as completed
+UnMark completion
+Add random amount of tasks with random text
+Mark all as complete
+Clear completed
+Delete Task
+TODO counter , Active , Completed, maybe performance  , maybe .... fix selectors
+ */
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
