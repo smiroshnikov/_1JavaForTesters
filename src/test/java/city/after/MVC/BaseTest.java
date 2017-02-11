@@ -14,10 +14,9 @@ public class BaseTest {
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
-    static WebDriver driver; // should be a singletone ? Thread safe ? how about FF and E?
-
+    static WebDriver driver;
+    //static Actions action = new Actions(driver);
     static final Random RANDOM = new Random(System.currentTimeMillis());
-    //static private Actions action = new Actions(driver);
 
 
     @BeforeClass

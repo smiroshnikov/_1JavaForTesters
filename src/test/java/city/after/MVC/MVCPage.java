@@ -17,11 +17,13 @@ public class MVCPage {
     @FindBy(css = ".toggle")
     WebElement toggleCompletion;
 
-    @FindBy(css = ".destroy")
+    @FindBy(xpath = "//div/button")
     WebElement deleteTask;
 
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
+    // bad selector
+
 
     @FindAll({
             @FindBy(css = ".toggle")

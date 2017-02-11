@@ -73,11 +73,15 @@ public class TODOmvcTest extends BaseTest {
     @Test
     public void d_UnClearUpdatedTaskAndClearAgain() throws InterruptedException {
         mvcPage.toggleCompletion.click();
-        // move to base test , replace with wait(int seconds)
-        Thread.sleep(5000);
         mvcPage.toggleCompletion.click();
-
-
     }
 
+    @Test
+    public void h_deleteTask() {
+        Actions action = new Actions(driver);
+        // had to move , had to click , and had to delete
+        action.moveToElement(mvcPage.todoEdit);
+        mvcPage.todoEdit.click();
+        mvcPage.deleteTask.click();
+    }
 }
