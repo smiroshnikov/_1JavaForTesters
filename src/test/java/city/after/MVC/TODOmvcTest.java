@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 /**
@@ -28,11 +29,11 @@ public class TODOmvcTest extends BaseTest {
     public void editTask() {
         // TODO solve this ! keep solving
         Actions action = new Actions(driver);
-        action.doubleClick(driver.findElement(By.className("edit")));
+        WebElement todoView = driver.findElement(By.cssSelector("body > section > div > section > ul > li > div > label"));
+
+        action.doubleClick(todoView).perform();
         driver.findElement(By.className("edit"))
                 .sendKeys(" blah blah ", Keys.ENTER);
-        //action.doubleClick(mvcPage.firstTask);
-//        mvcPage.enterTask(" blah blah");
     }
 
 //    @Test
