@@ -15,7 +15,7 @@ public class MVCPage {
     WebElement newTodoLine;
 
     @FindBy(css = ".toggle")
-    WebElement toggleComplition;
+    WebElement toggleCompletion;
 
     @FindBy(css = ".destroy")
     WebElement deleteTask;
@@ -39,6 +39,10 @@ public class MVCPage {
 
     public void enterTask(String taskText) {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
+    }
+
+    public void enterTaskText(WebElement task, String text) {
+        task.sendKeys(text, Keys.ENTER);
     }
 
 }

@@ -14,8 +14,10 @@ public class BaseTest {
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
-    static WebDriver driver; // should be a singletone
+    static WebDriver driver; // should be a singletone ? Thread safe ? how about FF and E?
+
     static final Random RANDOM = new Random(System.currentTimeMillis());
+    //static private Actions action = new Actions(driver);
 
 
     @BeforeClass
@@ -43,21 +45,25 @@ public class BaseTest {
         driver.get(url);
     }
 
-    public static int getRandFromMinToMax(int min, int max) {
+    public static int generateRandomValueBetweenMinToMax(int min, int max) {
         return RANDOM.nextInt(max - min) + min;
     }
 
-    public static String getRandWord() {
+    public static String generateRandomWordWith_HEB_ENG_Charsets() {
         String validValues = " ABCDEFGHIJKLMNOPQRSTUVWXYZ " + " ABCDEFGHIJKLMNOPQRSTUVWXYZ ".toLowerCase() +
                 " !@#$%^&*()_+ " + "א\u200E ב\u200E ג\u200E ד\u200E ה\u200E ו\u200E ז\u200E ח\u200E ט\u200E י\u200E כ\u200E ך\u200E  ל\u200E מ\u200E" +
                 " נ\u200E ס\u200E ע\u200E פ\u200E צ\u200E ק\u200E ר\u200E ש\u200E ת";
         String result = "";
-        for (int i = 0; i < getRandFromMinToMax(3, 100); i++) {
+        for (int i = 0; i < generateRandomValueBetweenMinToMax(3, 100); i++) {
             char rChar = validValues.charAt(RANDOM.nextInt(validValues.length()));
             result += rChar;
         }
         return result;
     }
+
+//    public void doADoubleClick(WebElement targetForClick) {
+//        action.doubleClick(targetForClick).perform();
+//    }
 }
 
 
