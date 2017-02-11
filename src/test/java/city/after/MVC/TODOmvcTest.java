@@ -53,14 +53,16 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void b_UpdateTask() {
-        //Actions action = new Actions(driver);
-        // does action gooutside ? , to BaseTest?
-        action.doubleClick(mvcPage.todoEdit).perform();
-        //doADoubleClick(mvcPage.todoEdit);
-        // Why do i need to locate this element again ?
+// TODO NO ELEMENTS IN TEST ! ONLY TEST LOGIC // cannot use driver in here
+        doADoubleClick(mvcPage.todoEdit);
         driver.findElement(By.className("edit"))
                 .sendKeys(" и банан ", Keys.ENTER);
 
+        // Why do i need to locate this element again ?
+//        mvcPage.enterTaskText(mvcPage.todoEdit,"и банан ");
+        // Very interesting bug in here , when line gets bigger like
+        // a lot of content, delete button moves and completion of single task
+        // and deletion of single task gets fucked up
     }
 
     @Test
@@ -70,14 +72,13 @@ public class TODOmvcTest extends BaseTest {
     }
 
     @Test
-    public void d_UnClearUpdatedTaskAndClearAgain() throws InterruptedException {
+    public void d_UnClearUpdatedTaskAndClearAgain() {
         mvcPage.toggleCompletion.click();
         mvcPage.toggleCompletion.click();
     }
 
     @Test
-    public void h_deleteTask() {
-        //Actions action = new Actions(driver);
+    public void h_deleteActiveTask() {
         // had to move , had to click , and had to delete
         action.moveToElement(mvcPage.todoEdit);
         mvcPage.todoEdit.click();

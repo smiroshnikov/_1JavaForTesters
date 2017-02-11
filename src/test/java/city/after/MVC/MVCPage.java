@@ -11,7 +11,10 @@ Add random amount of tasks with random text
 Mark all as complete
 Clear completed
 Delete Task
-TODO counter , Active , Completed, maybe performance  , maybe .... fix selectors
+TODO ---> fix selectors
+TODO ---> counter , Active filter, Completed filter, maybe performance stretch , maybe ....
+TODO ---> multi-lined task with universal selector
+
  */
 
 import org.openqa.selenium.Keys;
@@ -36,7 +39,8 @@ public class MVCPage {
 
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
-    // bad selector
+    // bad selector above , better selector below not working
+    //@FindBy(css = "//*[contains(@class, 'edit')]")
 
 
     @FindAll({
@@ -48,8 +52,7 @@ public class MVCPage {
     WebElement clearCompleted;
 
     public MVCPage(WebDriver driver) {
-        // whats happening behing the scenes
-        // looks very interesting
+        // whats happening behing the scenes ?
         PageFactory.initElements(driver, this);
     }
 

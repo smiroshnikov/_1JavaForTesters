@@ -4,6 +4,7 @@ package city.after.MVC;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -62,9 +63,9 @@ public class BaseTest {
         return result;
     }
 
-//    public void doADoubleClick(WebElement targetForClick) {
-//        action.doubleClick(targetForClick).perform();
-//    }
+    public void doADoubleClick(WebElement targetForClick) {
+        action.doubleClick(targetForClick).perform();
+    }
 }
 
 

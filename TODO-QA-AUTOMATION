@@ -15,8 +15,11 @@ Go over SD automation and see what can be scrapped
 
 [E2E]
 Automated test - create 10,000 large (6~10 mb files ) and upload to Google Drive
+
 [E2E]
+
 Working with BigDecimal - mortgage calculator  pick a couple
+
 [Simple tests for warm up]
 -1000000 Users JUNIT TEST {Provide a better scenario}
 [Country code test]
@@ -91,6 +94,12 @@ DOM - document object model
 [CSS selector]
 http://ddavison.io/css/2014/02/18/effective-css-selectors.html
 
+[MVC]
+https://github.com/dimasaryo/todomvc-test
+very good logic separation , definately Page Object Pattern
+
+[Logging]
+Allure Yandex
 
 
 
