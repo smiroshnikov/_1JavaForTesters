@@ -3,15 +3,18 @@ package city.after.MVC;
 
 /*
 Selenium TOTO MVC  - Sanity Flow
-Create task
-Update task content
-Mark as completed
-UnMark completion
-Add random amount of tasks with random text
-Mark all as complete
-Clear completed
-Delete Task
+Create task [DONE]
+Update task content [DONE]
+Mark as completed [DONE]
+UnMark completion [DONE]
+Add random amount of tasks with random text [DONE]
+Mark all as complete one by one [DONE]
+Clear completed [DONE]
+Delete Task   [DONE]
+
+
 TODO ---> fix selectors
+TODO ---> separate selectors and clickers to two separate classes : "SelectorHelpers"  and "ClickerHelpers"
 TODO ---> counter , Active filter, Completed filter, maybe performance stretch , maybe ....
 TODO ---> multi-lined task with universal selector
 
@@ -61,14 +64,32 @@ public class MVCPage {
     })
     List<WebElement> allTasksToggle;
 
+    @FindAll({
+            @FindBy(xpath = "//ul[contains(@class, 'filters')]//a")})
+    List<WebElement> filterButtons;
+    // FIXEN PARTIZANEN
+
+
     @FindBy(css = ".clear-completed")
     WebElement clearCompleted;
+
+    /**
+     * Constructor that instantiates page via PageFactory
+     *
+     * @param driver - current Webdriver instance
+     */
 
     public MVCPage(WebDriver driver) {
         // whats happening behing the scenes ?
         PageFactory.initElements(driver, this);
     }
 
+
+    /**
+     * Creates a new task with provided text
+     *
+     * @param taskText - text to be entered
+     */
     public void enterTask(String taskText) {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
     }
@@ -76,6 +97,20 @@ public class MVCPage {
     // this method is useless , either fix or remove
     public void enterTaskText(WebElement task, String text) {
         task.sendKeys(text, Keys.ENTER);
+    }
+
+    public void markAllTasksOnScreenAsCompleted() {
+        for (WebElement t :
+                allTasksToggle) {
+            t.click();
+        }
+    }
+
+    public void clickActiveFilter() {
+        WebElement allFilter = filterButtons.get(0);
+        WebElement activeFilter = filterButtons.get(1);
+        WebElement completedFilter = filterButtons.get(0);
+        activeFilter.click();
     }
 
 }

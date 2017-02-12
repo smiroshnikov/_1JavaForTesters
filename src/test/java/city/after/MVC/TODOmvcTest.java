@@ -4,7 +4,6 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.WebElement;
 
 /**
  * "TODO MVC test
@@ -30,10 +29,12 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void f_MarkAllAsCompleted() {
-        for (WebElement t :
-                mvcPage.allTasksToggle) {
-            t.click();
-        }
+
+        mvcPage.markAllTasksOnScreenAsCompleted();
+//        for (WebElement t :
+//                mvcPage.allTasksToggle) {
+//            t.click();
+//        }
     }
 
     @Test
@@ -43,11 +44,8 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void a_AddTask() {
+        // CURRENTLY NOT WORKING IF THIS IS AN ONLY TASK IN THE LIST
         mvcPage.enterTask("Молоко ");
-        // this is over complicating , but a valid selection as well, keep it here
-        // I might have a better idea later on
-        // mvcPage.enterTaskText(mvcPage.newTodoLine, "Milk");
-
     }
 
     @Test
@@ -76,6 +74,7 @@ public class TODOmvcTest extends BaseTest {
     @Test
     public void h_deleteActiveTask() {
         // had to move , had to click , and had to delete
+        // fix this
         action.moveToElement(mvcPage.todoEdit);
         mvcPage.todoEdit.click();
         mvcPage.deleteTask.click();
@@ -83,8 +82,26 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void i_filterActiveTasks() {
+        mvcPage.enterTask(" task is done - clear me!");
+        mvcPage.enterTask(" task is active - filter me!");
+        mvcPage.enterTask(" task is active - filter me!");
+        mvcPage.enterTask(" task is active - filter me!");
+        mvcPage.enterTask(" task is active - filter me!");
+        doADoubleClick(mvcPage.todoEdit);
+        mvcPage.enterTaskText(mvcPage.todoEditFullPath, " clear! ");
+        mvcPage.toggleCompletion.click();
+        mvcPage.clickActiveFilter();
+
+        //TODO press "Active" , Assert
+    }
+
+    public void j_filterCompletedTasks() {
+        mvcPage.enterTask(" task is done !");
+        mvcPage.enterTask(" task is done !");
+        mvcPage.enterTask(" task is done !");
 
 
     }
+
 
 }
