@@ -101,5 +101,11 @@ very good logic separation , definately Page Object Pattern
 [Logging]
 Allure Yandex
 
+[Thread safe singleton ]
+Keylogger --> text file --> distributed
+one DB (singleton)
+Each tread need to access to a pointer in a file ()
+
+
 
 
