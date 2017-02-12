@@ -107,10 +107,20 @@ public class MVCPage {
     }
 
     public void clickActiveFilter() {
-        WebElement allFilter = filterButtons.get(0);
+
         WebElement activeFilter = filterButtons.get(1);
-        WebElement completedFilter = filterButtons.get(0);
         activeFilter.click();
+    }
+
+
+    public void clickAllFilter() {
+        WebElement allFilter = filterButtons.get(0);
+        allFilter.click();
+    }
+
+    public void clickCompletedFilter() {
+        WebElement completedFilter = filterButtons.get(2);
+        completedFilter.click();
     }
 
 }

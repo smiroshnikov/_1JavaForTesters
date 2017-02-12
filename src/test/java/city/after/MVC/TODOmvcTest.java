@@ -6,8 +6,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 /**
- * "TODO MVC test
- * TODO all tests are independent
+ * "TODO MVC test" - thats a title and to a todo item
+ * TODO ----> all tests flows should be  independent and not based on each other
+ * TODO ----> remove moveToElement to mvcPage class
+ * TODO ----> reporting , allure might be very good candidate
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // Damn JAVA ! Need to read documentation regarding Java compiler
 public class TODOmvcTest extends BaseTest {
@@ -60,6 +62,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void c_CompleteUpdatedTask() {
+        // TODO rewrite this without click
         mvcPage.toggleCompletion.click();
 
     }
@@ -91,17 +94,21 @@ public class TODOmvcTest extends BaseTest {
         mvcPage.enterTaskText(mvcPage.todoEditFullPath, " clear! ");
         mvcPage.toggleCompletion.click();
         mvcPage.clickActiveFilter();
-
+        mvcPage.clickCompletedFilter();
+        mvcPage.clickAllFilter();
+        mvcPage.markAllTasksOnScreenAsCompleted();
+        mvcPage.clearCompleted.click();
         //TODO press "Active" , Assert
     }
 
-    public void j_filterCompletedTasks() {
+    @Test
+    public void j_filterCompletedTasks() throws InterruptedException {
         mvcPage.enterTask(" task is done !");
         mvcPage.enterTask(" task is done !");
         mvcPage.enterTask(" task is done !");
-
-
+        mvcPage.markAllTasksOnScreenAsCompleted();
+        mvcPage.clickCompletedFilter();
+        //mvcPage.clickActiveFilter(); // button disappears if all tasks are cleared
+        mvcPage.clearCompleted.click();
     }
-
-
 }
