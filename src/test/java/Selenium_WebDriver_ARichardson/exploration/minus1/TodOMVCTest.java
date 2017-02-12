@@ -19,7 +19,7 @@ import static org.hamcrest.core.Is.is;
 /**
  * todoMVC proof of concept, don't have time for Object Page and Page Factory beauty
  * This is a simple sanity test plan that I am writing @22:32 night before interview
- * Every test incldes result validation , for now with assertions ,
+ * Every test will inclde result validation , for now with assertions ,
  * Test 1 - Create a task
  * Test 2 - Create Multiple tasks (with Random Strings just for the fun ) , check "items left counter"
  * Test 3 - Mark task as complete
@@ -29,6 +29,7 @@ import static org.hamcrest.core.Is.is;
  * Test 7 - Delete all
  * Test 8 - Switch to Active count
  * Test 9 - Switch to Completed
+ * TODO migrate to Page Objects and Page Factory Later on ...
  */
 
 public class TodOMVCTest {

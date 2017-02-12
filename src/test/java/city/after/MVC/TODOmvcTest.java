@@ -4,14 +4,19 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.security.Key;
 
 /**
- * "TODO MVC test" - thats a title and to a todo item
- * TODO ----> all tests flows should be  independent and not based on each other
- * TODO ----> remove moveToElement to mvcPage class
- * TODO ----> reporting , allure might be very good candidate
+ * TODO remove ordering
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING) // Damn JAVA ! Need to read documentation regarding Java compiler
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) // Any other way ?
 public class TODOmvcTest extends BaseTest {
 
     MVCPage mvcPage = new MVCPage(driver);
@@ -22,93 +27,68 @@ public class TODOmvcTest extends BaseTest {
         driver.manage().window().maximize();
     }
 
-    @Test
-    public void e_AddMultipleTasks() {
-        for (int i = 0; i < generateRandomValueBetweenMinToMax(20, 100); i++) {
-            mvcPage.enterTask(generateRandomWordWith_HEB_ENG_Charsets());
-        }
-    }
+//    @Test
+//    public void e_AddMultipleTasks() {
+//        for (int i = 0; i < generateRandomValueBetweenMinToMax(20, 100); i++) {
+//            mvcPage.enterTask(generateRandomWordWith_HEB_ENG_Charsets());
+//        }
+//    }
 
-    @Test
-    public void f_MarkAllAsCompleted() {
-
-        mvcPage.markAllTasksOnScreenAsCompleted();
+//    @Test
+//    public void f_MarkAllAsCompleted() {
 //        for (WebElement t :
 //                mvcPage.allTasksToggle) {
 //            t.click();
 //        }
-    }
-
-    @Test
-    public void g_ClearCompleted() {
-        mvcPage.clearCompleted.click();
-    }
+//    }
+//
+//    @Test
+//    public void g_ClearCompleted() {
+//        mvcPage.clearCompleted.click();
+//    }
 
     @Test
     public void a_AddTask() {
-        // CURRENTLY NOT WORKING IF THIS IS AN ONLY TASK IN THE LIST
         mvcPage.enterTask("Молоко ");
+        // this is over complicating , but a valid selection as well, keep it here
+        // I might have a better idea later on
+        // mvcPage.enterTaskText(mvcPage.newTodoLine, "Milk");
     }
 
     @Test
     public void b_UpdateTask() {
+        Actions action = new Actions(driver);
+        // does action go outside ? , to BaseTest? Separate  clicker selector class class select from drop list
 
-        doADoubleClick(mvcPage.todoEdit);
-        mvcPage.enterTaskText(mvcPage.todoEditFullPath, " и банан ");
-        // Very interesting bug in here , when line gets bigger like
-        // a lot of content, delete button moves and completion of single task
-        // and deletion of single task gets fucked up
+        action.doubleClick(mvcPage.todoEdit).perform();
+        //mvcPage.todoEdit.sendKeys("Blah blah", Keys.ENTER);
+        //doADoubleClick(mvcPage.todoEdit);
+        // Why do i need to locate this element again ?
+        driver.findElement(By.className("edit"))
+                .sendKeys(" и банан ", Keys.ENTER);
+        //action.moveToElement(mvcPage.deleteButton).click();
     }
 
     @Test
-    public void c_CompleteUpdatedTask() {
-        // TODO rewrite this without click
-        mvcPage.toggleCompletion.click();
-
+    public void c_AnyaDelete() {
+        mvcPage.deleteButton.click();
+        // mvcPage.deleteTask;
     }
 
-    @Test
-    public void d_UnClearUpdatedTaskAndClearAgain() {
-        // I need even numbers here , jumpimg to another test
-        mvcPage.toggleCompletion.click();
-        mvcPage.toggleCompletion.click();
-    }
+//    @Test
+//    public void c_CompleteUpdatedTask() {
+//        mvcPage.toggleCompletion.click();
+//
+//    }
+//
+//    @Test
+//    public void d_UnClearUpdatedTaskAndClearAgain() throws InterruptedException {
+//        mvcPage.toggleCompletion.click();
+//        // move to base test , replace with wait(int seconds)
+//        Thread.sleep(5000); // no point use this in real test
+//        mvcPage.toggleCompletion.click();
+//
+//
+//    }
 
-    @Test
-    public void h_deleteActiveTask() {
-        // had to move , had to click , and had to delete
-        // fix this
-        action.moveToElement(mvcPage.todoEdit);
-        mvcPage.todoEdit.click();
-        mvcPage.deleteTask.click();
-    }
-
-    @Test
-    public void i_filterActiveTasks() {
-        mvcPage.enterTask(" task is done - clear me!");
-        mvcPage.enterTask(" task is active - filter me!");
-        mvcPage.enterTask(" task is active - filter me!");
-        mvcPage.enterTask(" task is active - filter me!");
-        mvcPage.enterTask(" task is active - filter me!");
-        doADoubleClick(mvcPage.todoEdit);
-        mvcPage.enterTaskText(mvcPage.todoEditFullPath, " clear! ");
-        mvcPage.toggleCompletion.click();
-        mvcPage.clickActiveFilter();
-        mvcPage.clickCompletedFilter();
-        mvcPage.clickAllFilter();
-        mvcPage.markAllTasksOnScreenAsCompleted();
-        mvcPage.clearCompleted.click();
-        //TODO press "Active" , Assert
-    }
-
-    @Test
-    public void j_filterCompletedTasks() throws InterruptedException {
-        mvcPage.enterTask(" task is done !");
-        mvcPage.enterTask(" task is done !");
-        mvcPage.enterTask(" task is done !");
-        mvcPage.markAllTasksOnScreenAsCompleted();
-        mvcPage.clickCompletedFilter();
-        //mvcPage.clickActiveFilter(); // button disappears if all tasks are cleared
-        mvcPage.clearCompleted.click();
-    }
 }
