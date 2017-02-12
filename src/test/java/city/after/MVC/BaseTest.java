@@ -13,13 +13,12 @@ import java.util.Random;
 public class BaseTest {
 
     static final String TEST_URL = "http://todomvc.com/examples/react/#/";
+    static final Random RANDOM = new Random(System.currentTimeMillis());
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     static WebDriver driver;
     static Actions action;
-    static final Random RANDOM = new Random(System.currentTimeMillis());
-
 
     @BeforeClass
     public static void driverSetup() {

@@ -37,6 +37,8 @@ public class MVCPage {
     @FindBy(xpath = "//div/button")
     WebElement deleteTask;
 
+
+    //@FindBy(className = "edit")
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
     // bad selector above , better selector below not working
