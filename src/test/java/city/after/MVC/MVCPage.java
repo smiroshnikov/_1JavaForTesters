@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -39,8 +40,18 @@ public class MVCPage {
 
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
+
     // bad selector above , better selector below not working
+    //@FindBy(css = ".edit")
+    //@FindBy(className = "edit")
     //@FindBy(css = "//*[contains(@class, 'edit')]")
+
+    // FIXEN PARTIZANEN ! guess it is related to mouse-over above element first
+    @FindBys({@FindBy(className = "main"),
+            @FindBy(className = "todo-list"),
+            @FindBy(css = "li"),
+            @FindBy(className = "edit")})
+    WebElement todoEditFullPath;
 
 
     @FindAll({

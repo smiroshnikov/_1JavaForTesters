@@ -4,14 +4,13 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 /**
  * "TODO MVC test
+ * TODO all tests are independent
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING) // Any other way ?
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) // Damn JAVA ! Need to read documentation regarding Java compiler
 public class TODOmvcTest extends BaseTest {
 
     MVCPage mvcPage = new MVCPage(driver);
@@ -53,13 +52,9 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void b_UpdateTask() {
-// TODO NO ELEMENTS IN TEST ! ONLY TEST LOGIC // cannot use driver in here
-        doADoubleClick(mvcPage.todoEdit);
-        driver.findElement(By.className("edit"))
-                .sendKeys(" и банан ", Keys.ENTER);
 
-        // Why do i need to locate this element again ?
-//        mvcPage.enterTaskText(mvcPage.todoEdit,"и банан ");
+        doADoubleClick(mvcPage.todoEdit);
+        mvcPage.enterTaskText(mvcPage.todoEditFullPath, " и банан ");
         // Very interesting bug in here , when line gets bigger like
         // a lot of content, delete button moves and completion of single task
         // and deletion of single task gets fucked up
@@ -73,6 +68,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void d_UnClearUpdatedTaskAndClearAgain() {
+        // I need even numbers here , jumpimg to another test
         mvcPage.toggleCompletion.click();
         mvcPage.toggleCompletion.click();
     }
@@ -84,4 +80,11 @@ public class TODOmvcTest extends BaseTest {
         mvcPage.todoEdit.click();
         mvcPage.deleteTask.click();
     }
+
+    @Test
+    public void i_filterActiveTasks() {
+
+
+    }
+
 }
