@@ -71,7 +71,7 @@ public class MVCPage {
 
 
     @FindBy(css = ".clear-completed")
-    WebElement clearCompleted;
+    WebElement clearCompletedTasks;
 
     /**
      * Constructor that instantiates page via PageFactory
@@ -94,7 +94,7 @@ public class MVCPage {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
     }
 
-    // this method is useless , either fix or remove
+
     public void enterTaskText(WebElement task, String text) {
         task.sendKeys(text, Keys.ENTER);
     }
@@ -121,6 +121,25 @@ public class MVCPage {
     public void clickCompletedFilter() {
         WebElement completedFilter = filterButtons.get(2);
         completedFilter.click();
+    }
+
+    /**
+     * Presses "Clear Coimpleted" button @ the lower left corner of the web-app
+     */
+    public void clickClearCompletedBulkControl() {
+        clearCompletedTasks.click();
+    }
+
+    public void toggleSingleTaskCompletion() {
+        toggleCompletion.click();
+    }
+
+    public void pressDeleteTask() {
+        deleteTask.click();
+    }
+
+    public void clickOnTask() {
+        todoEdit.click();
     }
 
 }

@@ -39,11 +39,15 @@ public class BaseTest {
 
     @AfterClass
     public static void closeDriver() {
-        // driver.close();
+        driver.close();
     }
 
     public static void open(String url) {
         driver.get(url);
+    }
+
+    public static void maximizeWindow() {
+        driver.manage().window().maximize();
     }
 
     public static int generateRandomValueBetweenMinToMax(int min, int max) {
@@ -64,6 +68,10 @@ public class BaseTest {
 
     public void doADoubleClick(WebElement targetForClick) {
         action.doubleClick(targetForClick).perform();
+    }
+
+    public void hoverOverAnElement(WebElement targetForHovering) {
+        action.moveToElement(targetForHovering);
     }
 }
 
