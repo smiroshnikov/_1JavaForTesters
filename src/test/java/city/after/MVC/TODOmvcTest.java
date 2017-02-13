@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * "TODO MVC test" - thats a title and not  a todo item :)
  * TODO ----> all tests flows should be  independent and not based on each other
  * TODO ----> remove moveToElement to mvcPage class
  * TODO ----> reporting , allure might be very good candidate
@@ -59,14 +58,17 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void f_deleteActiveTask() throws InterruptedException {
-//        Thread.sleep(1000);
+        //TODO remove Thread.sleep people might think that you are using sleeps in tests and this will be funny!
+        //Thread.sleep(1000);
         mvcPage.enterTask("Delete me ! I am active");
-//        Thread.sleep(1000);
+        //Thread.sleep(1000);
         hoverOverAnElement(mvcPage.todoEdit);
-        mvcPage.clickOnTask();
         // TODO NO driver , NO Elements in test , wrap and put into Page Objects
-        (new WebDriverWait(driver, 2))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body > section > div > section > ul > li > div > label")));
+        // TODO REMOVE Waiting , not relevant here , webElement is already displayed
+//        (new WebDriverWait(driver, 2))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul//li//div//label")));
+
+        mvcPage.clickOnTask();
         mvcPage.pressDeleteTask();
     }
 

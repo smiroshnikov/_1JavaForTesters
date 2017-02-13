@@ -38,9 +38,10 @@ public class MVCPage {
     @FindBy(css = ".toggle")
     WebElement toggleCompletion;
 
-    @FindBy(xpath = "//div/button")
+    //@FindBy(xpath = "//div/button")
+    //@FindBy(css = ".destroy")
+    @FindBy(xpath = "//*[contains(@class,'destroy')]")
     WebElement deleteTask;
-
 
     //@FindBy(className = "edit")
     //@FindBy(xpath = "//*[contains(@class, 'edit')]")
