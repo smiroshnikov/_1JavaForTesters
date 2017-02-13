@@ -4,6 +4,9 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * "TODO MVC test" - thats a title and not  a todo item :)
@@ -40,7 +43,7 @@ public class TODOmvcTest extends BaseTest {
 
     @Test
     public void c_CompleteAndCancelCompletion() {
-        mvcPage.enterTask("Complete me");
+        mvcPage.enterTask("Complete and UnComplete");
         mvcPage.toggleSingleTaskCompletion();
         mvcPage.toggleSingleTaskCompletion();
     }
@@ -61,9 +64,11 @@ public class TODOmvcTest extends BaseTest {
 //        Thread.sleep(1000);
         hoverOverAnElement(mvcPage.todoEdit);
         mvcPage.clickOnTask();
+        // TODO NO driver , NO Elements in test , wrap and put into Page Objects
+        (new WebDriverWait(driver, 2))
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body > section > div > section > ul > li > div > label")));
         mvcPage.pressDeleteTask();
     }
-
 
     //    @Test
 //    public void d_UnClearUpdatedTaskAndClearAgain() {

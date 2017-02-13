@@ -43,13 +43,14 @@ public class MVCPage {
 
 
     //@FindBy(className = "edit")
+    //@FindBy(xpath = "//*[contains(@class, 'edit')]")
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
 
     // bad selector above , better selector below not working
     //@FindBy(css = ".edit")
     //@FindBy(className = "edit")
-    //@FindBy(css = "//*[contains(@class, 'edit')]")
+    //@FindBy(xpath = "//*[contains(@class, 'edit')]")
 
     // FIXEN PARTIZANEN ! guess it is related to mouse-over above element first
     @FindBys({@FindBy(className = "main"),
@@ -140,6 +141,8 @@ public class MVCPage {
 
     public void clickOnTask() {
         todoEdit.click();
+        //todoEditFullPath.click();
+
     }
 
 }

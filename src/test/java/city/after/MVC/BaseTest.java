@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Random;
 
@@ -73,6 +75,17 @@ public class BaseTest {
     public void hoverOverAnElement(WebElement targetForHovering) {
         action.moveToElement(targetForHovering);
     }
+
+    /**
+     * Waits a fixed amount time (e.g 2 secs) and re-tries every 500 ms to locate an element passed with ExpectedCondition
+     * replaces assert functionality
+     *
+     * @param condition boolean - false if element is not found
+     */
+    public void assertThat(ExpectedCondition<Boolean> condition) {
+        (new WebDriverWait(driver, 2)).until(condition);
+    }
+
 }
 
 
