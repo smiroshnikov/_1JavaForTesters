@@ -41,7 +41,7 @@ public class BaseTest {
 
     @AfterClass
     public static void closeDriver() {
-        driver.close();
+        // driver.close();
     }
 
     public static void open(String url) {
