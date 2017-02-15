@@ -2,7 +2,9 @@ package playground1;
 
 
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Base64;
+import java.util.Formatter;
 
 public class Base64Utils {
 
@@ -19,10 +21,27 @@ public class Base64Utils {
         return new String(decodedValue, StandardCharsets.UTF_8);
     }
 
+    public static String byteArrayToHexString(byte[] byteHash) {
+        Formatter formatter = new Formatter();
+        for (byte b :
+                byteHash) {
+            formatter.format("%02x", b);
+        }
+        return formatter.toString();
+    }
+
     public static void main(String[] args) throws Exception {
-        String test = "Iidwuurliik";
-        String encodedTest = Base64Utils.encode(test);
-        System.out.println(test + "base 64 = " + encodedTest);
+        String plainText = "Iidwuurliik";
+        String encodedWithBase64Text = Base64Utils.encode(plainText);
+        System.out.println(plainText + "--->[base 64 ENCODED]---> " + encodedWithBase64Text);
+        String decodedFromBase64Text = Base64Utils.decode("SWlkd3V1cmxpaWs=");
+        System.out.println(encodedWithBase64Text + " --->[back to human]---> " + decodedFromBase64Text);
+        // instantiating a my hashing magic
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] byteHash = (md.digest(plainText.getBytes()));
+        System.out.println(plainText + " -> hashed by SHA-1 algoritm ->" + byteArrayToHexString(byteHash));
 
     }
+
+
 }
