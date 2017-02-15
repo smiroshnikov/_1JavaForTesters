@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 
 /**
- * Created by miross1 on 2/15/2017.
+ * Selenium Webdriver Practical Guide Safari Online
  */
 public class TakeScreenShotExample {
 
