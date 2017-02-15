@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Treet implements Comparable, Serializable {
     private static final long serialVersionUID = 1884658576115477459L;
-    private boolean brokenFlag = true;
+    //private boolean brokenFlag = true;
     private String author;
     private String description;
     private Date creationDate;
@@ -20,6 +20,7 @@ public class Treet implements Comparable, Serializable {
         this.author = author;
         this.description = description;
         this.creationDate = creationDate;
+
     }
 
     @Override

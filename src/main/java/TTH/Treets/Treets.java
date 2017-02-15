@@ -14,17 +14,18 @@ public class Treets {
 
         Treet treet = new Treet(
                 "sergeim",
-                "Want to be rich ? Then buy my new book 'How to get a high-tech job without any education?' ",
+                "Want to be millionaire like me ? Then buy my new book 'How to get a high-tech job " +
+                        "without any education?!' ",
                 new Date(1483228860000L));
 
         Treet treet2 = new Treet(
                 "mukih",
-                "Looking to save money , urgent ...' ",
+                "Looking to save money , urgent and cheap serious only ...' ",
                 new Date(1483228860009L));
 
         Treet treet3 = new Treet(
                 "donaldt",
-                "Blah blah blah ..... ",
+                "Blah blah BUBUBUBUBUBUBUUUU ..... ",
                 new Date(1483228860220L));
 
         Treet[] treets = {treet, treet2, treet3};
