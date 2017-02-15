@@ -52,8 +52,8 @@ public class MVCPage {
     //@FindBy(css = ".edit")
     //@FindBy(className = "edit")
     //@FindBy(xpath = "//*[contains(@class, 'edit')]")
-
     // FIXEN PARTIZANEN ! guess it is related to mouse-over above element first
+
     @FindBys({@FindBy(className = "main"),
             @FindBy(className = "todo-list"),
             @FindBy(css = "li"),
