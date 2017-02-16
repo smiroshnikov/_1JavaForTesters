@@ -1,4 +1,4 @@
-package playground1;
+package playground1.Hashing;
 
 
 import java.nio.charset.StandardCharsets;
@@ -6,9 +6,9 @@ import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.Formatter;
 
-public class Base64Utils {
+public class Base64UtilsAndHash {
 
-    private Base64Utils() {
+    private Base64UtilsAndHash() {
     }
 
     public static String encode(String value) throws Exception {
@@ -32,9 +32,9 @@ public class Base64Utils {
 
     public static void main(String[] args) throws Exception {
         String plainText = "Iidwuurliik";
-        String encodedWithBase64Text = Base64Utils.encode(plainText);
+        String encodedWithBase64Text = Base64UtilsAndHash.encode(plainText);
         System.out.println(plainText + "--->[base 64 ENCODED]---> " + encodedWithBase64Text);
-        String decodedFromBase64Text = Base64Utils.decode("SWlkd3V1cmxpaWs=");
+        String decodedFromBase64Text = Base64UtilsAndHash.decode("SWlkd3V1cmxpaWs=");
         System.out.println(encodedWithBase64Text + " --->[back to human]---> " + decodedFromBase64Text);
         // instantiating a my hashing magic
         MessageDigest md = MessageDigest.getInstance("SHA-1");

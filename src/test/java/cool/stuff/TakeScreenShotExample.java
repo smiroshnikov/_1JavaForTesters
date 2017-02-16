@@ -1,5 +1,7 @@
 package cool.stuff;
 
+import junit.framework.TestResult;
+import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
@@ -8,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Selenium Webdriver Practical Guide Safari Online
@@ -35,11 +38,20 @@ public class TakeScreenShotExample {
 
 
     @Test
-    public void goFailandTakeScrrenshot() {
-        driver.get("http://www.packtpub.com/");
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        System.out.println(scrFile.getAbsoluteFile());
-        // TODO missing file save function , so I will copy it myself later on
-        System.out.println("paused");
+    public void goFailandTakeScrrenshot() throws IOException {
+        driver.get("http://www.google.com/");
+        TestResult testResult = new TestResult();
+        // TODO outside to MVC
+        if (testResult.wasSuccessful()) {
+            // TODO PARTIZANEN KOSTILI STYLE !
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            if (new File("c:\\Webdrivers\\screenshots\\error.png").exists()) {
+                boolean deletedFlag = new File("c:\\Webdrivers\\screenshots\\error.png").delete();
+                if (deletedFlag) {
+                    System.out.println("Deleted previous file...");
+                }
+            }
+            FileUtils.copyFile(scrFile, new File("c:\\Webdrivers\\screenshots\\error.png"));
+        }
     }
 }

@@ -1,4 +1,4 @@
-package playground1;
+package playground1.experimentFEB17.Singleton;
 
 public class Preferences {
     private static Preferences instance = null;
