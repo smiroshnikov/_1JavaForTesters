@@ -9,6 +9,10 @@ import java.util.Date;
  * Treet is a tweet-like thing with author , date  and description fields
  */
 
+// Serialization - задание структуры данных для работы - обмен  по сети , по фаилам и тд (JSON)
+// DeSerialization - считывание данных из какого-то источника согласно заданному темлейту
+// (в моем случае это структура моего класса )
+
 public class Treet implements Comparable, Serializable {
     private static final long serialVersionUID = 1884658576115477459L;
     //private boolean brokenFlag = true;
