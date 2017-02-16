@@ -3,7 +3,9 @@ package cool.stuff;
 import junit.framework.TestResult;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +24,9 @@ public class TakeScreenShotExample {
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     static WebDriver driver;
 
+    @Rule
+    public TestName testName = new TestName();
+
     @BeforeClass
     public static void webdriverSystemSetup() {
         if (System.getProperty("webdriver.chrome.driver") == null) {
@@ -38,20 +43,15 @@ public class TakeScreenShotExample {
 
 
     @Test
-    public void goFailandTakeScrrenshot() throws IOException {
-        driver.get("http://www.google.com/");
+    public void navigateToGoogle() throws IOException {
+        driver.get("http://www.google.com/ncr");
         TestResult testResult = new TestResult();
         // TODO outside to MVC
+        // TODO the condition below goes to After ?
         if (testResult.wasSuccessful()) {
-            // TODO PARTIZANEN KOSTILI STYLE !
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            if (new File("c:\\Webdrivers\\screenshots\\error.png").exists()) {
-                boolean deletedFlag = new File("c:\\Webdrivers\\screenshots\\error.png").delete();
-                if (deletedFlag) {
-                    System.out.println("Deleted previous file...");
-                }
-            }
-            FileUtils.copyFile(scrFile, new File("c:\\Webdrivers\\screenshots\\error.png"));
+            FileUtils.copyFile(scrFile, new File("c:\\Webdrivers\\screenshots\\" + testName.getMethodName() + System.currentTimeMillis() + ".png"));
         }
     }
+
 }

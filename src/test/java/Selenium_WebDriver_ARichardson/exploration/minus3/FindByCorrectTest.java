@@ -67,7 +67,7 @@ public class FindByCorrectTest {
     @Test
     public void findByClass() {
         WebElement aDivName = driver.findElement(By.className("specialDiv"));
-        assertThat("Find by class failed", aDivName.getAttribute("name"), is("mydivname"));
+        assertThat("Find by class failed", aDivName.getAttribute("testName"), is("mydivname"));
     }
 
     @Test
