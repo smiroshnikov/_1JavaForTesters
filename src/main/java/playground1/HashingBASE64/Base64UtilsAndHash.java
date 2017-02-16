@@ -1,4 +1,4 @@
-package playground1.Hashing;
+package playground1.HashingBASE64;
 
 
 import java.nio.charset.StandardCharsets;

@@ -40,7 +40,8 @@ public class MVCPage {
 
     //@FindBy(xpath = "//div/button")
     //@FindBy(css = ".destroy")
-    @FindBy(xpath = "//*[contains(@class,'destroy')]")
+    //@FindBy(xpath = "//*[contains(@class,'destroy')]")
+    @FindBy(css = "button[class]")
     WebElement deleteTask;
 
     //@FindBy(className = "edit")

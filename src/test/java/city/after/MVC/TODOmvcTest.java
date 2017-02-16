@@ -4,9 +4,6 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * TODO ----> all tests flows should be  independent and not based on each other
@@ -41,7 +38,7 @@ public class TODOmvcTest extends BaseTest {
     }
 
     @Test
-    public void c_CompleteAndCancelCompletion() {
+    public void f_CompleteAndCancelCompletion() {
         mvcPage.enterTask("Complete and UnComplete");
         mvcPage.toggleSingleTaskCompletion();
         mvcPage.toggleSingleTaskCompletion();
@@ -57,17 +54,10 @@ public class TODOmvcTest extends BaseTest {
     }
 
     @Test
-    public void f_deleteActiveTask() throws InterruptedException {
-        //TODO remove Thread.sleep people might think that you are using sleeps in tests and this will be funny!
-        //Thread.sleep(1000);
+    public void c_deleteActiveTask() {
         mvcPage.enterTask("Delete me ! I am active");
         //Thread.sleep(1000);
         hoverOverAnElement(mvcPage.todoEdit);
-        // TODO NO driver , NO Elements in test , wrap and put into Page Objects
-        // TODO REMOVE Waiting , not relevant here , webElement is already displayed
-//        (new WebDriverWait(driver, 2))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul//li//div//label")));
-
         mvcPage.clickOnTask();
         mvcPage.pressDeleteTask();
     }
@@ -91,7 +81,7 @@ public class TODOmvcTest extends BaseTest {
 //
 
     @Test
-    public void f_filterActiveCompletedAllTasks() {
+    public void g_filterActiveCompletedAllTasks() {
         mvcPage.enterTask(" task is done - clear me!");
         mvcPage.enterTask(" task is done - clear me!");
         mvcPage.enterTask(" task is done - clear me!");
