@@ -20,7 +20,7 @@ public class CSVParser {
         List<String[]> importantValuesList = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
-                System.out.println(lineCounter + "!");
+                //System.out.println(lineCounter + "!");
                 lineCounter += 1;
                 if (lineCounter == 0) {
                     System.out.println("Ingnoring header...");
@@ -29,12 +29,21 @@ public class CSVParser {
                 }
             }
         }
+        String[] brockenLine = new String[importantValuesList.size()];
+        for (String[] longLine :
+                importantValuesList) {
+            for (String value : longLine) {
+                //System.out.println(value);
+                brockenLine = (value.split(" "));
+            }
+            //System.out.println(Arrays.toString(longLine));
+        }
+        for (String item :
+                brockenLine) {
+            System.out.println(item.replaceAll("\\s+", ""));
+        }
 
-//        for (String[] longLine :
-//                importantValuesList) {
-//            System.out.println(Arrays.toString(longLine));
-//        }
-        System.out.println(importantValuesList.size());
-        System.out.println(importantValuesList.get(1)[0]);
+//        System.out.println(importantValuesList.size());
+//        System.out.println(importantValuesList.get(1)[0]);
     }
 }
