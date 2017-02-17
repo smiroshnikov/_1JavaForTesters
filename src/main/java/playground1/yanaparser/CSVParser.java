@@ -4,26 +4,34 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+//[2,6,10,14]
 
 public class CSVParser {
     public static void main(String[] args) throws IOException {
-        String csvFile = "C:\\webdrivers\\csv\\country.csv";
+        String csvFile = "C:\\webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt";
         String line;
-        String csvSeparator = ",";
-        List<String> l = new ArrayList<>();
+        int lineCounter = -1;
+        String csvSeparator = " ";
+
+        List<String[]> importantValuesList = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
+                lineCounter += 1;
+                if (lineCounter == 0) {
+                    System.out.println("Do nothing...");
+                } else {
+                    importantValuesList.add(line.split(csvSeparator));
 
-                if (line.split(csvSeparator)[2].contains("16778240") || ((line.split(csvSeparator)[2].contains("16785408")))) {
-                    //System.out.printf("ooooooooooooo");
-                    l.add(line.split(csvSeparator)[2]);
                 }
             }
         }
-        for (String value :
-                l) {
-            System.out.println(value);
+        for (String[] longLine :
+                importantValuesList) {
+            System.out.println(Arrays.toString(longLine));
         }
     }
 }
+
