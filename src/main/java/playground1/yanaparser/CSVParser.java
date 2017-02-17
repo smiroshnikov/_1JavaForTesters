@@ -15,6 +15,15 @@ import java.util.List;
 public class CSVParser {
     public static final File CSVFILE = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
 
+    /**
+     * Removes millisecond timestamp from laser measurment line
+     * @param dirtyLine - line with timestamp
+     * @return String[] with values only
+     */
+    public static String[] cleanLineWithValues(String[] dirtyLine){
+        return Arrays.copyOfRange(dirtyLine,1,dirtyLine.length);
+        }
+
     public static void main(String[] args) throws IOException {
         String line;
         int lineCounter = -1;
@@ -37,15 +46,20 @@ public class CSVParser {
                 importantValuesList) {
             for (String value : longLine) {
                 //System.out.println(value);
+                // todo remove split
                 brockenLine = (value.split(","));
+            }
+
+            for (String value : cleanLineWithValues(brockenLine)) {
+                System.out.printf(value);
             }
             //System.out.println(Arrays.toString(longLine));
         }
-        //todo this is an external "removeTimestampFromLine" method
-        for (String item :
-                Arrays.copyOfRange(brockenLine,1,brockenLine.length)) {
-            System.out.println(item);
-        }
+        //todo this is an external "removeTimestampFromLine" method when I will make this work
+//        for (String item :
+//                Arrays.copyOfRange(brockenLine,1,brockenLine.length)) {
+//            System.out.println(item);
+//        }
 
 //        System.out.println(importantValuesList.size());
 //        System.out.println(importantValuesList.get(1)[0]);
