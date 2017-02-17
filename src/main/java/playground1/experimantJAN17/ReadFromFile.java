@@ -1,4 +1,4 @@
-package playground1;
+package playground1.experimantJAN17;
 // TODO make the car exercise you had at REDBEND , parsing file with car details into array
 // TODO File , Buffer and String manipulation (couple of silly real world projects )
 // TODO "Acura", 2017 , 600cc , 200MPH , 2 seats , "Blue", 1200000$ , in production : [12]

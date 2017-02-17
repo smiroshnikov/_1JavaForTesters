@@ -42,20 +42,23 @@ public class MVCPage {
     @FindBy(css = ".toggle")
     WebElement toggleCompletion;
 
-    @FindBy(xpath = "//div/button")
+    //@FindBy(xpath = "//div/button")
+    //@FindBy(css = ".destroy")
+    //@FindBy(xpath = "//*[contains(@class,'destroy')]")
+    @FindBy(css = "button[class]")
     WebElement deleteTask;
 
-
     //@FindBy(className = "edit")
+    //@FindBy(xpath = "//*[contains(@class, 'edit')]")
     @FindBy(css = "body > section > div > section > ul > li > div > label")
     WebElement todoEdit;
 
     // bad selector above , better selector below not working
     //@FindBy(css = ".edit")
     //@FindBy(className = "edit")
-    //@FindBy(css = "//*[contains(@class, 'edit')]")
-
+    //@FindBy(xpath = "//*[contains(@class, 'edit')]")
     // FIXEN PARTIZANEN ! guess it is related to mouse-over above element first
+
     @FindBys({@FindBy(className = "main"),
             @FindBy(className = "todo-list"),
             @FindBy(css = "li"),
@@ -75,7 +78,7 @@ public class MVCPage {
 
 
     @FindBy(css = ".clear-completed")
-    WebElement clearCompleted;
+    WebElement clearCompletedTasks;
 
     /**
      * Constructor that instantiates page via PageFactory
@@ -98,7 +101,7 @@ public class MVCPage {
         newTodoLine.sendKeys(taskText, Keys.ENTER);
     }
 
-    // this method is useless , either fix or remove
+
     public void enterTaskText(WebElement task, String text) {
         task.sendKeys(text, Keys.ENTER);
     }
@@ -125,6 +128,27 @@ public class MVCPage {
     public void clickCompletedFilter() {
         WebElement completedFilter = filterButtons.get(2);
         completedFilter.click();
+    }
+
+    /**
+     * Presses "Clear Coimpleted" button @ the lower left corner of the web-app
+     */
+    public void clickClearCompletedBulkControl() {
+        clearCompletedTasks.click();
+    }
+
+    public void toggleSingleTaskCompletion() {
+        toggleCompletion.click();
+    }
+
+    public void pressDeleteTask() {
+        deleteTask.click();
+    }
+
+    public void clickOnTask() {
+        todoEdit.click();
+        //todoEditFullPath.click();
+
     }
 
 }

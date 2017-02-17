@@ -35,7 +35,7 @@ public class Lesson18Test {
     @Test
     public void bobTest() {
         Properties properties = new Properties();
-        properties.setProperty("name", "bob");
+        properties.setProperty("testName", "bob");
         properties.setProperty("gender", "male");
         properties.setProperty("passwords", "paSSw0rd");
         assertThat(properties.size(), is(3));
@@ -52,10 +52,10 @@ public class Lesson18Test {
         //"static_example.properties";
         Properties sys = System.getProperties();
         System.out.println(sys.getProperty("file.separator"));
-        System.out.println(sys.getProperty("os.name"));
+        System.out.println(sys.getProperty("os.testName"));
         System.out.println(sys.getProperty("os.version"));
         System.out.println(sys.getProperty("os.arch"));
-        System.out.println(sys.getProperty("user.name"));
+        System.out.println(sys.getProperty("user.testName"));
         System.out.println(sys.getProperty("user.home"));
         float value = 102.0f;
         System.out.println(value);

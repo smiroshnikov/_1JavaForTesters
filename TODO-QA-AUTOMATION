@@ -3,8 +3,9 @@ Navigate pages
 Sign up
 Login/ Logout
 Simple MVCToDO
-USer ALready exists
+User ALready exists
 ==========================================
+
 [Nice to have]
 
 Deploy VM in Xen , VMWare , Virtual Box , Doker
@@ -101,10 +102,14 @@ very good logic separation , definately Page Object Pattern
 [Logging]
 Allure Yandex
 
-[Thread safe singleton ]
-Keylogger --> text file --> distributed
-one DB (singleton)
+[Thread safe singleton RL examples]
+Keylogger --> appending to text file --> distributed
 Each tread need to access to a pointer in a file ()
+one DB (singleton)
+
+[JSON]
+Serialize data with JSON (Read / Write)
+
 
 
 

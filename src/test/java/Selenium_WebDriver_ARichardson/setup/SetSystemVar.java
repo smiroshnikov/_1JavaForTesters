@@ -1,4 +1,4 @@
-package Selenium_WebDriver_ARichardson.exploration.setup;
+package Selenium_WebDriver_ARichardson.setup;
 
 /**
  * This class perform initial setup for my Selenium test runs ,

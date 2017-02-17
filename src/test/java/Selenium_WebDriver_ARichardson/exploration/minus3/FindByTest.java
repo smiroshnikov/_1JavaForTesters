@@ -46,7 +46,7 @@ public class FindByTest {
         WebElement requiredElement = driver.findElement(By.id("p1"));
         assertThat("Find by ID test failed", requiredElement.getText(), is("This is a paragraph text"));
         requiredElement = driver.findElement(By.name("pName2"));
-        assertTrue("Find by name test failed", requiredElement.getText().contentEquals("This is b paragraph text"));
+        assertTrue("Find by testName test failed", requiredElement.getText().contentEquals("This is b paragraph text"));
         requiredElement = driver.findElement(By.linkText("jump to para 12"));
         assertEquals("Find by linkedText test failed", "jump to para 12", requiredElement.getText());
         requiredElement = driver.findElement(By.partialLinkText("para 20"));
