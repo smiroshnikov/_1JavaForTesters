@@ -1,4 +1,4 @@
-package playground1.experimantJAN17;
+package playground1.experimentJAN17;
 
 public class OnlineJudge1 {
     public static void main(String[] args) {

@@ -6,7 +6,9 @@ import java.io.*;
  * CSV file reader for Yana
  */
 public class CSVCastrator {
-    public static final File CSVFILE = new File("C:\\Webdrivers\\csv\\country.csv");
+    //public static final File CSVFILE = new File("C:\\Webdrivers\\csv\\country.csv");
+    public static final File CSVFILE = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+
 
     public static void main(String[] args) throws IOException {
         int c = 0;

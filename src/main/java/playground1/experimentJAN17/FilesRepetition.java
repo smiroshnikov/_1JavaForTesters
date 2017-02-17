@@ -1,4 +1,4 @@
-package playground1.experimantJAN17;
+package playground1.experimentJAN17;
 
 
 import java.io.*;
