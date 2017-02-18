@@ -1,9 +1,16 @@
 package playground1.yanaparser;
 
+/**
+ * CSV file reader for Yana's results from laser microscope
+ * have a big text file with values delimited by space , need to remove timestamp and create a separate file
+ * for each 4th measuremen line
+ */
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 //int offsetp[0.3] line from offset
 //[2,6,10,14]
@@ -86,13 +93,18 @@ public class CSVParser {
     public static void main(String[] args) throws IOException {
         List<String[]> corruptedMeasurements = createAlistFromFile(WIN_FILE_PATH);
         List<String[]> cleanMeasurements = extractCleanMeasurements(corruptedMeasurements);
+        List<String[]> firstLaser = new ArrayList<>();
+
+        // TODO separate as method
         int lineCounter = 0;
-        do {
+        for (String[] cleanLine :
+                cleanMeasurements) {
+            if ((lineCounter % 4 == 0)) {
+                firstLaser.add(cleanLine);
+            }
             lineCounter += 1;
+        }
 
-        } while (lineCounter != cleanMeasurements.size());
-        printListWitharrays(cleanMeasurements);
-
-
+        printListWitharrays(firstLaser);
     }
 }
