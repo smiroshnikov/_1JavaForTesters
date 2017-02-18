@@ -1,9 +1,6 @@
 package playground1.yanaparser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,13 +23,13 @@ public class CSVParser {
         return Arrays.copyOfRange(dirtyLine, 1, dirtyLine.length);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static List<String[]> createAlistFromFile(File laserMeasurmentsFile) {
         String lineInFile;
         int lineCounter = -1;
         String csvSeparator = "\\s+"; // DONT  EVER FUCKING SPLIT BY " " - apparently this is not concidered as space in every OS !
         List<String[]> valuesList = new ArrayList<>();
         // creating List of String[]
-        try (BufferedReader br = new BufferedReader(new FileReader(WIN_CSVFILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurmentsFile))) {
             while ((lineInFile = br.readLine()) != null) {
                 lineCounter += 1;
                 if (lineCounter == 0) {
@@ -41,13 +38,23 @@ public class CSVParser {
                     valuesList.add(lineInFile.split(csvSeparator));
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return valuesList;
+    }
 
-        System.out.println(valuesList.size());
-
+    public static void main(String[] args) throws IOException {
+        List<String[]> valuesList = createAlistFromFile(WIN_CSVFILE);
         for (String[] lineWithExcessiveValuesInarray :
                 valuesList) {
-            System.out.println(lineWithExcessiveValuesInarray.length);
+            System.out.printf("%n");
+            //System.out.println(lineWithExcessiveValuesInarray.length);
+            for (String singleMeasurement :
+                    cleanLineWithValues(lineWithExcessiveValuesInarray)) {
+                System.out.print(singleMeasurement + " ");
+
+            }
         }
     }
 }
