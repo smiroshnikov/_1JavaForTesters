@@ -23,12 +23,17 @@ public class CSVParser {
         return Arrays.copyOfRange(dirtyLine, 1, dirtyLine.length);
     }
 
+    /**
+     * Reads file line by line and returns each line as an array of Strings
+     *
+     * @param laserMeasurmentsFile - a file from the laser microscope
+     * @return List of String [] - each array represents a line with values from file
+     */
     public static List<String[]> createAlistFromFile(File laserMeasurmentsFile) {
         String lineInFile;
         int lineCounter = -1;
         String csvSeparator = "\\s+"; // DONT  EVER FUCKING SPLIT BY " " - apparently this is not concidered as space in every OS !
         List<String[]> valuesList = new ArrayList<>();
-        // creating List of String[]
         try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurmentsFile))) {
             while ((lineInFile = br.readLine()) != null) {
                 lineCounter += 1;
@@ -44,22 +49,49 @@ public class CSVParser {
         return valuesList;
     }
 
+    /**
+     * Utility method that prints a List of String arrays - used for debugging
+     *
+     * @param list
+     */
     public static void printListWitharrays(List<String[]> list) {
         for (String[] lineWithExcessiveValuesInarray :
                 list) {
             System.out.printf("%n");
             //System.out.println(lineWithExcessiveValuesInarray.length);
             for (String singleMeasurement :
-                    cleanLineWithValues(lineWithExcessiveValuesInarray)) {
+                    lineWithExcessiveValuesInarray) {
                 System.out.print(singleMeasurement + " ");
             }
         }
 
     }
 
+    /**
+     * Truncates corrupted measurements from List of Strings provided as an argument.
+     * Invokes "cleanMeasurements" method , that removes first member from  each String[].
+     *
+     * @param corruptedMeasurements - list with timestamp in milliseconds
+     * @return
+     */
+    public static List<String[]> extractCleanMeasurements(List<String[]> corruptedMeasurements) {
+        List<String[]> cleanMeasurements = new ArrayList<>();
+        for (String[] corruptedLine :
+                corruptedMeasurements) {
+            cleanMeasurements.add(cleanLineWithValues(corruptedLine));
+        }
+        return cleanMeasurements;
+    }
+
     public static void main(String[] args) throws IOException {
-        List<String[]> valuesList = createAlistFromFile(WIN_FILE_PATH);
-        printListWitharrays(valuesList);
+        List<String[]> corruptedMeasurements = createAlistFromFile(WIN_FILE_PATH);
+        List<String[]> cleanMeasurements = extractCleanMeasurements(corruptedMeasurements);
+        int lineCounter = 0;
+        do {
+            lineCounter += 1;
+
+        } while (lineCounter != cleanMeasurements.size());
+        printListWitharrays(cleanMeasurements);
 
 
     }
