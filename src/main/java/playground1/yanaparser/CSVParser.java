@@ -94,17 +94,32 @@ public class CSVParser {
         List<String[]> corruptedMeasurements = createAlistFromFile(WIN_FILE_PATH);
         List<String[]> cleanMeasurements = extractCleanMeasurements(corruptedMeasurements);
         List<String[]> firstLaser = new ArrayList<>();
+        List<String[]> secondLaser = new ArrayList<>();
+        List<String[]> thirdLaser = new ArrayList<>();
+        List<String[]> forthLaser = new ArrayList<>();
 
         // TODO separate as method
         int lineCounter = 0;
+
         for (String[] cleanLine :
                 cleanMeasurements) {
             if ((lineCounter % 4 == 0)) {
                 firstLaser.add(cleanLine);
             }
+            if (lineCounter % 4 == 1) {
+                secondLaser.add(cleanLine);
+            }
+            if (lineCounter % 4 == 2) {
+                thirdLaser.add(cleanLine);
+            }
+            if (lineCounter % 4 == 3) {
+                forthLaser.add(cleanLine);
+            }
             lineCounter += 1;
         }
 
-        printListWitharrays(firstLaser);
+        printListWitharrays(thirdLaser);
+
+
     }
 }
