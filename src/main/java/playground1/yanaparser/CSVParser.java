@@ -1,10 +1,15 @@
 package playground1.yanaparser;
 
-/**
+/*
  * CSV file reader for Yana's results from laser microscope
  * have a big text file with values delimited by space , need to remove timestamp and create a separate file
  * for each 4th measuremen line
  */
+
+// LESSONS LEARNED - use a small fucking file for testing with simple easily read predefined values !
+//TODO  DONT USE " " - no idea why , use "\\s+" -  research online later !!!
+// ALWAYS , сцуко !  ALWAYS , use paper and pen and write down how you will implement things - this could have saved time
+// Refactor as soon as you are sure what the required snippet of code does !
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,7 +23,7 @@ import java.util.List;
 
 public class CSVParser {
     public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
-    public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
+    public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
 
     /**
      * Removes millisecond timestamp from laser measurment line
@@ -118,7 +123,8 @@ public class CSVParser {
             lineCounter += 1;
         }
 
-        printListWitharrays(thirdLaser);
+
+        printListWitharrays(secondLaser);
 
 
     }
