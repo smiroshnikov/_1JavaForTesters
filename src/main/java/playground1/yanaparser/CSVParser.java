@@ -10,8 +10,8 @@ import java.util.List;
 
 
 public class CSVParser {
-    public static final File MAC_CSVFILE = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
-    public static final File WIN_CSVFILE = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
+    public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+    public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
 
     /**
      * Removes millisecond timestamp from laser measurment line
@@ -44,17 +44,23 @@ public class CSVParser {
         return valuesList;
     }
 
-    public static void main(String[] args) throws IOException {
-        List<String[]> valuesList = createAlistFromFile(WIN_CSVFILE);
+    public static void printListWitharrays(List<String[]> list) {
         for (String[] lineWithExcessiveValuesInarray :
-                valuesList) {
+                list) {
             System.out.printf("%n");
             //System.out.println(lineWithExcessiveValuesInarray.length);
             for (String singleMeasurement :
                     cleanLineWithValues(lineWithExcessiveValuesInarray)) {
                 System.out.print(singleMeasurement + " ");
-
             }
         }
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        List<String[]> valuesList = createAlistFromFile(WIN_FILE_PATH);
+        printListWitharrays(valuesList);
+
+
     }
 }
