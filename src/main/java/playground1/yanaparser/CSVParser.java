@@ -13,55 +13,41 @@ import java.util.List;
 
 
 public class CSVParser {
-    public static final File CSVFILE = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+    public static final File MAC_CSVFILE = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+    public static final File WIN_CSVFILE = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
 
     /**
      * Removes millisecond timestamp from laser measurment line
+     *
      * @param dirtyLine - line with timestamp
      * @return String[] with values only
      */
-    public static String[] cleanLineWithValues(String[] dirtyLine){
-        return Arrays.copyOfRange(dirtyLine,1,dirtyLine.length);
-        }
+    public static String[] cleanLineWithValues(String[] dirtyLine) {
+        return Arrays.copyOfRange(dirtyLine, 1, dirtyLine.length);
+    }
 
     public static void main(String[] args) throws IOException {
-        String line;
+        String lineInFile;
         int lineCounter = -1;
-        String csvSeparator = " ";
-
-        List<String[]> importantValuesList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(CSVFILE))) {
-            while ((line = br.readLine()) != null) {
-                //System.out.println(lineCounter + "!");
+        String csvSeparator = "\\s+"; // DONT  EVER FUCKING SPLIT BY " " - apparently this is not concidered as space in every OS !
+        List<String[]> valuesList = new ArrayList<>();
+        // creating List of String[]
+        try (BufferedReader br = new BufferedReader(new FileReader(WIN_CSVFILE))) {
+            while ((lineInFile = br.readLine()) != null) {
                 lineCounter += 1;
                 if (lineCounter == 0) {
-                    System.out.println("Ingnoring header...");
+                    System.out.println("Header ignored when coverted file to list...");
                 } else {
-                    importantValuesList.add(line.split(csvSeparator));
+                    valuesList.add(lineInFile.split(csvSeparator));
                 }
             }
         }
-        String[] brockenLine = new String[importantValuesList.size()];
-        for (String[] longLine :
-                importantValuesList) {
-            for (String value : longLine) {
-                //System.out.println(value);
-                // todo remove split
-                brockenLine = (value.split(","));
-            }
 
-            for (String value : cleanLineWithValues(brockenLine)) {
-                System.out.printf(value);
-            }
-            //System.out.println(Arrays.toString(longLine));
+        System.out.println(valuesList.size());
+
+        for (String[] lineWithExcessiveValuesInarray :
+                valuesList) {
+            System.out.println(lineWithExcessiveValuesInarray.length);
         }
-        //todo this is an external "removeTimestampFromLine" method when I will make this work
-//        for (String item :
-//                Arrays.copyOfRange(brockenLine,1,brockenLine.length)) {
-//            System.out.println(item);
-//        }
-
-//        System.out.println(importantValuesList.size());
-//        System.out.println(importantValuesList.get(1)[0]);
     }
 }
