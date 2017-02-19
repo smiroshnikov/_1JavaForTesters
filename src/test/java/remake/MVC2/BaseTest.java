@@ -77,8 +77,9 @@ public class BaseTest {
         String hebABC = "אבגדהוזחטיכלמנסעפצקרשת";
         String special = "~`!@#$%^&*()_+";
         String numeric = "1234567890";
+        String chiABC = "精选品牌畅销科技发现趋势样式";
         String lotsOfSpaces = "                                      ";
-        String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces;
+        String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces + chiABC;
         String randomSequence = "";
         for (int i = 0; i < randomValueBetweenMinMax(3, 100); i++) {
             char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));

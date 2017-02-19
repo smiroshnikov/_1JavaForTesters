@@ -33,7 +33,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void createANewTask() {
-        String taskText = "Test task";
+        String taskText = "First task";
         page.createNewTodo(taskText);
         assertThat(page.findTodoByText(taskText).getText(), is(taskText));
         takeScreenshot();
@@ -41,10 +41,17 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void createAndDeleteTask() {
-        String task = "delete";
+        String task = "Task to be deleted";
         page.createNewTodo(task);
         hoverOverAnElement(page.findTodoByText(task));
         page.deleteTask(task);
+    }
+
+    @Test
+    public void createMultipleTasks() {
+        for (int i = 0; i < randomValueBetweenMinMax(50, 100); i++) {
+            page.createNewTodo(randomWord_HE_ENG_Charset());
+        }
     }
 
 
