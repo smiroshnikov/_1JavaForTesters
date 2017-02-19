@@ -56,7 +56,7 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        driver.close();
+        //driver.close();
     }
 
     public static void open(String url) {
@@ -77,7 +77,8 @@ public class BaseTest {
         String hebABC = "אבגדהוזחטיכלמנסעפצקרשת";
         String special = "~`!@#$%^&*()_+";
         String numeric = "1234567890";
-        String charPool = engABC + "     " + engABC.toLowerCase() + special + hebABC + numeric + rusABC;
+        String lotsOfSpaces = "                                      ";
+        String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces;
         String randomSequence = "";
         for (int i = 0; i < randomValueBetweenMinMax(3, 100); i++) {
             char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));

@@ -5,7 +5,7 @@ package playground1.yanaparser;
  * have a big text file with values delimited by space , need to remove timestamp and create a separate file
  * for each 4th measuremen line
  */
-
+// version 2
 // LESSONS LEARNED - use a small fucking file for testing with simple easily read predefined values !
 // DONT USE " " - no idea why , use "\\s+" -  research online later !!!
 // ALWAYS , сцуко !  ALWAYS , use paper and pen and write down how you will implement things - this could have saved time

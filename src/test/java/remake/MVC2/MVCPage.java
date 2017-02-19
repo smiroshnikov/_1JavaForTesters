@@ -1,6 +1,7 @@
 package remake.MVC2;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -18,8 +19,9 @@ public class MVCPage {
     TODO lets make it on python and see the difference
      */
 
-    @FindBy(className = "new-todo")
+    @FindBy(css = ".new-todo")
     WebElement newTodo;
+
     @FindAll({@FindBy(className = "todo-list")})
     List<WebElement> todoList;
 
@@ -27,11 +29,15 @@ public class MVCPage {
         PageFactory.initElements(driver, this);
     }
 
+    public void createNewTodo(String text) {
+        newTodo.sendKeys(text, Keys.ENTER);
+    }
+
     public WebElement findTodo(String text) {
         WebElement result = null;
         for (WebElement todo :
                 todoList) {
-            result = todo.findElement(By.xpath(String.format("//li/div[@class='view']/label[contains(text(),%s)]", text)));
+            result = todo.findElement(By.xpath(String.format("//li/div[@class='view']/label[contains(text(),'%s')]", text)));
         }
         return result;
     }
