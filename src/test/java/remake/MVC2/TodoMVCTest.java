@@ -33,10 +33,18 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void createANewTask() {
-        String taksText = randomWord_HE_ENG_Charset();
-        page.createNewTodo(taksText);
-        assertThat(page.findTodo(taksText).getText(), is(taksText));
+        String taskText = "Test task";
+        page.createNewTodo(taskText);
+        assertThat(page.findTodoByText(taskText).getText(), is(taskText));
         takeScreenshot();
+    }
+
+    @Test
+    public void createAndDeleteTask() {
+        String task = "delete";
+        page.createNewTodo(task);
+        hoverOverAnElement(page.findTodoByText(task));
+        page.deleteTask(task);
     }
 
 

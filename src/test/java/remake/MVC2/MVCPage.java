@@ -20,10 +20,22 @@ public class MVCPage {
      */
 
     @FindBy(css = ".new-todo")
-    WebElement newTodo;
+    private WebElement newTodo;
+
+    @FindBy(className = "todo-list")
+    private WebElement firstTodo;
 
     @FindAll({@FindBy(className = "todo-list")})
-    List<WebElement> todoList;
+    private List<WebElement> todoList;
+
+    @FindBy(xpath = "//div[label[text()='delete me']]/button[@class='destroy']")
+    private WebElement hardCodedDeleteButton;
+    // yes I hate hardcoded values , so either use cool annotations or
+    // write a separate fubction
+
+    @FindBy(css = "button[class]")
+    private WebElement deleteButton;
+
 
     public MVCPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -33,13 +45,23 @@ public class MVCPage {
         newTodo.sendKeys(text, Keys.ENTER);
     }
 
-    public WebElement findTodo(String text) {
+    public WebElement getFirstTodo() {
+        return firstTodo;
+    }
+
+    public WebElement findTodoByText(String text) {
         WebElement result = null;
         for (WebElement todo :
                 todoList) {
             result = todo.findElement(By.xpath(String.format("//li/div[@class='view']/label[contains(text(),'%s')]", text)));
         }
         return result;
+    }
+
+    public void deleteTask(String task) {
+        findTodoByText(task).click();
+        deleteButton.click();
+
     }
 
 
