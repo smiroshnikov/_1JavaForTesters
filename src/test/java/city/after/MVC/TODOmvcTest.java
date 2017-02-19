@@ -1,5 +1,6 @@
 package city.after.MVC;
 
+import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -22,6 +23,16 @@ public class TODOmvcTest extends BaseTest {
         maximizeWindow();
     }
 
+    @After
+    public void documentFailure() {
+        if (!testResult.wasSuccessful()) {
+            System.out.println("test test test ! ");
+            takeScreenshot();
+
+        }
+    }
+
+
     @Test
     public void a_AddTask() {
         mvcPage.enterTask("Task ");
@@ -32,8 +43,8 @@ public class TODOmvcTest extends BaseTest {
         mvcPage.enterTask("new task ");
         doADoubleClick(mvcPage.todoEdit);
         mvcPage.enterTaskText(mvcPage.todoEditFullPath, " text is updated ");
-        // Very interesting bug in here , when line gets bigger like
-        // a lot of content, delete button moves and completion of single task
+        // Very interesting bug in here , when line gets bigger and breaks with
+        // a lot of content, delete button moves down and as result completion of single task
         // and deletion of single task gets fucked up
     }
 
@@ -56,29 +67,13 @@ public class TODOmvcTest extends BaseTest {
     @Test
     public void c_deleteActiveTask() {
         mvcPage.enterTask("Delete me ! I am active");
-        //Thread.sleep(1000);
+        takeScreenshot();
+        //Thread.sleep(1000); // yes wrong , need this for debug , no will not leave when done
         hoverOverAnElement(mvcPage.todoEdit);
         mvcPage.clickOnTask();
         mvcPage.pressDeleteTask();
     }
 
-    //    @Test
-//    public void d_UnClearUpdatedTaskAndClearAgain() {
-//        // I need even numbers here , because I am jumping to another test
-//        // need to chech how things work in junit and Selenium
-//        mvcPage.toggleCompletion.click();
-//        mvcPage.toggleCompletion.click();
-//    }
-//
-//    @Test
-//    public void h_deleteActiveTask() {
-//        // had to move , had to click , and had to delete
-//        // fix this
-//        action.moveToElement(mvcPage.todoEdit);
-//        mvcPage.todoEdit.click();
-//        mvcPage.deleteTask.click();
-//    }
-//
 
     @Test
     public void g_filterActiveCompletedAllTasks() {
@@ -103,4 +98,5 @@ public class TODOmvcTest extends BaseTest {
         mvcPage.markAllTasksOnScreenAsCompleted();
         mvcPage.clearCompletedTasks.click();
     }
+
 }

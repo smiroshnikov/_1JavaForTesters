@@ -32,8 +32,10 @@ import java.util.List;
 
 public class MVCPage {
 
-    @FindBy(xpath = "/html/body/section/div/section/ul/li[1]/div/button")
-    //div[label[text()='ewfwet']]/button
+    //@FindBy(xpath = "/html/body/section/div/section/ul/li[1]/div/button")
+    //div[label[text()='Delete me ! I am active']]/button
+
+    @FindBy(xpath = "//div[label[text()='Delete me ! I am active']]/button")
     WebElement deleteButton;
 
     @FindBy(css = ".new-todo")

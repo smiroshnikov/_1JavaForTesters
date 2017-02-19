@@ -60,8 +60,6 @@ public class Chapter14Classwork {
         assertThat("1000002", startsWith("1"));
         assertThat("1000002", endsWith("2"));
         fail();
-
-
     }
 
     @AfterClass

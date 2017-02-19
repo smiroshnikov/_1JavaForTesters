@@ -96,6 +96,7 @@ DOM - document object model
 http://ddavison.io/css/2014/02/18/effective-css-selectors.html
 
 [MVC]
+Not like mine , look @ Page Factory implemented
 https://github.com/dimasaryo/todomvc-test
 very good logic separation , definately Page Object Pattern
 
