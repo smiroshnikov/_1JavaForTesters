@@ -49,7 +49,8 @@ public class TodoMVCTest extends BaseTest {
         String task = "Task to be deleted";
         page.createNewTodo(task);
         hoverOverAnElement(page.findTodoByText(task));
-        if (page.findTodoByText(task).isDisplayed()) {
+        //if (page.findTodoByText(task).isDisplayed()) {
+        if (page.findTodoByText("mumumu").isDisplayed()) {
             page.deleteTask(task);
         }
     }
