@@ -21,17 +21,27 @@ public class MVCPage {
 
     @FindBy(className = "toggle-all")
     WebElement toggleAll;
+
+    // NOT USED !
+    @FindBy(className = "toggle")
+    WebElement toggleTask;
+
     @FindBy(className = "todo-count")
     private WebElement todoCount;
+
     @FindBy(css = ".new-todo")
     private WebElement newTodo;
+
     @FindBy(className = "todo-list")
     private WebElement firstTodo;
     // debug , hate fucking XPATH
+
     @FindAll({@FindBy(className = "todo-list")})
     private List<WebElement> todoList;
+
     @FindBy(xpath = "//div[label[text()='delete me']]/button[@class='destroy']")
     private WebElement hardCodedDeleteButton;
+
     @FindBy(css = "button[class]")
     private WebElement deleteButton;
 
@@ -71,6 +81,11 @@ public class MVCPage {
      */
     public String getTodoCounter() {
         return (todoCount.getText().replaceAll("\\D+", ""));
+    }
+
+    public void toggleTask(String taskText) {
+        //findTodoByText(taskText).findElement(By.className("toggle")).click();
+        toggleTask.click();
     }
 
 

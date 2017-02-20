@@ -52,7 +52,7 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        driver.close();
+        driver.quit();
     }
 
     public static void open(String url) {
@@ -73,14 +73,12 @@ public class BaseTest {
         String hebABC = "אבגדהוזחטיכלמנסעפצקרשת";
         String special = "~`!@#$%^&*()_+";
         String numeric = "1234567890";
-        String chiABC = "精选品牌畅销科技发现趋势样式已过期每天几分钟全身都轻松亚马逊最畅销按摩设备选合本条折扣信息发布于天前内容可" +
-                "能已失效。给操劳了多年的妈妈放松下疲惫的身体吧～长时间工作学习肢体保持同姿势时间久了肌肉骨都僵浑身酸痛疲乏睡眠也受" +
-                "影响按摩可以松驰肌肉放松精神缓解疲劳在家备个按摩器闲暇时边看剧一边按每天都是最佳状态";
+        String chiABC = "精选品牌畅销科技发现趋势样式已过期每天几分钟全身都轻松亚马逊最畅销按摩设备选合本条折扣信息发布于天前内容可";
         String lotsOfSpaces = "                                      ";
         String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces + chiABC;
 
         String randomSequence = "";
-        for (int i = 0; i < randomValueBetweenMinMax(10, 100); i++) {
+        for (int i = 0; i < randomValueBetweenMinMax(3, 150); i++) {
             char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));
             randomSequence += randomChar;
         }
@@ -95,6 +93,7 @@ public class BaseTest {
         action.doubleClick(targetForClick).perform();
     }
 
+    @Deprecated
     public void executionWait(int seconds) {
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }

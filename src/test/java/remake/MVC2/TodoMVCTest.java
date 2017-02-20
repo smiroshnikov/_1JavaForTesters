@@ -17,6 +17,7 @@ import static org.hamcrest.core.Is.is;
  * 5. delete active task[V]
  * 6. delete completed task
  * 7. populate list with multiple tasks and validate task count
+ * 8. Execution order solves a lot of interesting issues - so far leave as is , later think
  * [Sprint 2 - 19/0/2017]
  * 8.Add utility class to take screenshot if failed (implement via Junit TestWatcher)
  * 9.
@@ -34,13 +35,14 @@ public class TodoMVCTest extends BaseTest {
     @Rule
     public ScreenshotOnFailed scrFailedRule = new ScreenshotOnFailed(driver, testName);
 
-    MVCPage page = new MVCPage(driver);
+    public MVCPage page = new MVCPage(driver);
 
     @BeforeClass
-    public static void openPage() {
+    public static void setupURL() {
         open(REACT_URL);
         maximizeWindow();
     }
+
 
     @Test
     public void createANewTask() {
@@ -58,6 +60,22 @@ public class TodoMVCTest extends BaseTest {
         if (page.findTodoByText(task).isDisplayed()) {
             page.deleteTask(task);
         }
+    }
+
+    @Test
+    /**
+     * jhasgdjhagd
+     */
+    public void completeAndUncompleteTask() {
+        String taskText = "toggle me as complete";
+        page.createNewTodo(taskText);
+        // toggle completed
+        page.toggleTask(taskText);
+        assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
+        // untoggle to active
+        page.toggleTask(taskText);
+        assertThat("Expecting to see single task active", page.getTodoCounter(), is(String.valueOf(1)));
+
     }
 
     @Test
