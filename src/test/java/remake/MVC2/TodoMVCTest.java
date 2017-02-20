@@ -9,17 +9,24 @@ import static org.hamcrest.core.Is.is;
 
 /**
  * E2E test
- * 1. create new task
- * 2. edit taks
- * 3. mark as complete
- * 4. un-mark completion
- * 5. delete active task
+ * [Sprint 1 - 18/0/2017]
+ * 1. create new task [V]
+ * 2. edit task [X]
+ * 3. mark as complete [X]
+ * 4. un-mark completion[X]
+ * 5. delete active task[V]
  * 6. delete completed task
- * 7. populate list with multiple tasks
- * 8.
+ * 7. populate list with multiple tasks and validate task count
+ * [Sprint 2 - 19/0/2017]
+ * 8.Add utility class to take screenshot if failed (implement via Junit TestWatcher)
  * 9.
- * Base(before) test might include pre-made tasks ? (not sure)
- * After should have all tasks marked as clear ? (not sure)
+ * [Sprint 3 - 20/0/2017 - 21/2/2017]
+ * 10. Reporting
+ * [Sprint 3 - 23/0/2017]
+ * 11 Report automated sending via SendGrid or JetMail
+ * Base(before) test might include pre-made tasks ? (not sure if I want to clear the task board before each run ,
+ * and if I do, how it will be implemented ? Using tests delete and clear ? :(  )
+ * Consider pre-test steps like existing tasks ?
  */
 
 public class TodoMVCTest extends BaseTest {
@@ -37,29 +44,34 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void createANewTask() {
-        System.out.printf("starting test %s", testName);
         String taskText = "First task";
         page.createNewTodo(taskText);
         assertThat("Task text mismatch", page.findTodoByText(taskText).getText(),
-                is("Momo"));
+                is(taskText));
     }
 
     @Test
     public void createAndDeleteTask() {
-        String task = "Task to be deleted";
+        String task = "Task to be deleted, Delete Me !";
         page.createNewTodo(task);
         hoverOverAnElement(page.findTodoByText(task));
-        //if (page.findTodoByText(task).isDisplayed()) {
-        if (page.findTodoByText("mumumu").isDisplayed()) {
+        if (page.findTodoByText(task).isDisplayed()) {
             page.deleteTask(task);
         }
     }
 
     @Test
     public void createMultipleTasks() {
-        for (int i = 0; i < randomValueBetweenMinMax(50, 100); i++) {
-            page.createNewTodo(randomWord_HE_ENG_Charset());
+        int expectedTasks = randomValueBetweenMinMax(50, 100);
+        for (int i = 0; i < expectedTasks; i++) {
+            page.createNewTodo(randomCharsetMix());
         }
+        assertThat("todo counters mismatch!", page.getTodoCounter(), is(String.valueOf(expectedTasks)));
+    }
+
+    @Test
+    public void filterActiveCompletedAllTasks() {
+
     }
 
 

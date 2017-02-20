@@ -1,21 +1,17 @@
 package remake.MVC2;
 
 import junit.framework.TestResult;
-import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.TestName;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -56,7 +52,7 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        //driver.close();
+        driver.close();
     }
 
     public static void open(String url) {
@@ -71,17 +67,20 @@ public class BaseTest {
         return RANDOM.nextInt(max - min) + min;
     }
 
-    public static String randomWord_HE_ENG_Charset() {
+    public static String randomCharsetMix() {
         String rusABC = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         String engABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String hebABC = "אבגדהוזחטיכלמנסעפצקרשת";
         String special = "~`!@#$%^&*()_+";
         String numeric = "1234567890";
-        String chiABC = "精选品牌畅销科技发现趋势样式";
+        String chiABC = "精选品牌畅销科技发现趋势样式已过期每天几分钟全身都轻松亚马逊最畅销按摩设备选合本条折扣信息发布于天前内容可" +
+                "能已失效。给操劳了多年的妈妈放松下疲惫的身体吧～长时间工作学习肢体保持同姿势时间久了肌肉骨都僵浑身酸痛疲乏睡眠也受" +
+                "影响按摩可以松驰肌肉放松精神缓解疲劳在家备个按摩器闲暇时边看剧一边按每天都是最佳状态";
         String lotsOfSpaces = "                                      ";
         String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces + chiABC;
+
         String randomSequence = "";
-        for (int i = 0; i < randomValueBetweenMinMax(3, 100); i++) {
+        for (int i = 0; i < randomValueBetweenMinMax(10, 100); i++) {
             char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));
             randomSequence += randomChar;
         }
@@ -96,14 +95,8 @@ public class BaseTest {
         action.doubleClick(targetForClick).perform();
     }
 
-    public void takeScreenshot() {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-        try {
-            FileUtils.copyFile(scrFile, new File("c:\\Webdrivers\\screenshots\\" + testName.getMethodName() + System.currentTimeMillis() % 10000 + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void executionWait(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
 

@@ -19,20 +19,19 @@ public class MVCPage {
     TODO lets make it on python and see the difference
      */
 
+    @FindBy(className = "toggle-all")
+    WebElement toggleAll;
+    @FindBy(className = "todo-count")
+    private WebElement todoCount;
     @FindBy(css = ".new-todo")
     private WebElement newTodo;
-
     @FindBy(className = "todo-list")
     private WebElement firstTodo;
-
+    // debug , hate fucking XPATH
     @FindAll({@FindBy(className = "todo-list")})
     private List<WebElement> todoList;
-
     @FindBy(xpath = "//div[label[text()='delete me']]/button[@class='destroy']")
     private WebElement hardCodedDeleteButton;
-    // yes I hate hardcoded values , so either use cool annotations or
-    // write a separate fubction
-
     @FindBy(css = "button[class]")
     private WebElement deleteButton;
 
@@ -62,6 +61,16 @@ public class MVCPage {
         findTodoByText(task).click();
         deleteButton.click();
 
+    }
+
+    /**
+     * extracts string representation of task counter element on a page
+     *
+     * @return number of tasks omiting other characters besides digits as a String
+     * e.g instead of "51 items left" returns "51"
+     */
+    public String getTodoCounter() {
+        return (todoCount.getText().replaceAll("\\D+", ""));
     }
 
 

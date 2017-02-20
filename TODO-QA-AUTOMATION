@@ -111,7 +111,49 @@ one DB (singleton)
 [JSON]
 Serialize data with JSON (Read / Write)
 
+[AKAMAI]
+To reverse every word in a sentence
+ Sum of all nodes in binary tree
+ One diamond pattern program
+             A
+            ABA
+           ABCBA
+            ABA
+             A
 
 
+Program to validate IP adress
 
+To find the duplicate no in an array
+
+@arr = (1..10,8,9);
+%hash;
+foreach (@arr) {
+    if(exists($hash{$_})){
+     print $_;
+    } else{
+        $hash{$_} = 1;
+    }
+}
+
+
+Program to accept a decimal no and find no of zeros and 1s in   its binary equivalent
+a=15
+list=[]
+while a >=1:
+    que=a/2
+    rem=a%2
+    a=que
+    list.append(rem)
+dict={}
+for i in list[::-1]:
+    if i not in dict:
+        dict[i]=1
+    else:
+        dict[i]=dict[i]+1
+print "No Of Zeros:", dict.get(0)
+print "No Of Ones:", dict.get(1)
+
+Simulate a 6 sided die with a coin
+1- HHH 2-TTT 3-HHT 4-HTH 5-TTH 6-THT
 
