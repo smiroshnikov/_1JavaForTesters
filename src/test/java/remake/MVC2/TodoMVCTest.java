@@ -1,6 +1,7 @@
 package remake.MVC2;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,6 +24,9 @@ import static org.hamcrest.core.Is.is;
 
 public class TodoMVCTest extends BaseTest {
 
+    @Rule
+    public ScreenshotOnFailed scrFailedRule = new ScreenshotOnFailed(driver, testName);
+
     MVCPage page = new MVCPage(driver);
 
     @BeforeClass
@@ -33,10 +37,11 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void createANewTask() {
+        System.out.printf("starting test %s", testName);
         String taskText = "First task";
         page.createNewTodo(taskText);
-        assertThat(page.findTodoByText(taskText).getText(), is(taskText));
-        takeScreenshot();
+        assertThat("Task text mismatch", page.findTodoByText(taskText).getText(),
+                is("Momo"));
     }
 
     @Test
@@ -44,7 +49,9 @@ public class TodoMVCTest extends BaseTest {
         String task = "Task to be deleted";
         page.createNewTodo(task);
         hoverOverAnElement(page.findTodoByText(task));
-        page.deleteTask(task);
+        if (page.findTodoByText(task).isDisplayed()) {
+            page.deleteTask(task);
+        }
     }
 
     @Test
