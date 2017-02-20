@@ -7,7 +7,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.Random;
@@ -24,7 +24,7 @@ public class BaseTest {
     static final String HEROKU_URL = "https://todomvc4tasj.herokuapp.com/";
     static final Random RANDOM = new Random(System.currentTimeMillis());
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
-    private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
+    private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\geckodriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     static WebDriver driver;
     static Actions action;
@@ -44,7 +44,7 @@ public class BaseTest {
         if (System.getProperty("webdriver.edge.driver") == null) {
             System.setProperty("webdriver.edge.driver", EDGE_DRIVER_PATH);
         }
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         action = new Actions(driver);
         testResult = new TestResult();
     }
@@ -52,7 +52,8 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 
     public static void open(String url) {

@@ -1,8 +1,7 @@
 package remake.MVC2;
 
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.runners.MethodSorters;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -28,8 +27,10 @@ import static org.hamcrest.core.Is.is;
  * Base(before) test might include pre-made tasks ? (not sure if I want to clear the task board before each run ,
  * and if I do, how it will be implemented ? Using tests delete and clear ? :(  )
  * Consider pre-test steps like existing tasks ?
+ * TODO separate each test to a class and stop fighting windmill!
  */
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TodoMVCTest extends BaseTest {
 
     @Rule
@@ -53,20 +54,36 @@ public class TodoMVCTest extends BaseTest {
     }
 
     @Test
-    public void createAndDeleteTask() {
-        String task = "Task to be deleted, Delete Me !";
-        page.createNewTodo(task);
-        hoverOverAnElement(page.findTodoByText(task));
-        if (page.findTodoByText(task).isDisplayed()) {
-            page.deleteTask(task);
+    public void a_CreateAndDeleteActiveTask() {
+        String taskText = "Task to be deleted, Delete Me !";
+        page.createNewTodo(taskText);
+        hoverOverAnElement(page.findTodoByText(taskText));
+        if (page.findTodoByText(taskText).isDisplayed()) {
+            page.deleteTask(taskText);
         }
+        // point of interest ! How to validate ? DB?
+        //assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
     }
 
     @Test
+    public void b_CreateAndDeleteCompleteTask() {
+        String taskText = "Task to be completed and deleted!";
+        page.createNewTodo(taskText);
+        page.toggleTask(taskText);
+        hoverOverAnElement(page.findTodoByText(taskText));
+        if (page.findTodoByText(taskText).isDisplayed()) {
+            page.deleteTask(taskText);
+        }
+        // point of interest ! How to validate ? DB?
+        //assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
+    }
+
     /**
-     * jhasgdjhagd
+     * Toggles the task twice marking it as complete for the first time
+     * and active second time
      */
-    public void completeAndUncompleteTask() {
+    @Test
+    public void c_CompleteAndUncompleteTask() {
         String taskText = "toggle me as complete";
         page.createNewTodo(taskText);
         // toggle completed
@@ -75,20 +92,40 @@ public class TodoMVCTest extends BaseTest {
         // untoggle to active
         page.toggleTask(taskText);
         assertThat("Expecting to see single task active", page.getTodoCounter(), is(String.valueOf(1)));
-
     }
 
     @Test
-    public void createMultipleTasks() {
+    public void d_CreateMultipleTasksAndCompleteOneByOneAndClear() {
         int expectedTasks = randomValueBetweenMinMax(50, 100);
         for (int i = 0; i < expectedTasks; i++) {
-            page.createNewTodo(randomCharsetMix());
+            String taskText = randomCharsetMix();
+            page.createNewTodo(taskText);
         }
         assertThat("todo counters mismatch!", page.getTodoCounter(), is(String.valueOf(expectedTasks)));
+        page.massEnTogglement();
+        assertThat("todo counters mismatch!", page.getTodoCounter(), is(String.valueOf(0)));
+        page.clickClearCompleted();
     }
 
+
     @Test
-    public void filterActiveCompletedAllTasks() {
+    public void filterActiveCompletedAllTasks() throws InterruptedException {
+        page.createNewTodo("Complete me");
+        page.createNewTodo("Complete me");
+        page.createNewTodo("Complete me");
+        page.createNewTodo("Complete me");
+        page.createNewTodo("Complete me");
+        page.massEnTogglement();
+        page.createNewTodo("I am Active !");
+        page.createNewTodo("I am Active !");
+        page.createNewTodo("I am Active !");
+        page.createNewTodo("I am Active !");
+        page.createNewTodo("I am Active !");
+        // TODO validate
+        page.filterCompleted();
+        page.filterActive();
+        page.filterAll();
+
 
     }
 

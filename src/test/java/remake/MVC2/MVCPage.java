@@ -20,21 +20,21 @@ public class MVCPage {
      */
 
     @FindBy(className = "toggle-all")
-    WebElement toggleAll;
+    private WebElement toggleAll;
 
-    // NOT USED !
     @FindBy(className = "toggle")
-    WebElement toggleTask;
+    private WebElement toggleTask;
 
     @FindBy(className = "todo-count")
     private WebElement todoCount;
 
-    @FindBy(css = ".new-todo")
+    //@FindBy(css = ".new-todo")
+    @FindBy(className = "new-todo")
     private WebElement newTodo;
 
     @FindBy(className = "todo-list")
     private WebElement firstTodo;
-    // debug , hate fucking XPATH
+
 
     @FindAll({@FindBy(className = "todo-list")})
     private List<WebElement> todoList;
@@ -45,6 +45,24 @@ public class MVCPage {
     @FindBy(css = "button[class]")
     private WebElement deleteButton;
 
+    @FindAll({
+            @FindBy(className = "toggle")
+    })
+    private List<WebElement> allPossibleToggles;
+
+    @FindBy(css = ".clear-completed")
+    private WebElement clearCompleted;
+
+    @FindAll({
+            @FindBy(xpath = "//ul[contains(@class,'filters')]//a")
+    })
+    List<WebElement> taskFilters;
+
+    @FindBy(xpath = "//li/a[contains(text),'Active']")
+    WebElement filterActive;
+
+    @FindBy(xpath = "//li/a[contains(text),'Completed']")
+    WebElement filterCompleted;
 
     public MVCPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -52,10 +70,6 @@ public class MVCPage {
 
     public void createNewTodo(String text) {
         newTodo.sendKeys(text, Keys.ENTER);
-    }
-
-    public WebElement getFirstTodo() {
-        return firstTodo;
     }
 
     public WebElement findTodoByText(String text) {
@@ -86,6 +100,30 @@ public class MVCPage {
     public void toggleTask(String taskText) {
         //findTodoByText(taskText).findElement(By.className("toggle")).click();
         toggleTask.click();
+    }
+
+    public void massEnTogglement() {
+        for (WebElement t :
+                allPossibleToggles) {
+            t.click();
+
+        }
+    }
+
+    public void clickClearCompleted() {
+        clearCompleted.click();
+    }
+
+    public void filterAll() {
+        taskFilters.get(0).click();
+    }
+
+    public void filterActive() {
+        taskFilters.get(1).click();
+    }
+
+    public void filterCompleted() {
+        taskFilters.get(2).click();
     }
 
 

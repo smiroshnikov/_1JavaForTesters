@@ -28,11 +28,12 @@ public class ScreenshotOnFailed extends TestWatcher {
 
     @Override
     protected void failed(Throwable e, Description description) {
-        System.out.println("Execute screenshot here!");
+        String scrPath = "c:\\Webdrivers\\screenshots\\";
+        System.out.println("Screenshot taken look at " + scrPath);
         File screenShotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(screenShotFile, new File("c:\\Webdrivers\\screenshots\\" +
-                    testName.getMethodName() + "_" + System.currentTimeMillis() + ".png"));
+            FileUtils.copyFile(screenShotFile, new File(scrPath + testName.getMethodName() +
+                    "_" + System.currentTimeMillis() + ".png"));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

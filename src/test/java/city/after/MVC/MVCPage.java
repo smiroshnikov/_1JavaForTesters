@@ -44,6 +44,11 @@ public class MVCPage {
     @FindBy(css = ".toggle")
     WebElement toggleCompletion;
 
+    @FindAll({
+            @FindBy(className = "toggle")
+    })
+    List<WebElement> allPossibleToggles;
+
     //@FindBy(xpath = "//div/button")
     //@FindBy(css = ".destroy")
     //@FindBy(xpath = "//*[contains(@class,'destroy')]")
@@ -133,7 +138,7 @@ public class MVCPage {
     }
 
     /**
-     * Presses "Clear Coimpleted" button @ the lower left corner of the web-app
+     * Presses "Clear Completed" button @ the lower left corner of the web-app
      */
     public void clickClearCompletedBulkControl() {
         clearCompletedTasks.click();
@@ -152,5 +157,6 @@ public class MVCPage {
         //todoEditFullPath.click();
 
     }
+
 
 }
