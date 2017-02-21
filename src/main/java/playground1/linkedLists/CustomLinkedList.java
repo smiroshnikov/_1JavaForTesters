@@ -8,4 +8,26 @@ public class CustomLinkedList {
     // Add Node
     // Delete Node
     // Find Node
+
+    Node head;
+    Node tail;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void add(Node node) {
+        // scenario 1 : Empty Linked List
+        // scenario 2 : Non Empty linked List
+        if (tail == null) {
+            head = node;
+            tail = node;
+
+        } else {
+            tail.nextNode = node;
+            tail = node;
+        }
+
+
+    }
 }
