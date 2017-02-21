@@ -8,4 +8,9 @@ import java.util.Comparator;
 
 public interface LinkedListComparator extends Comparator {
 
+    @Override
+    boolean equals(Object obj);
+
+
+
 }

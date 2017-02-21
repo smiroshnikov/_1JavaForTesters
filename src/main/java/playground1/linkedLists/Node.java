@@ -4,14 +4,14 @@ package playground1.linkedLists;
  * Created by Iidwuurliik on 2/21/2017.
  */
 public class Node {
-    int data;
+    Object data;
     Node nextNode;
 
-    public Node(int data) {
+    public Node(Object data) {
         this.data = data;
     }
 
-    public int getData() {
+    public Object getData() {
         return data;
     }
 

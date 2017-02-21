@@ -4,41 +4,53 @@ package playground1.linkedLists;
  * Created by Iidwuurliik on 2/21/2017.
  */
 public class CustomLinkedList {
-    // Node  (data) -> Node (data) ->Node(data) -> null
-    // Add Node
-    // Delete Node
-    // Find Node
 
-    Node head;
-    Node tail = null;
+    final Node HEAD = new Node(null);
+    Node tail = HEAD; // 1 node list
+    Node current = HEAD;
+    int currentPosition = 0;
 
-    public Node getHead() {
-        return head;
+    public int getCurrentPosition() {
+
+        return currentPosition;
+    }
+    // step 1 h->node(null)<-t
+
+// step 2
+// h->node(null)->value-<tail
+// h->node(null)->node(value)->(node)value1<-tail
+
+
+    public void addValue(Object value) {
+        Node nextNode = new Node(value);
+        tail.setNextNode(nextNode); // tail points to new element
+        tail = nextNode; // new element becomes tail
+
     }
 
-    public void add(Node node) {
-        // scenario 1 : Empty Linked List
-        // scenario 2 : Non Empty linked List
-        if (tail == null) {
-            head = node;
-            tail = node;
-
-        } else {
-            tail.nextNode = node;
-            tail = node;
-        }
-
+    public boolean hasNext() {
+        return (current.nextNode != null);
     }
 
+    public Object nextNode() {
+        Object result = current.getNextNode().getData();
+        current = current.nextNode;
+        currentPosition++;
+        return result;
+    }
+
+    public void resetCurrent() {
+        current = HEAD;
+        currentPosition = 0;
+    }
 
     public void printMyLinkedList() {
-        Node current = head;
+        Node current = HEAD;
         while (current != null) {
             System.out.print(current.getData() + "->");
             current = current.getNextNode();
         }
-        System.out.println("NULL");
-
+        System.out.println("END");
     }
 }
 
