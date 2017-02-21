@@ -18,7 +18,7 @@ public class CustomLinkedList {
 
 // step 2
 // h->node(null)->value-<tail
-// h->node(null)->node(value)->(node)value1<-tail
+// h->node(null)->node(value)->(node)title<-tail
 
 
     public void addValue(Object value) {
