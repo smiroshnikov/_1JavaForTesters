@@ -1,21 +1,20 @@
-package playground1.linkedLists;
+package playground1.linkedLists.SharonS;
 
 /**
  * Created by Iidwuurliik on 2/21/2017.
  */
 public class CustomLinkedList {
 
-    final Node HEAD = new Node(null);
-    Node tail = HEAD; // 1 node list
+    final Node HEAD = new Node(null); // Useful
+    Node tail = HEAD;
     Node current = HEAD;
     int currentPosition = 0;
 
     public int getCurrentPosition() {
-
         return currentPosition;
     }
-    // step 1 h->node(null)<-t
 
+// step 1 h->node(null)<-t
 // step 2
 // h->node(null)->value-<tail
 // h->node(null)->node(value)->(node)title<-tail
@@ -25,7 +24,6 @@ public class CustomLinkedList {
         Node nextNode = new Node(value);
         tail.setNextNode(nextNode); // tail points to new element
         tail = nextNode; // new element becomes tail
-
     }
 
     public boolean hasNext() {
@@ -40,6 +38,7 @@ public class CustomLinkedList {
     }
 
     public void resetCurrent() {
+        // if I desire to go over list again , might be useful
         current = HEAD;
         currentPosition = 0;
     }

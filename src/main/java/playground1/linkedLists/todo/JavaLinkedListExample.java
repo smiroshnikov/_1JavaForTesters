@@ -1,4 +1,4 @@
-package playground1.linkedLists;
+package playground1.linkedLists.todo;
 
 import java.util.LinkedList;
 

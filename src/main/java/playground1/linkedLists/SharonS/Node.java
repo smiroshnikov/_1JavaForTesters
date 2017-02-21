@@ -1,7 +1,8 @@
-package playground1.linkedLists;
+package playground1.linkedLists.SharonS;
 
 /**
  * Created by Iidwuurliik on 2/21/2017.
+ * The main idea i wanted to implement here is not to expose user to Node , just to myCustomlist
  */
 public class Node {
     Object data;
@@ -13,10 +14,6 @@ public class Node {
 
     public Object getData() {
         return data;
-    }
-
-    public void setData(int data) {
-        this.data = data;
     }
 
     public Node getNextNode() {
