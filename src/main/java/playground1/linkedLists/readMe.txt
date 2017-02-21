@@ -4,6 +4,12 @@ Liked list are one of the few things that I had
 problems with.
 
 
+Before getting to solutions I need to implement my own linked list and node classes,
+so I wont fuck up an interview in a very nice company
+
+
+
+
 [Citi]
 Question 1 - Write a function that will determine if a list is cyclic ?
 Question 1a - Optimnize your silution
