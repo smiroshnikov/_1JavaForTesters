@@ -18,7 +18,8 @@ public class CustomLinkedList {
         return tail;
     }
 
-    // step 1 h->node(null)<-t
+// Banging my head on the wall ! remove before commit
+// step 1 h->node(null)<-t
 // step 2
 // h->node(null)->value-<tail
 // h->node(null)->node(value)->(node)title<-tail
