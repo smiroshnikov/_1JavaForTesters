@@ -16,6 +16,7 @@ public class Main {
 
         System.out.println(list.getHead().getData());
         System.out.println(list.getHead().getNextNode().getData());
+        list.printMyLinkedList();
 
 
     }

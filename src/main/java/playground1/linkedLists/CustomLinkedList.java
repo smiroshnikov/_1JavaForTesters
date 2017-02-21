@@ -10,7 +10,7 @@ public class CustomLinkedList {
     // Find Node
 
     Node head;
-    Node tail;
+    Node tail = null;
 
     public Node getHead() {
         return head;
@@ -28,6 +28,17 @@ public class CustomLinkedList {
             tail = node;
         }
 
+    }
+
+
+    public void printMyLinkedList() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.getData() + "->");
+            current = current.getNextNode();
+        }
+        System.out.println("NULL");
 
     }
 }
+
