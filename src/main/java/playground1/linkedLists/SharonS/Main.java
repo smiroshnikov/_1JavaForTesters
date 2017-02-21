@@ -23,7 +23,6 @@ public class Main {
 //        l1.addValue(new Person("a","u","a"));
 //        l1.addValue(new Person("a","i","a"));
 //        l1.addValue(new Person("a","a","a"));
-//
 //        l2.addValue(new Person("1","a","a"));
 //        l2.addValue(new Person("2","a","a"));
 //        l2.addValue(new Person("3","a","a"));
@@ -39,13 +38,16 @@ public class Main {
 
         l1.addValue(new Person("Presidents", "Sergei", "Miroshnikov"));
         l1.addValue(new Person("QA", "Bob", "Shmulinson"));
-        l1.addValue(new Person("Prime Minister", "null", "Noname"));
+        l1.addValue(new Person("A", "B", "C"));
+        l1.addValue(new Person("Aa", "B", "C"));
 
         l2.addValue(new Person("President", "Sergei", "Miroshnikov"));
-        l2.addValue(new Person("QA", "Bob", "Shmulinson"));
+        l2.addValue(new Person("President", "Sergei", "Miroshnikov"));
+        l2.addValue(new Person("A", "B", "C"));
 
 
-        while (l1.hasNext() && l2.hasNext()) {
+        // this is find_where.... from interview
+        while (l1.hasNext() && l2.hasNext()) { // in case lists are not the same length
             if (((Person) l1.nextNode()).compareTo(((Person) l2.nextNode())) == 0) {
                 result = l1.getCurrentPosition();
                 break;
@@ -55,5 +57,12 @@ public class Main {
         l2.printMyLinkedList();
 
         System.out.println("Lists have same value @ position " + result);
+
+        System.out.println("comparing Tails ");
+        if (((Person) l1.getTail().getData()).compareTo(((Person) l2.getTail().getData())) == 0) {
+            System.out.println("Same tails - Linked Lists intersect!");
+        } else {
+            System.out.println("They don't intersect!");
+        }
     }
 }

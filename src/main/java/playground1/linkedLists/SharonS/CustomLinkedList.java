@@ -14,7 +14,11 @@ public class CustomLinkedList {
         return currentPosition;
     }
 
-// step 1 h->node(null)<-t
+    public Node getTail() {
+        return tail;
+    }
+
+    // step 1 h->node(null)<-t
 // step 2
 // h->node(null)->value-<tail
 // h->node(null)->node(value)->(node)title<-tail

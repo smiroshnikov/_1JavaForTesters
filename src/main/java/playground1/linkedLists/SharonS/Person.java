@@ -28,10 +28,10 @@ public class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "title='" + title + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "{" +
+                "" + title + '\'' +
+                "," + firstName + '\'' +
+                "," + lastName + '\'' +
                 '}';
     }
 }
