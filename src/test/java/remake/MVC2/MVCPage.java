@@ -64,6 +64,18 @@ public class MVCPage {
     @FindBy(xpath = "//li/a[contains(text),'Completed']")
     WebElement filterCompleted;
 
+    @FindAll({
+            @FindBy(css = ".todo-list>.completed")
+    })
+    List<WebElement> completedElementsPresent;
+
+    @FindAll({
+            @FindBy(css = ".view>label")
+    })
+    List<WebElement> activeElementsPresent;
+
+
+
     public MVCPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -93,7 +105,7 @@ public class MVCPage {
      * @return number of tasks omiting other characters besides digits as a String
      * e.g instead of "51 items left" returns "51"
      */
-    public String getTodoCounter() {
+    public String getTodoCounterFromFooter() {
         return (todoCount.getText().replaceAll("\\D+", ""));
     }
 
@@ -126,5 +138,12 @@ public class MVCPage {
         taskFilters.get(2).click();
     }
 
+    public int countCompletedTodos() {
+        return completedElementsPresent.size();
+    }
+
+    public int countActiveTasks() {
+        return activeElementsPresent.size();
+    }
 
 }

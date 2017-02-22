@@ -65,7 +65,7 @@ public class TodoMVCTest extends BaseTest {
             page.deleteTask(taskText);
         }
         // point of interest ! How to validate ? DB?
-        //assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
+        //assertThat("Not expecting to see any tasks ", page.getTodoCounterFromFooter(), is(String.valueOf(0)));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class TodoMVCTest extends BaseTest {
             page.deleteTask(taskText);
         }
         // point of interest ! How to validate ? DB?
-        //assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
+        //assertThat("Not expecting to see any tasks ", page.getTodoCounterFromFooter(), is(String.valueOf(0)));
     }
 
     /**
@@ -91,10 +91,10 @@ public class TodoMVCTest extends BaseTest {
         page.createNewTodo(taskText);
         // toggle completed
         page.toggleTask(taskText);
-        assertThat("Not expecting to see any tasks ", page.getTodoCounter(), is(String.valueOf(0)));
+        assertThat("Not expecting to see any tasks ", page.getTodoCounterFromFooter(), is(String.valueOf(0)));
         // untoggle to active
         page.toggleTask(taskText);
-        assertThat("Expecting to see single task active", page.getTodoCounter(), is(String.valueOf(1)));
+        assertThat("Expecting to see single task active", page.getTodoCounterFromFooter(), is(String.valueOf(1)));
     }
 
     @Test
@@ -104,16 +104,16 @@ public class TodoMVCTest extends BaseTest {
             String taskText = randomCharsetMix();
             page.createNewTodo(taskText);
         }
-        assertThat("todo counters mismatch!", page.getTodoCounter(), is(String.valueOf(expectedTasks)));
+        assertThat("todo counters mismatch!", page.getTodoCounterFromFooter(), is(String.valueOf(expectedTasks)));
         page.massEnTogglement();
-        assertThat("todo counters mismatch!", page.getTodoCounter(), is(String.valueOf(0)));
+        assertThat("todo counters mismatch!", page.getTodoCounterFromFooter(), is(String.valueOf(0)));
         page.clickClearCompleted();
     }
 
 
     @Test
-    public void filterActiveCompletedAllTasks() throws InterruptedException {
-        page.createNewTodo("Complete me 1");
+    public void e_FilterActiveCompletedAllTasks() {
+        page.createNewTodo("Complete and Uncomplete me 1");
         page.createNewTodo("Complete me 2");
         page.createNewTodo("Complete me 3");
         page.massEnTogglement();
@@ -122,11 +122,22 @@ public class TodoMVCTest extends BaseTest {
         page.createNewTodo("I am still active 3!");
         page.createNewTodo("I am still active 4!");
         page.createNewTodo("I am still active 5!");
-
-        // TODO validate
         page.filterCompleted();
+        assertThat(page.countCompletedTodos(), is(3));
         page.filterActive();
+        assertThat(page.countActiveTasks(), is(5));
         page.filterAll();
+        page.toggleTask("Complete and Uncomplete me 1");
+        // todo change assertion - get a better xpath for all elements on page , regardless of active / completed
+        assertThat(page.getTodoCounterFromFooter(), is(String.valueOf(6)));
+    }
+
+    @Test
+    public void editExistingActiveTask() {
+    }
+
+    @Test
+    public void editExistingCompleteTask() {
     }
 
 }

@@ -7,7 +7,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.Random;
@@ -44,7 +44,7 @@ public class BaseTest {
         if (System.getProperty("webdriver.edge.driver") == null) {
             System.setProperty("webdriver.edge.driver", EDGE_DRIVER_PATH);
         }
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         action = new Actions(driver);
         testResult = new TestResult();
     }
@@ -52,7 +52,7 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        driver.close();
+        //driver.close();
         //driver.quit();
     }
 
