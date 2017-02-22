@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -15,8 +16,12 @@ import java.util.List;
  */
 public class MVCPage {
     /*
-    Is it really that comfortable and manageble here ?
-    TODO lets make it on python and see the difference
+    TODO review this code in a month and ask yourself the question below.
+    Is it really that comfortable and manageble and readable as it feels @02/2017 ?
+     if (NOT) {
+        REWRITE EVERYTHING ALL OVER AGAIN ! UNTILL ITS PERFECT!
+     }
+    TODO lets make same E2E on python3 and feel if its really faster dev time
      */
 
     @FindBy(className = "toggle-all")
@@ -74,6 +79,17 @@ public class MVCPage {
     })
     List<WebElement> activeElementsPresent;
 
+    // bad selector above , better selector below not working
+    //@FindBy(css = ".edit")
+    //@FindBy(className = "edit")
+    //@FindBy(xpath = "//*[contains(@class, 'edit')]")
+    // FIXEN PARTIZANEN ! guess it is related to mouse-over above element first
+
+    @FindBys({@FindBy(className = "main"),
+            @FindBy(className = "todo-list"),
+            @FindBy(css = "li"),
+            @FindBy(className = "edit")})
+    WebElement todoEditFullPath;
 
 
     public MVCPage(WebDriver driver) {
@@ -84,7 +100,12 @@ public class MVCPage {
         newTodo.sendKeys(text, Keys.ENTER);
     }
 
+    public void enterTaskText(WebElement task, String text) {
+        task.sendKeys(text, Keys.ENTER);
+    }
+
     public WebElement findTodoByText(String text) {
+        // the funny part is that this selector is too complex , and messes up assertion
         WebElement result = null;
         for (WebElement todo :
                 todoList) {

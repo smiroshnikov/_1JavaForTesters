@@ -25,7 +25,7 @@ public class BaseTest {
     static final Random RANDOM = new Random(System.currentTimeMillis());
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\geckodriver.exe";
-    private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
+    private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\MicrosoftWebDriver.exe";
     static WebDriver driver;
     static Actions action;
     static TestResult testResult;
