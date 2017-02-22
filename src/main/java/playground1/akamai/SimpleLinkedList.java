@@ -33,15 +33,19 @@ public class SimpleLinkedList {
     }
 
     public void reverse() {
-        Node previousNode = null;
         Node current = HEAD;
+        Node previousNode = null;
+        Node nextNode;
 
         while (current != null) {
-            previousNode = current;
-            current = current.nextNode;
+
+            nextNode = current.nextNode;
             current.nextNode = previousNode;
+            previousNode = current;
+            current = nextNode;
 
         }
+        current = previousNode;
 
     }
 
