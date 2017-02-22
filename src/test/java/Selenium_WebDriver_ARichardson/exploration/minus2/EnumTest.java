@@ -21,7 +21,7 @@ public class EnumTest {
         private int green;
         private int blue;
 
-        // enum constructors can be private or pakage private only
+        // enum constructors can be private or package private only
         private Color(int r, int g, int b) {
             red = r;
             green = g;
