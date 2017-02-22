@@ -18,12 +18,6 @@ public class CustomLinkedList {
         return tail;
     }
 
-// Banging my head on the wall ! remove before commit
-// step 1 h->node(null)<-t
-// step 2
-// h->node(null)->value-<tail
-// h->node(null)->node(value)->(node)title<-tail
-
 
     public void addValue(Object value) {
         Node nextNode = new Node(value);
@@ -56,5 +50,11 @@ public class CustomLinkedList {
         }
         System.out.println("END");
     }
+
+// Banging my head on the wall ! remove before commit
+// step 1 h->node(null)<-t
+// step 2
+// h->node(null)->value-<tail
+// h->node(null)->node(value)->(node)title<-tail
 }
 

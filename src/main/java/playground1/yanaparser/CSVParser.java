@@ -11,14 +11,18 @@ package playground1.yanaparser;
 // ALWAYS , сцуко !  ALWAYS , use paper and pen and write down how you will implement things - this could have saved time
 // Refactor as soon as you are sure what the required snippet of code does !
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CSVParser {
-    public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+    //public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
     public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
+    //public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
     public static final List<String[]> FIRST_LASER = new ArrayList<>();
     public static final List<String[]> SECOND_LASER = new ArrayList<>();
     public static final List<String[]> THIRD_LASER = new ArrayList<>();

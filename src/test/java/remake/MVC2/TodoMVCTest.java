@@ -1,6 +1,9 @@
 package remake.MVC2;
 
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -110,24 +113,20 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void filterActiveCompletedAllTasks() throws InterruptedException {
-        page.createNewTodo("Complete me");
-        page.createNewTodo("Complete me");
-        page.createNewTodo("Complete me");
-        page.createNewTodo("Complete me");
-        page.createNewTodo("Complete me");
+        page.createNewTodo("Complete me 1");
+        page.createNewTodo("Complete me 2");
+        page.createNewTodo("Complete me 3");
         page.massEnTogglement();
-        page.createNewTodo("I am Active !");
-        page.createNewTodo("I am Active !");
-        page.createNewTodo("I am Active !");
-        page.createNewTodo("I am Active !");
-        page.createNewTodo("I am Active !");
+        page.createNewTodo("I am still active 1!");
+        page.createNewTodo("I am still active 2!");
+        page.createNewTodo("I am still active 3!");
+        page.createNewTodo("I am still active 4!");
+        page.createNewTodo("I am still active 5!");
+
         // TODO validate
         page.filterCompleted();
         page.filterActive();
         page.filterAll();
-
-
     }
-
 
 }
