@@ -9,6 +9,9 @@ import org.junit.runners.MethodSorters;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+// Create abstract class and interface , that will ptrovide instantiation of diffrent pages - aka
+// angularPage , DojoPage etc , per each flavor I want to automate
+
 /**
  * E2E test
  * [Sprint 1 - 18/0/2017]
@@ -38,12 +41,13 @@ public class TodoMVCTest extends BaseTest {
 
     @Rule
     public ScreenshotOnFailed scrFailedRule = new ScreenshotOnFailed(driver, testName);
-
     public MVCPage page = new MVCPage(driver);
+
 
     @BeforeClass
     public static void setupURL() {
-        open(REACT_URL);
+        //open(REACT_URL);
+        open(ANGULAR_URL);
         maximizeWindow();
     }
 
@@ -149,7 +153,7 @@ public class TodoMVCTest extends BaseTest {
             page.enterTaskText(page.todoEditFullPath, additionalTaskText);
         }
         // TODO assertion solution , probably XPATH  get on that lecture already
-        //assertThat(page.findTodoByText("banana and milk"), is(taskText + additionalTaskText));
+        assertThat(page.findTodoByText("banana and milk"), is(taskText + additionalTaskText));
     }
 
     @Test
@@ -165,4 +169,14 @@ public class TodoMVCTest extends BaseTest {
         }
         //TODO assertion
     }
+
+    @Test
+    public void addTwoTasks() {
+        String taskText = "Task1";
+        page.createNewTodo(taskText);
+        page.createNewTodo(taskText);
+    }
+
+
 }
+

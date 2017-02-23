@@ -21,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     static final String REACT_URL = "http://todomvc.com/examples/react/#/";
+    static final String ANGULAR_URL = "http://todomvc.com/examples/angularjs/#/";
+
     static final String HEROKU_URL = "https://todomvc4tasj.herokuapp.com/";
     static final Random RANDOM = new Random(System.currentTimeMillis());
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
