@@ -81,28 +81,6 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    public static int randomValueBetweenMinMax(int min, int max) {
-        return RANDOM.nextInt(max - min) + min;
-    }
-
-    public static String randomCharsetMix() {
-        String rusABC = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-        String engABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String hebABC = "אבגדהוזחטיכלמנסעפצקרשת";
-        String special = "~`!@#$%^&*()_+";
-        String numeric = "1234567890";
-        String chiABC = "精选品牌畅销科技发现趋势样式已过期每天几分钟全身都轻松亚马逊最畅销按摩设备选合本条折扣信息发布于天前内容可";
-        String lotsOfSpaces = "                                      ";
-        String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces + chiABC;
-
-        String randomSequence = "";
-        for (int i = 0; i < randomValueBetweenMinMax(3, 150); i++) {
-            char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));
-            randomSequence += randomChar;
-        }
-        return randomSequence;
-    }
-
     public void hoverOverAnElement(WebElement targetHotHovering) {
         action.moveToElement(targetHotHovering);
     }
@@ -110,12 +88,6 @@ public class BaseTest {
     public void doADoubleClick(WebElement targetForClick) {
         action.doubleClick(targetForClick).perform();
     }
-
-    @Deprecated
-    public void executionWait(int seconds) {
-        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
-    }
-
 
 }
 

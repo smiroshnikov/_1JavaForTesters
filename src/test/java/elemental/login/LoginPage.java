@@ -1,7 +1,11 @@
 package elemental.login;
 
-/**
- * Created by miross1 on 2/24/2017.
- */
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+
 public class LoginPage {
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 }
