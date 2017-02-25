@@ -23,20 +23,24 @@ public class LogInTest extends BaseTest {
 
     @Test
     public void t() {
-        String user = "tomsmith";
-        String password = "SuperSecretPassword!";
-        WebElement uName = driver.findElement(By.id("username"));
-        uName.click();
-        uName.sendKeys(user);
-        WebElement login = driver.findElement(By.id("password"));
-        login.click();
-        login.sendKeys(password);
-        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button/i"));
-        loginButton.click();
-        // TODO assert login successful!
-        WebElement notification = driver.findElement(By.xpath("//*[@id=\"flash\"]"));
-        //assertThat (notification.getText(),is("You logged into a secure area!\\n×"));
-        assertTrue(notification.getText().startsWith("You logged into a secure area!"));
+        while (true) {
+            String user = "tomsmith";
+            String password = "SuperSecretPassword!";
+            WebElement uName = driver.findElement(By.id("username"));
+            uName.click();
+            uName.sendKeys(user);
+            WebElement login = driver.findElement(By.id("password"));
+            login.click();
+            login.sendKeys(password);
+            WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button/i"));
+            loginButton.click();
+            // TODO assert login successful!
+            WebElement notification = driver.findElement(By.xpath("//*[@id=\"flash\"]"));
+            //assertThat (notification.getText(),is("You logged into a secure area!\\n×"));
+            assertTrue(notification.getText().startsWith("You logged into a secure area!"));
+            WebElement logoutButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/a/i"));
+            logoutButton.click();
+        }
 
 
     }
