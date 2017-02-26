@@ -41,8 +41,6 @@ public class LogInTest extends BaseTest {
             WebElement logoutButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/a/i"));
             logoutButton.click();
         }
-
-
     }
 
 
