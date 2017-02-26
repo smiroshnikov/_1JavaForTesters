@@ -13,6 +13,7 @@ public class FruitsRunner {
         System.out.println("Empty : " + fruit.isEmpty());
         fruit.add("cherry");
         fruit.add("orange");
+        System.out.println(fruit.get(0));
 
 
     }
