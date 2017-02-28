@@ -17,6 +17,7 @@ import java.util.Random;
 public class FightingCss {
 
 
+    //region Variables
     static final String TEST_URL = "http://compendiumdev.co.uk/selenium/find_by_playground.php";
     static final Random RANDOM = new Random(System.currentTimeMillis());
     private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
@@ -25,6 +26,7 @@ public class FightingCss {
     static WebDriver driver;
     static Actions action;
     static TestResult testResult;
+    //endregion
 
     @Rule
     public TestName testName = new TestName();
@@ -74,6 +76,7 @@ public class FightingCss {
         WebElement element;
         element = driver.findElement(By.id("p8"));
         element = driver.findElement(By.cssSelector("#p8"));
+
 
     }
 
