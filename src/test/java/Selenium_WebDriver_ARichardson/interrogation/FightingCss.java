@@ -6,12 +6,12 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import princeton.Picture;
 
+import java.awt.*;
 import java.util.Random;
 
 public class FightingCss {
@@ -72,14 +72,37 @@ public class FightingCss {
         //.class match a class e.g "normal"
         // tag - match tag <p>/<p>
         // [attribute] - match attribute name
-        driver.get(TEST_URL);
-        WebElement element;
-        element = driver.findElement(By.id("p8"));
-        element = driver.findElement(By.cssSelector("#p8"));
-
-
+//        driver.get(TEST_URL);
+//        WebElement element;
+//        element = driver.findElement(By.id("p8"));
+//        element = driver.findElement(By.cssSelector("#p8"));
     }
 
+    @Test
+    public void flipPictureByX() throws InterruptedException {
+        Picture pic = new Picture("peppers-small.jpg");
+        int width = pic.width();
+        int height = pic.height();
+        pic.show();
+        Thread.sleep(5000);
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width / 2; x++) {
+                Color c1 = pic.get(x, y);
+                Color c2 = pic.get(width - x - 1, y);
+                pic.set(x, y, c2);
+                pic.set(width - x - 1, y, c1);
+            }
+        }
+        pic.show();
+        Thread.sleep(5000);
+    }
 }
+
+
+
+
+
+
+
 
 
