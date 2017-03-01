@@ -46,8 +46,8 @@ public class TodoMVCTest extends BaseTest {
 
     @BeforeClass
     public static void setupURL() {
-        //open(REACT_URL);
-        open(ANGULAR_URL);
+        open(REACT_URL);
+        //open(ANGULAR_URL);
         maximizeWindow();
     }
 
@@ -56,8 +56,7 @@ public class TodoMVCTest extends BaseTest {
     public void createANewTask() {
         String taskText = "First task";
         page.createNewTodo(taskText);
-        assertThat("Task text mismatch", page.findTodoByText(taskText).getText(),
-                is(taskText));
+        assertThat("Task text mismatch", page.findTodoByText(taskText).getText(), is(taskText));
     }
 
     @Test
@@ -100,7 +99,7 @@ public class TodoMVCTest extends BaseTest {
         String taskText = "toggle me as complete";
         page.createNewTodo(taskText);
         // toggle completed
-        page.toggleTask(taskText);
+
         assertThat("Not expecting to see any tasks ", page.getTodoCounterFromFooter(), is(String.valueOf(0)));
         // untoggle to active
         page.toggleTask(taskText);
@@ -176,7 +175,6 @@ public class TodoMVCTest extends BaseTest {
         page.createNewTodo(taskText);
         page.createNewTodo(taskText);
     }
-
 
 }
 

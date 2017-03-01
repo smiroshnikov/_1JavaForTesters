@@ -1,5 +1,9 @@
 package playground1.yanaparser;
 
+
+// TODO - rewrite thre fucking Code as intended and stop monley patching !
+// Rsults class was a good idea , lets keep going in that direction !
+
 /*
  * CSV file reader for Yana's results from laser microscope
  * have a big text file with values delimited by space , need to remove timestamp and create a separate file
@@ -11,10 +15,7 @@ package playground1.yanaparser;
 // ALWAYS , сцуко !  ALWAYS , use paper and pen and write down how you will implement things - this could have saved time
 // Refactor as soon as you are sure what the required snippet of code does !
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +35,7 @@ public class CSVParser {
      * @param dirtyLine - line with timestamp
      * @return String[] with values only
      */
+
     public static String[] removeTimestampFromLine(String[] dirtyLine) {
         return Arrays.copyOfRange(dirtyLine, 1, dirtyLine.length);
     }
@@ -46,15 +48,20 @@ public class CSVParser {
      */
     public static List<String[]> createAlistFromFileAndRemoveAxisX(File laserMeasurmentsFile) {
         // TODO separate AXIS removal (and saving it aside) in separate method
+
         String lineInFile;
+        String[] axis = new String[0];
         int lineCounter = -1;
         String csvSeparator = "\\s+"; // DONT  EVER FUCKING SPLIT BY " " - apparently this is not concidered as space in every OS !
         List<String[]> valuesList = new ArrayList<>();
+        UtilityResult utilityResult = new UtilityResult(axis, valuesList);
         try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurmentsFile))) {
             while ((lineInFile = br.readLine()) != null) {
                 lineCounter += 1;
                 if (lineCounter == 0) {
                     System.out.println("DEBUG :: INFO :: Wave Length AXIS ignored when coverted file to list...");
+                    axis = lineInFile.split(csvSeparator);
+                    utilityResult.setAxisValues(axis);
                 } else {
                     valuesList.add(lineInFile.split(csvSeparator));
                 }
@@ -62,6 +69,7 @@ public class CSVParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        utilityResult.setValuesList(valuesList);
         return valuesList;
     }
 
@@ -119,14 +127,34 @@ public class CSVParser {
         }
     }
 
+    public static void writeListToFile(List<String[]> list, String fileName) throws IOException {
+        FileWriter writer = new FileWriter(fileName);
+
+        for (String[] line :
+                list) {
+            writer.write(System.getProperty("line.separator"));
+            for (String element :
+                    line) {
+                //System.out.print(element);
+                writer.write(element + "\t");
+            }
+        }
+        writer.close();
+    }
+
+
     public static void main(String[] args) throws IOException {
         List<String[]> corruptedMeasurements = createAlistFromFileAndRemoveAxisX(WIN_FILE_PATH);
         List<String[]> cleanMeasurements = aggregateCleanDataToList(corruptedMeasurements);
         parseResultsPerLaser(cleanMeasurements);
-        printMeasurementsList(FIRST_LASER);
-        printMeasurementsList(SECOND_LASER);
-        printMeasurementsList(THIRD_LASER);
-        printMeasurementsList(FORTH_LASER);
+
+//        printMeasurementsList(FIRST_LASER);
+//        printMeasurementsList(SECOND_LASER);
+//        printMeasurementsList(THIRD_LASER);
+//        printMeasurementsList(FORTH_LASER);
+
         // TODO file output to 4 separate files
+        writeListToFile(FORTH_LASER, "fourth_laser.txt");
+
     }
 }
