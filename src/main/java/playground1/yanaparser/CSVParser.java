@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CSVParser {
-    //public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/testYana.csv");
+    public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
     public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
     //public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
     public static final List<String[]> FIRST_LASER = new ArrayList<>();
@@ -49,21 +49,25 @@ public class CSVParser {
     public static List<String[]> createAlistFromFileAndRemoveAxisX(File laserMeasurmentsFile) {
         // TODO separate AXIS removal (and saving it aside) in separate method
 
-        String lineInFile;
-        String[] axis = new String[0];
-        int lineCounter = -1;
+        // TODO initialize variable , where its needed not in the start of function !!
+        String[] axis = new String[0]; // TODO no need to initialize
+
         String csvSeparator = "\\s+"; // DONT  EVER FUCKING SPLIT BY " " - apparently this is not concidered as space in every OS !
+        // should be a constant and initialized only once (useful if i use function more than once )
         List<String[]> valuesList = new ArrayList<>();
-        UtilityResult utilityResult = new UtilityResult(axis, valuesList);
+        UtilityResult utilityResult = new UtilityResult(axis, valuesList); // create another constructor instead of wasting resourses
         try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurmentsFile))) {
-            while ((lineInFile = br.readLine()) != null) {
+            String lineInFile;
+            int lineCounter = -1;
+            while (( lineInFile = br.readLine()) != null) { // use for instead of while , whoukd have had counter within loop body
                 lineCounter += 1;
+                axis = lineInFile.split(csvSeparator);
                 if (lineCounter == 0) {
                     System.out.println("DEBUG :: INFO :: Wave Length AXIS ignored when coverted file to list...");
-                    axis = lineInFile.split(csvSeparator);
+
                     utilityResult.setAxisValues(axis);
                 } else {
-                    valuesList.add(lineInFile.split(csvSeparator));
+                    valuesList.add(axis);
                 }
             }
         } catch (IOException e) {
@@ -108,22 +112,38 @@ public class CSVParser {
     }
 
     public static void parseResultsPerLaser(List<String[]> fullMeasurementsList) {
-        int lineCounter = 0;
-        for (String[] cleanLine :
-                fullMeasurementsList) {
-            if ((lineCounter % 4 == 0)) {
-                FIRST_LASER.add(cleanLine);
+        int lineCounter ;
+        //  for (String[] cleanLine : fullMeasurementsList) {
+        for (int i = 0; i < fullMeasurementsList.size(); i++) {
+            lineCounter = i%4;
+            switch (lineCounter) {
+                case 0:
+                    FIRST_LASER.add(fullMeasurementsList.get(i));
+                    break;
+                case 1:
+                    SECOND_LASER.add(fullMeasurementsList.get(i));
+                    break;
+                case 2:
+                    THIRD_LASER.add(fullMeasurementsList.get(i));
+                    break;
+                case 3:
+                    FORTH_LASER.add(fullMeasurementsList.get(i));
+                    break;
             }
-            if (lineCounter % 4 == 1) {
-                SECOND_LASER.add(cleanLine);
-            }
-            if (lineCounter % 4 == 2) {
-                THIRD_LASER.add(cleanLine);
-            }
-            if (lineCounter % 4 == 3) {
-                FORTH_LASER.add(cleanLine);
-            }
-            lineCounter += 1;
+//            if ((lineCounter % 4 == 0)) {
+//                FIRST_LASER.add(cleanLine);
+//            }
+//            if (lineCounter % 4 == 1) {
+//                SECOND_LASER.add(cleanLine);
+//            }
+//            if (lineCounter % 4 == 2) {
+//                THIRD_LASER.add(cleanLine);
+//            }
+//            if (lineCounter % 4 == 3) {
+//                FORTH_LASER.add(cleanLine);
+//            }
+////            lineCounter += 1;
+//        }
         }
     }
 
@@ -144,7 +164,7 @@ public class CSVParser {
 
 
     public static void main(String[] args) throws IOException {
-        List<String[]> corruptedMeasurements = createAlistFromFileAndRemoveAxisX(WIN_FILE_PATH);
+        List<String[]> corruptedMeasurements = createAlistFromFileAndRemoveAxisX(MAC_FILE_PATH);
         List<String[]> cleanMeasurements = aggregateCleanDataToList(corruptedMeasurements);
         parseResultsPerLaser(cleanMeasurements);
 
@@ -154,7 +174,10 @@ public class CSVParser {
 //        printMeasurementsList(FORTH_LASER);
 
         // TODO file output to 4 separate files
-        writeListToFile(FORTH_LASER, "fourth_laser.txt");
+        writeListToFile(FIRST_LASER, "first_laser.txt");
+        writeListToFile(SECOND_LASER, "second_laser.txt");
+        writeListToFile(THIRD_LASER, "third_laser.txt");
+        writeListToFile(FORTH_LASER, "forth_laser.txt");
 
     }
 }
