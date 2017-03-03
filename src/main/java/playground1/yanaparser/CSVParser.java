@@ -21,9 +21,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CSVParser {
-    public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
-    public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
-    //public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
+    //public static final File MAC_FILE_PATH = new File("/Users/sergei.miroshnikov/Downloads/mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
+    //public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
+    public static final File WIN_FILE_PATH = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
     public static final List<String[]> FIRST_LASER = new ArrayList<>();
     public static final List<String[]> SECOND_LASER = new ArrayList<>();
     public static final List<String[]> THIRD_LASER = new ArrayList<>();
@@ -59,7 +59,7 @@ public class CSVParser {
         try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurmentsFile))) {
             String lineInFile;
             int lineCounter = -1;
-            while (( lineInFile = br.readLine()) != null) { // use for instead of while , whoukd have had counter within loop body
+            while ((lineInFile = br.readLine()) != null) { // use for instead of while , whoukd have had counter within loop body
                 lineCounter += 1;
                 axis = lineInFile.split(csvSeparator);
                 if (lineCounter == 0) {
@@ -112,10 +112,10 @@ public class CSVParser {
     }
 
     public static void parseResultsPerLaser(List<String[]> fullMeasurementsList) {
-        int lineCounter ;
+        int lineCounter;
         //  for (String[] cleanLine : fullMeasurementsList) {
         for (int i = 0; i < fullMeasurementsList.size(); i++) {
-            lineCounter = i%4;
+            lineCounter = i % 4;
             switch (lineCounter) {
                 case 0:
                     FIRST_LASER.add(fullMeasurementsList.get(i));
@@ -164,14 +164,14 @@ public class CSVParser {
 
 
     public static void main(String[] args) throws IOException {
-        List<String[]> corruptedMeasurements = createAlistFromFileAndRemoveAxisX(MAC_FILE_PATH);
+        List<String[]> corruptedMeasurements = createAlistFromFileAndRemoveAxisX(WIN_FILE_PATH);
         List<String[]> cleanMeasurements = aggregateCleanDataToList(corruptedMeasurements);
         parseResultsPerLaser(cleanMeasurements);
 
-//        printMeasurementsList(FIRST_LASER);
-//        printMeasurementsList(SECOND_LASER);
-//        printMeasurementsList(THIRD_LASER);
-//        printMeasurementsList(FORTH_LASER);
+        printMeasurementsList(FIRST_LASER);
+        printMeasurementsList(SECOND_LASER);
+        printMeasurementsList(THIRD_LASER);
+        printMeasurementsList(FORTH_LASER);
 
         // TODO file output to 4 separate files
         writeListToFile(FIRST_LASER, "first_laser.txt");

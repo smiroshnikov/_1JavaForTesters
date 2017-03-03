@@ -6,7 +6,9 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import princeton.Picture;
@@ -59,23 +61,23 @@ public class FightingCss {
 
     @Test
     public void cssTest() {
-//        By pParagraphSelector = By.cssSelector("p[class='normal']");
-//        By divSelector = By.cssSelector("div[class='specialDiv']");
-//        By partialDivSelector = By.cssSelector("div[class*='Di']");
-//        By partialDivSelectorAtTheEnd = By.cssSelector("div[class$='Di']");
-//        By partialDivSelectorAtTheMiddle = By.cssSelector("div[class$='Di']");
-//        By partialDivSelectorAtTheStart = By.cssSelector("div[class^='spe']");
-//        By anywhereClassHasDefinedString = By.cssSelector("div[class~='has']");
-//        By classORNameSelector = By.cssSelector("div[class~='has'],div[name*='m']");
+        By pParagraphSelector = By.cssSelector("p[class='normal']");
+        By divSelector = By.cssSelector("div[class='specialDiv']");
+        By partialDivSelector = By.cssSelector("div[class*='Di']");
+        By partialDivSelectorAtTheEnd = By.cssSelector("div[class$='Di']");
+        By partialDivSelectorAtTheMiddle = By.cssSelector("div[class$='Di']");
+        By partialDivSelectorAtTheStart = By.cssSelector("div[class^='spe']");
+        By anywhereClassHasDefinedString = By.cssSelector("div[class~='has']");
+        By classORNameSelector = By.cssSelector("div[class~='has'],div[name*='m']");
         // * match any element
         // #id match id e.g #p4
         //.class match a class e.g "normal"
         // tag - match tag <p>/<p>
         // [attribute] - match attribute name
-//        driver.get(TEST_URL);
-//        WebElement element;
-//        element = driver.findElement(By.id("p8"));
-//        element = driver.findElement(By.cssSelector("#p8"));
+        driver.get(TEST_URL);
+        WebElement element;
+        element = driver.findElement(By.id("p8"));
+        element = driver.findElement(By.cssSelector("#p8"));
     }
 
     @Test
