@@ -51,9 +51,54 @@ public class CSV_BarIlan_Remake {
         }
     }
 
+    public static void splitTheMeasurements(List<String[]> measurements) {
+        int lineCounter;
+        FIRST_LASER_MEASUREMENTS.add(waveLengthAxisX);
+        SECOND_LASER_MEASUREMENTS.add(waveLengthAxisX);
+        THIRD_LASER_MEASUREMENTS.add(waveLengthAxisX);
+        FORTH_LASER_MEASUREMENTS.add(waveLengthAxisX);
+
+        for (int i = 0; i < measurements.size(); i++) {
+            lineCounter = i % 4;
+            switch (lineCounter) {
+                case 0:
+                    FIRST_LASER_MEASUREMENTS.add(measurements.get(i));
+                    break;
+                case 1:
+                    SECOND_LASER_MEASUREMENTS.add(measurements.get(i));
+                    break;
+                case 2:
+                    THIRD_LASER_MEASUREMENTS.add(measurements.get(i));
+                    break;
+                case 3:
+                    FORTH_LASER_MEASUREMENTS.add(measurements.get(i));
+                    break;
+            }
+        }
+    }
+
+    public static void writeListToFile(List<String[]> list, String fileName) throws IOException {
+        FileWriter writer = new FileWriter(fileName);
+
+        for (String[] line :
+                list) {
+            writer.write(System.getProperty("line.separator"));
+            for (String element :
+                    line) {
+                //System.out.print(element);
+                writer.write(element + "\t");
+            }
+        }
+        writer.close();
+    }
+
     public static void main(String[] args) throws IOException {
         List<String[]> measurements = parseFileToListOfStringArrays(MICROSCOPE_RESULTS);
-        printListOfArrays(measurements);
+        splitTheMeasurements(measurements);
+        writeListToFile(FIRST_LASER_MEASUREMENTS, "first_laser.txt");
+        writeListToFile(SECOND_LASER_MEASUREMENTS, "second_laser.txt");
+        writeListToFile(THIRD_LASER_MEASUREMENTS, "third_laser.txt");
+        writeListToFile(FORTH_LASER_MEASUREMENTS, "forth_laser.txt");
     }
 }
 
