@@ -16,10 +16,11 @@ public class CSV_BarIlan_Remake {
     public static final List<String[]> SECOND_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> THIRD_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> FORTH_LASER_MEASUREMENTS = new ArrayList<>();
+    public static String[] waveLengthAxisX;
     public static final String SEPARATOR = "\\s+";
     //endregion
 
-    public static List<String[]> createAListFromFile(File laserMeasurements) throws IOException {
+    public static List<String[]> parseFileToListOfStringArrays(File laserMeasurements) throws IOException {
         String[] data;
         List<String[]> valuesFromFile = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(laserMeasurements))) {
@@ -29,8 +30,8 @@ public class CSV_BarIlan_Remake {
                 lineCounter += 1;
                 data = line.split(SEPARATOR);
                 if (lineCounter == 0) {
-                    System.out.println("DEBUG :: INFO :: Wave Length AXIS ignored when coverted file to list...");
-                    System.out.println("Implement axis separation HERE ! Consider using class or enum for results  ");
+                    System.out.println("Axis Saved");
+                    waveLengthAxisX = data;
                 } else {
                     valuesFromFile.add(data);
                 }
@@ -39,18 +40,21 @@ public class CSV_BarIlan_Remake {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        List<String[]> measurements = createAListFromFile(MICROSCOPE_RESULTS);
-        for (String[] line :
-                measurements) {
+    public static void printListOfArrays(List<String[]> list) {
+        for (String[] array :
+                list) {
             System.out.println();
             for (String value :
-                    line) {
-                System.out.print(value + " ");
+                    array) {
+                System.out.print(value + "\t");
             }
         }
-
     }
 
-
+    public static void main(String[] args) throws IOException {
+        List<String[]> measurements = parseFileToListOfStringArrays(MICROSCOPE_RESULTS);
+        printListOfArrays(measurements);
+    }
 }
+
+
