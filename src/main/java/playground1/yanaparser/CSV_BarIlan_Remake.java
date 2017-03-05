@@ -12,6 +12,7 @@ public class CSV_BarIlan_Remake {
 
     //region static variables
     public static final File MICROSCOPE_RESULTS = new File("C:\\Webdrivers\\csv\\mos2_vertical_30sec_3acc_green laser ulf_600 greating_10per_mapping_23hr_121216.txt");
+    public static final File MOCK_FILE_PATH = new File("C:\\Webdrivers\\csv\\cleanMockup.txt");
     public static final List<String[]> FIRST_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> SECOND_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> THIRD_LASER_MEASUREMENTS = new ArrayList<>();
