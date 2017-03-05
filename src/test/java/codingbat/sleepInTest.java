@@ -19,6 +19,11 @@ public class sleepInTest {
 
     @Test
     public void checkSleepIn() {
+        /*
+        We have a loud talking parrot. The "hour" parameter is the current
+        hour time in the range 0..23. We are in trouble if the parrot is talking
+        and the hour is before 7 or after 20. Return true if we are in trouble.
+         */
         assertThat(sleepIn(false, false), is(true));
         assertThat(sleepIn(true, false), is(false));
         assertThat(sleepIn(false, true), is(true));
@@ -49,4 +54,15 @@ public class sleepInTest {
         assertThat(diff21(50), is(58));
     }
 
+    public boolean parrotTrouble(boolean talking, int hour) {
+        return talking && (hour < 7 || hour > 20);
+    }
+
+    @Test
+    public void parrotTest() {
+        assertThat(parrotTrouble(true, 6), is(true));
+        assertThat(parrotTrouble(true, 7), is(false));
+        assertThat(parrotTrouble(false, 6), is(false));
+        assertThat(parrotTrouble(true, 23), is(true));
+    }
 }
