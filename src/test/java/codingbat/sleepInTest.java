@@ -65,4 +65,14 @@ public class sleepInTest {
         assertThat(parrotTrouble(false, 6), is(false));
         assertThat(parrotTrouble(true, 23), is(true));
     }
+
+    public boolean makes10(int a, int b) {
+        /*
+        Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
+         */
+        return (a == 10 || b == 10) || a + b == 10;
+    }
+
+
+
 }
