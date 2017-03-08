@@ -1,4 +1,4 @@
-package playground1.experientFEB17.car;
+package playground1.experimentFEB17.car;
 
 public class CarCreator {
     public static void main(String[] args) {
