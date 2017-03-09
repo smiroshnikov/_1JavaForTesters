@@ -2,7 +2,7 @@ package playground1.yanaparser;
 
 
 // TODO - rewrite thre fucking Code as intended and stop monley patching !
-// Rsults class was a good idea , lets keep going in that direction !
+// Results class was a good idea , lets keep going in that direction !
 
 /*
  * CSV file reader for Yana's results from laser microscope

@@ -17,8 +17,8 @@ public class CSV_BarIlan_Remake {
     public static final List<String[]> SECOND_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> THIRD_LASER_MEASUREMENTS = new ArrayList<>();
     public static final List<String[]> FORTH_LASER_MEASUREMENTS = new ArrayList<>();
-    public static String[] waveLengthAxisX;
     public static final String SEPARATOR = "\\s+";
+    public static String[] waveLengthAxisX;
     //endregion
 
     public static List<String[]> parseFileToListOfStringArrays(File laserMeasurements) throws IOException {
@@ -92,7 +92,7 @@ public class CSV_BarIlan_Remake {
         }
         writer.close();
     }
-
+    
     public static void main(String[] args) throws IOException {
         List<String[]> measurements = parseFileToListOfStringArrays(MICROSCOPE_RESULTS);
         splitTheMeasurements(measurements);
