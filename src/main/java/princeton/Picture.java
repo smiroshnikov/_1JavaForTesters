@@ -59,7 +59,7 @@ public final class Picture implements ActionListener {
     private final int width, height;           // width and height
 
     /**
-     * Initializes a blank {@code width}-by-{@code height} picture, with {@code width} columns
+     * Initializes a blank {@code width}-by-{@code height} picture, with {@code width}       olumns
      * and {@code height} rows, where each pixel is black.
      *
      * @param width  the width of the picture
