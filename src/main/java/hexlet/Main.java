@@ -11,6 +11,12 @@ public class Main {
         final Tuple<SuperClass> superClassTuple = new Tuple<>(new SuperClass(), new SuperClass());
         System.out.println(superClassTuple.getLeft().toString());
 
+        final ImprovedTuple<Long, String> improvedTuple = new ImprovedTuple<>(9L, "Bob Bobbovitch");
+        System.out.println(improvedTuple.process(9L));
+        System.out.println(improvedTuple.process(0L));
+        System.out.println(improvedTuple.process(19L));
+
+
     }
 
     public static class SuperClass {
