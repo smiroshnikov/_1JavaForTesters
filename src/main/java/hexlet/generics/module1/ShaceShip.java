@@ -1,7 +1,7 @@
 package hexlet.generics.module1;
 
 /**
- * Created by Iidwuurliik on 3/10/2017.
+ * Extending Generic as a Type
  */
 public class ShaceShip<T extends LifeForm> {
     private T lf;
