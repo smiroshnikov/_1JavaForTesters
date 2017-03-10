@@ -1,4 +1,4 @@
-package hexlet;
+package hexlet.generics.module0;
 
 /**
  * Created by Iidwuurliik on 3/10/2017.
