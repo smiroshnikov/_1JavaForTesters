@@ -23,7 +23,7 @@ public class ImprovedTuple<Input, Return> {
 
     // here is the place where we want to manipulate / process with Type variables
     public Return process(Input item) {
-        if (item != getIndex()) {
+        if (!item.equals(getIndex())) {
             return null;
         } else {
             System.out.print(("index is correct..."));
