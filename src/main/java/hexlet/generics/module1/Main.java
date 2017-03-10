@@ -15,8 +15,14 @@ public class Main {
         // so far all good
         List<Integer> list = new ArrayList<>();
         list.add(1);
-        show(list);
-
+        show(list); // show reprecents an old legacy method (Java 5) before Generics
+        List fuckedUpList = new ArrayList(); // allowed in order to support Java 5 and below legacy code
+        fuckedUpList.add(1);
+        fuckedUpList.add(2);
+        fuckedUpList.add(3);
+        fuckedUpList.add("heloo!!!"); // no problem detected so far by ide , lets compile and run
+        // WORKS !
+        show(fuckedUpList);// this might work but will lead to unpredictable errors
 
     }
 
