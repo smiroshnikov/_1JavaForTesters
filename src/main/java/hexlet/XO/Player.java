@@ -6,4 +6,5 @@ package hexlet.XO;
 public class Player {
     String name;
     String figure;
+    int score;
 }
