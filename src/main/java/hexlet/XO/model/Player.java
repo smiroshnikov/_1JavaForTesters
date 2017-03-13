@@ -1,4 +1,4 @@
-package hexlet.XO;
+package hexlet.XO.model;
 
 /**
  * Player representation for XO

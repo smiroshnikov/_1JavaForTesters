@@ -1,4 +1,4 @@
-package hexlet.XO;
+package hexlet.XO.model;
 
 /**
  * Created by Iidwuurliik on 3/11/2017.
