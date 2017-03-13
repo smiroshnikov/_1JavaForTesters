@@ -20,6 +20,9 @@ public class Main {
 
         System.out.printf("%s%n", human.name);
 
+        House building1 = new House();
+        System.out.println(building1.owner); // null as expected
+
 
     }
 }
