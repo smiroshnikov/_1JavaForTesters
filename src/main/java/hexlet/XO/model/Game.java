@@ -5,8 +5,14 @@ package hexlet.XO.model;
  * XO Game
  */
 public class Game {
+
+    private static final String GAME_NAME = "XO";
     Player player1;
     Player player2;
+
+    public static void printGameName() {
+        System.out.println(GAME_NAME);
+    }
 
 
 }
