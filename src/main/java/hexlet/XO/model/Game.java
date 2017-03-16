@@ -7,11 +7,18 @@ package hexlet.XO.model;
 public class Game {
 
     private static final String GAME_NAME = "XO";
-    Player player1;
-    Player player2;
+    Player[] players;
 
-    public static void printGameName() {
+    public static void showGameName() {
         System.out.println(GAME_NAME);
+    }
+
+    public Player currentPlayer() {
+        return players[0];
+    }
+
+    public boolean move(int x, int y) {
+        return false;
     }
 
 
