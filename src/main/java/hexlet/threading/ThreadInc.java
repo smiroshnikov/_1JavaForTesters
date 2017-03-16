@@ -4,7 +4,7 @@ package hexlet.threading;
  * Created by Iidwuurliik on 3/16/2017.
  */
 public class ThreadInc extends Thread {
-    private final Point p;
+    private Point p;
 
     public ThreadInc(Point p) {
         this.p = p;
@@ -13,9 +13,12 @@ public class ThreadInc extends Thread {
     @Override
     public void run() {
         for (long i = 0; i < 100_000; i++) {
-            p.x++;
-            p.y++;
+            p = new Point(p.getX() + 1, p.getY() + 1);
         }
-
     }
+
+    public Point getResult() {
+        return p;
+    }
+
 }
