@@ -1,4 +1,6 @@
-package hexlet.XO.model;
+package hexlet.module101;
+
+import hexlet.XO.model.Game;
 
 /**
  * Created by miross1 on 3/16/2017.

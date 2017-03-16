@@ -1,4 +1,6 @@
-package hexlet.XO.model;
+package hexlet.module101;
+
+import hexlet.XO.model.Game;
 
 /**
  * Inheritance tutorial
