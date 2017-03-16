@@ -16,6 +16,8 @@ public class Car {
         //     System.out.println("speed в хипе при создании объекта - NULL");// не выводит NULL :(
         System.out.println(ta4ka.speed);
         ta4ka.setSpeed(12);
+        sum(3, 20);
+
 
     }
 
@@ -41,6 +43,19 @@ public class Car {
         System.out.println("присваиваем значение speed из фрейма стека значению speed в хипе!");
         this.speed = speed;//присваиваем значение speed из фрейма значению speed в хипе!
         System.out.println("Значение speed заданое уже методом setSetSpeed  " + this.speed); //показываем speed из хипа
+    }
+
+    public static void sum(int x, int y) {
+        int z = 4;
+        if (z <= x) {
+            z = x + 1;
+        } else {
+            z = z + 9;
+        }
+        if (z <= y) {
+            y++;
+        }
+        System.out.println(z + " " + y);
     }
 
 }
