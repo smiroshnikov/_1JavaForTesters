@@ -1,11 +1,17 @@
 package hexlet.XO.controllers;
 
+import hexlet.XO.model.Field;
+import hexlet.XO.model.Point;
+
 /**
  * Created by Iidwuurliik on 3/13/2017.
- * <p>
  * MoveController - будет описывать логику хода, выполнять все проверки для хода
  * (например проверять, что пользователь не поставит фигурку на место, где уже есть
  * фигурка; или не попробует поставить фигурку на несуществующие координаты и т.д.);
  */
+
 public class MoveController {
+    public void applyFigure(Field field, Point point, String figure) {
+
+    }
 }

@@ -22,7 +22,8 @@ public class Main {
 
         House building1 = new House();
         System.out.println(building1.owner); // null as expected
-
+        Human.useMeAsStatic(); // here
+        System.out.println(Human.class);
 
     }
 }

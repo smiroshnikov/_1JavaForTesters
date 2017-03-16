@@ -6,4 +6,8 @@ public class Human {
     String surname;
     boolean sex;
 
+    public static void useMeAsStatic() {
+        System.out.println("Fuck!@!!");
+    }
+
 }
