@@ -27,7 +27,13 @@ public class Main {
         System.out.println(t2.getResult().getX() + "/" + t2.getResult().y);
         System.out.println(t3.getResult().getX() + "/" + t3.getResult().y);
         System.out.println(t4.getResult().getX() + "/" + t4.getResult().y);
+        System.out.println("=============");
 
+        Point result = new Point(
+                t1.getResult().getX() + t2.getResult().getX() + +t3.getResult().getX() + +t4.getResult().getX(),
+                t1.getResult().getY() + t2.getResult().getY() + +t3.getResult().getY() + +t4.getResult().getY()
+        );
+        System.out.println(result.getX() + "/" + result.getY());
 
     }
 }
