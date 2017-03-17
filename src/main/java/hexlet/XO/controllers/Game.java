@@ -11,7 +11,6 @@ public class Game {
     private static final String GAME_NAME = "XO";
     Player[] players;
 
-
     public String getGameName() {
         return GAME_NAME;
     }
@@ -22,5 +21,9 @@ public class Game {
 
     public boolean move(final int x, final int y) {
         return false;
+    }
+
+    public Player[] getPlayers() {
+        return players;
     }
 }
