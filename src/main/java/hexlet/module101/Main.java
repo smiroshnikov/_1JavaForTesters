@@ -23,6 +23,7 @@ public class Main {
         board.initArray();
         board.showBoard();
 
+
     }
 
     public static void printGameNameAndBoard(final Game game) {

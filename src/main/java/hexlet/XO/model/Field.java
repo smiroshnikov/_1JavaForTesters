@@ -6,56 +6,41 @@ package hexlet.XO.model;
  */
 public class Field {
 
-    public String f00;
-
-    public String f01;
-
-    public String f02;
-
-    public String f10;
-
-    public String f11;
-
-    public String f12;
-
-    public String f20;
-
-    public String f21;
-
-    public String f22;
+    private static final int FIELD_SIZE = 3;
+    public String[][] figures = new String[FIELD_SIZE][FIELD_SIZE];
 
     public int getSize() {
-        return 3;
+        return figures.length;
     }
 
     public String getFigure(final Point point) {
 
         if (point.x == 0 && point.y == 0) {
-            return f00;
+            return figures[0][0];
         }
         if (point.x == 0 && point.y == 1) {
-            return f01;
+            return figures[0][1];
         }
         if (point.x == 0 && point.y == 2) {
-            return f02;
+            return figures[0][2];
         }
         if (point.x == 1 && point.y == 0) {
-            return f10;
+            return figures[1][0];
         }
         if (point.x == 1 && point.y == 1) {
-            return f11;
+            return figures[1][1];
         }
         if (point.x == 1 && point.y == 2) {
-            return f12;
+            return figures[1][2];
         }
         if (point.x == 2 && point.y == 0) {
-            return f20;
+            return figures[2][0];
         }
         if (point.x == 2 && point.y == 1) {
-            return f21;
+            return figures[2][1];
         }
         if (point.x == 2 && point.y == 2) {
-            return f22;
+            return figures[2][2];
         }
         return null;
     }
@@ -63,31 +48,31 @@ public class Field {
     public void setFigure(final Point point, final String figure) {
 
         if (point.x == 0 && point.y == 0) {
-            f00 = figure;
+            figures[0][0] = figure;
         }
         if (point.x == 0 && point.y == 1) {
-            f01 = figure;
+            figures[0][1] = figure;
         }
         if (point.x == 0 && point.y == 2) {
-            f02 = figure;
+            figures[0][2] = figure;
         }
         if (point.x == 1 && point.y == 0) {
-            f10 = figure;
+            figures[1][0] = figure;
         }
         if (point.x == 1 && point.y == 1) {
-            f11 = figure;
+            figures[1][1] = figure;
         }
         if (point.x == 1 && point.y == 2) {
-            f12 = figure;
+            figures[1][2] = figure;
         }
         if (point.x == 2 && point.y == 0) {
-            f20 = figure;
+            figures[2][0] = figure;
         }
         if (point.x == 2 && point.y == 1) {
-            f21 = figure;
+            figures[2][1] = figure;
         }
         if (point.x == 2 && point.y == 2) {
-            f22 = figure;
+            figures[2][2] = figure;
         }
     }
 
