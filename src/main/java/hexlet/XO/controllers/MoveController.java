@@ -11,7 +11,18 @@ import hexlet.XO.model.Point;
  */
 
 public class MoveController {
-    public void applyFigure(Field field, Point point, String figure) {
 
+    public boolean applyFigure(final Field field,
+                               final Point point,
+                               final String figure) {
+
+        if ((point.x == -1) || point.y == -1) {
+            return false;
+        }
+        if (field.getFigure(point) != null) {
+            return false;
+        }
+        field.setFigure(point, figure);
+        return true;
     }
 }
