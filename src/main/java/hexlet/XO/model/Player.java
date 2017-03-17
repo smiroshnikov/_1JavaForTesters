@@ -1,5 +1,7 @@
 package hexlet.XO.model;
 
+import hexlet.module101.Figure;
+
 /**
  * Player representation for XO
  */

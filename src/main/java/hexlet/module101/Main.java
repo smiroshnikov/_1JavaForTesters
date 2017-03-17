@@ -8,16 +8,20 @@ import hexlet.XO.controllers.Game;
  */
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game();
-        TwoPlayersGame twoP = new TwoPlayersGame("Bob", "Mike");
-        ThreePlayersGHame threeP = new ThreePlayersGHame("Kate", "Stella", "Anna");
-        Game g = new ThreePlayersGHame("b", "c", "l");
+//        Game game = new Game();
+//        TwoPlayersGame twoP = new TwoPlayersGame("Bob", "Mike");
+//        ThreePlayersGHame threeP = new ThreePlayersGHame("Kate", "Stella", "Anna");
+//        Game g = new ThreePlayersGHame("b", "c", "l");
 
 
-        printGameNameAndBoard(threeP);
-        printGameNameAndBoard(twoP);
-        printGameNameAndBoard(game);
-        printGameNameAndBoard(null); // why can this accept null ?! Max
+//        printGameNameAndBoard(threeP);
+//        printGameNameAndBoard(twoP);
+//        printGameNameAndBoard(game);
+//        printGameNameAndBoard(null); // why can this accept null ?! Max
+        Board board = new Board();
+        System.out.println("****************");
+        board.initArray();
+        board.showBoard();
 
     }
 
@@ -27,5 +31,6 @@ public class Main {
         // I was not aware of such usage when I created this class
         // that that is fucking cool!
         System.out.println(game.getGameName());
+
     }
 }
