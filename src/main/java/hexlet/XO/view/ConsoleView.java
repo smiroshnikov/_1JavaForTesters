@@ -1,14 +1,22 @@
 package hexlet.XO.view;
 
-import hexlet.XO.model.Game;
+import hexlet.XO.controllers.Game;
 
 /**
  * Created by Iidwuurliik on 3/13/2017.
+ * UI class
  */
 
 public class ConsoleView {
 
-    public void show(final Game game) {
+    private final Game game;
+
+    public ConsoleView(Game game) {
+        this.game = game;
+    }
+
+    public void showGameName() {
+        System.out.println(game.getGameName());
 
     }
 

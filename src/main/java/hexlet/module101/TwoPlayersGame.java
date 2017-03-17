@@ -1,6 +1,6 @@
 package hexlet.module101;
 
-import hexlet.XO.model.Game;
+import hexlet.XO.controllers.Game;
 
 /**
  * Inheritance tutorial

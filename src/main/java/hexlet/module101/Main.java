@@ -1,6 +1,6 @@
 package hexlet.module101;
 
-import hexlet.XO.model.Game;
+import hexlet.XO.controllers.Game;
 
 /**
  * Created by miross1 on 3/16/2017.
@@ -26,6 +26,6 @@ public class Main {
         // or any other class that extends game
         // I was not aware of such usage when I created this class
         // that that is fucking cool!
-        Game.printGameName();
+        System.out.println(game.getGameName());
     }
 }
