@@ -46,7 +46,7 @@ public class Main {
         p.y = 1;
 
         if (!cmc.currentMove(field).equals("X")) {
-            throw new RuntimeException("do not returns X when the field is empty");
+            throw new RuntimeException("does not return X when the field is empty");
         }
 
         for (int i = 0; i < field.getSize(); i++)
@@ -81,9 +81,9 @@ public class Main {
         }
         final WinnerController wc = new WinnerController();
         if (winner == null && wc.getWinner(f) != null)
-            throw new RuntimeException(String.format("Incorrectly show winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
         if (winner != null && !winner.equals(wc.getWinner(f)))
-            throw new RuntimeException(String.format("Incorrectly show winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
 
     }
 }
