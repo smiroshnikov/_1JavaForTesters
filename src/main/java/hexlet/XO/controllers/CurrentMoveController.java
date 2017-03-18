@@ -24,12 +24,12 @@ public class CurrentMoveController {
                 if (field.getFigure(p) != null) {
                     if (field.getFigure(p).equals("X")) {
                         xCounter += 1;
-                        System.out.println("X = " + xCounter);
+                        //System.out.println("X = " + xCounter);
                     }
 
                     if (field.getFigure(p).equals("O")) {
                         oCounter += 1;
-                        System.out.println("O = " + oCounter);
+                        //System.out.println("O = " + oCounter);
                     }
                 }
             }

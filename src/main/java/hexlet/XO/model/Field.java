@@ -16,68 +16,11 @@ public class Field {
     public String getFigure(final Point point) {
 
         return figures[point.x][point.y];
-
-//        if (point.x == 0 && point.y == 0) {
-//            return figures[0][0];
-//        }
-//        if (point.x == 0 && point.y == 1) {
-//            return figures[0][1];
-//        }
-//        if (point.x == 0 && point.y == 2) {
-//            return figures[0][2];
-//        }
-//        if (point.x == 1 && point.y == 0) {
-//            return figures[1][0];
-//        }
-//        if (point.x == 1 && point.y == 1) {
-//            return figures[1][1];
-//        }
-//        if (point.x == 1 && point.y == 2) {
-//            return figures[1][2];
-//        }
-//        if (point.x == 2 && point.y == 0) {
-//            return figures[2][0];
-//        }
-//        if (point.x == 2 && point.y == 1) {
-//            return figures[2][1];
-//        }
-//        if (point.x == 2 && point.y == 2) {
-//            return figures[2][2];
-//        }
-//        return null;
     }
 
     public void setFigure(final Point point, final String figure) {
 
         figures[point.x][point.y] = figure;
-
-//        if (point.x == 0 && point.y == 0) {
-//            figures[0][0] = figure;
-//        }
-//        if (point.x == 0 && point.y == 1) {
-//            figures[0][1] = figure;
-//        }
-//        if (point.x == 0 && point.y == 2) {
-//            figures[0][2] = figure;
-//        }
-//        if (point.x == 1 && point.y == 0) {
-//            figures[1][0] = figure;
-//        }
-//        if (point.x == 1 && point.y == 1) {
-//            figures[1][1] = figure;
-//        }
-//        if (point.x == 1 && point.y == 2) {
-//            figures[1][2] = figure;
-//        }
-//        if (point.x == 2 && point.y == 0) {
-//            figures[2][0] = figure;
-//        }
-//        if (point.x == 2 && point.y == 1) {
-//            figures[2][1] = figure;
-//        }
-//        if (point.x == 2 && point.y == 2) {
-//            figures[2][2] = figure;
-//        }
     }
 
 }

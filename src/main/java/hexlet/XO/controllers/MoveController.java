@@ -12,9 +12,10 @@ import hexlet.XO.model.Point;
 
 public class MoveController {
 
-    public boolean applyFigure(final Field field,
-                               final Point point,
-                               final String figure) {
+    public boolean applyFigure(
+            final Field field,
+            final Point point,
+            final String figure) {
 
         if ((point.x == -1) || point.y == -1) {
             return false;
