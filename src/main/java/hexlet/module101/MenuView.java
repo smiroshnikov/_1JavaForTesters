@@ -24,18 +24,20 @@ public class MenuView {
 
         switch (choice) {
             // break is omited on purpose so get conclusions ....
-            case 1: {
+            // using switch usually reminds of GOTO
+            // as a general idea it is better to use polymorphism instead
+            case START_CODE: {
                 System.out.println("Unable to start FATAL_ERROR");
             }
-            case 2: {
-                System.out.println("Loading///");
-            }
+            case 2:
             case 3: {
-                System.out.println("Settings are diasbled ");
+                System.out.println("Loading///");
+                System.out.println("Setting unable to load...");
                 break;
             }
             case 4: {
-                System.out.println("Exiting....");
+                System.out.println("Unable to exit ... settings not loaded");
+                System.out.println("Exit successful !");
                 break;
 
             }
@@ -43,11 +45,7 @@ public class MenuView {
                 System.out.println("Invalid choice");
                 break;
             }
-
-
         }
-
-
     }
 
 }
