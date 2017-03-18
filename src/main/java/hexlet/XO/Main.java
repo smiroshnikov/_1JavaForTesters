@@ -57,16 +57,32 @@ public class Main {
                 field.setFigure(p, figure);
                 System.out.printf("putting figure: %s to the: X:%d Y:%d\n", figure, p.x, p.y);
                 if (cmc.currentMove(field).equals(figure)) {
-                    throw new RuntimeException(String.format("returns %s for the field: %s", figure, Arrays.deepToString(field.figures)));
+                    throw new RuntimeException(String.format("returns %s for the field: %s", figure,
+                            Arrays.deepToString(field.figures)));
                 }
 
             }
 
         checkField(null, null, null, null, null, null, null, null, null, null);
-        checkField("X", "X", "X", "X", null, null, null, null, null, null);
-        checkField("O", null, null, "O", "O", "O", "O", "X", null, null);
-        checkField("X", null, null, null, null, null, null, "X", "X", "X");
-        checkField("O", "O", "X", null, null, "O", null, null, null, "O");
+
+        checkField("X",
+                "X", "X", "X",
+                null, null, null,
+                null, null, null);
+
+        checkField("O",
+                null, null, "O",
+                "O", "O", "O",
+                "X", null, null);
+        checkField("X",
+                null, null, null,
+                null, null, null,
+                "X", "X", "X");
+
+        checkField("O",
+                "O", "X", null,
+                null, "O", null,
+                null, null, "O");
     }
 
     private static void checkField(String winner, String... field) {
@@ -81,9 +97,11 @@ public class Main {
         }
         final WinnerController wc = new WinnerController();
         if (winner == null && wc.getWinner(f) != null)
-            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s",
+                    Arrays.deepToString(f.figures), wc.getWinner(f)));
         if (winner != null && !winner.equals(wc.getWinner(f)))
-            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly shows winner for the field: %s, it shows: %s",
+                    Arrays.deepToString(f.figures), wc.getWinner(f)));
 
     }
 }
