@@ -1,5 +1,6 @@
 package hexlet.XO.controllers;
 
+import hexlet.XO.model.Field;
 import hexlet.XO.model.Player;
 
 /**
@@ -9,6 +10,7 @@ import hexlet.XO.model.Player;
 public class Game {
 
     private static final String GAME_NAME = "XO";
+    public Field field;
     Player[] players;
 
     public String getGameName() {

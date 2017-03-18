@@ -10,6 +10,7 @@ import hexlet.XO.model.Field;
 public class CurrentMoveController {
 
     public String currentMove(Field field) {
+
         return "X";
 
     }
