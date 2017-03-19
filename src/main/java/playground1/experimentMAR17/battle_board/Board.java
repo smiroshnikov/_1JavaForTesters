@@ -3,17 +3,16 @@ package playground1.experimentMAR17.battle_board;
 
 /**
  * Created by Iidwuurliik on 3/19/2017.
- * N X N matrix used a board
- */
-
-/**
  * Gaming board represented as  N * N matrix
  */
 
 public class Board {
-    private static final int BOARD_SIZE = 10;
 
+    private static final int BOARD_SIZE = 2;
+
+    // FIXME: 3/19/2017  Replace String figure with Monsters !
     public String[][] figures = new String[BOARD_SIZE][BOARD_SIZE];
+
 
     public int getBoardSize() {
         return figures.length;
