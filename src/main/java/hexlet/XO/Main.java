@@ -38,21 +38,15 @@ public class Main {
                 }
             }
 
-        checkField(
-                null,
-                null, null, null, null, null, null, null, null, null);
+        checkField(null, null, null, null, null, null, null, null, null, null);
 
-        checkField("X",
-                "X", "X", "X", null, null, null, null, null, null);
+        checkField("X", "X", "X", "X", null, null, null, null, null, null);
 
-        checkField("O",
-                null, null, "O", "O", "O", "O", "X", null, null);
+        checkField("O", null, null, "O", "O", "O", "O", "X", null, null);
 
-        checkField("X",
-                null, null, null, null, null, null, "X", "X", "X");
+        checkField("X", null, null, null, null, null, null, "X", "X", "X");
 
-        checkField("O",
-                "O", "X", null, null, "O", null, null, null, "O");
+        checkField("O", "O", "X", null, null, "O", null, null, null, "O");
     }
 
     private static void checkField(String winner, String... field) {

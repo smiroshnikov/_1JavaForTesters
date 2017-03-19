@@ -21,7 +21,7 @@ public class CurrentMoveController {
                 p.x = i;
                 p.y = j;
 
-                if (field.getFigure(p) != null) {
+                if (field.getFigure(p) != null) { // I have added this to avoid NullPointerException , could be better if below ...
                     if (field.getFigure(p).equals("X")) {
                         xCounter += 1;
                         //System.out.println("X = " + xCounter);
