@@ -8,7 +8,7 @@ package playground1.experimentMAR17.battle_board;
 
 public class Board {
 
-    private static final int BOARD_SIZE = 2;
+    private static final int BOARD_SIZE = 3;
 
     // FIXME: 3/19/2017  Replace String figure with Monsters !
     public String[][] figures = new String[BOARD_SIZE][BOARD_SIZE];
