@@ -1,7 +1,5 @@
-package playground1.experimentMAR17;
+package playground1.experimentMAR17.battle_board;
 
-
-import hexlet.module101.Figure;
 
 /**
  * Created by Iidwuurliik on 3/19/2017.
@@ -25,8 +23,8 @@ public class Board {
         return figures[point.x][point.y];
     }
 
-    public void putFigureOnBoard(final MyPoint point, final Figure figure) {
-
+    public void putFigureOnBoard(final MyPoint point, final String figure) {
+        figures[point.x][point.y] = figure;
     }
 
 

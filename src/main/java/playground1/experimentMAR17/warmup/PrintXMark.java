@@ -1,4 +1,4 @@
-package playground1.experimentMAR17;
+package playground1.experimentMAR17.warmup;
 
 
 public class PrintXMark {
