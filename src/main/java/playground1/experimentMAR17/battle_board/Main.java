@@ -25,12 +25,19 @@ public class Main {
     }
 
     public static void fillBoard(Board board) {
+        /** jus a filler , ignore logic
+         *
+         */
         MyPoint p = new MyPoint();
         for (int i = 0; i < board.getBoardSize(); i++) {
             p.x = i % 3;
             p.y = (i - i % 3) / 3;
             board.putFigureOnBoard(p, "X");
         }
+    }
+
+    public void checkIfTriple(Board board, String figure) {
+
     }
 
     public static void main(String[] args) {
