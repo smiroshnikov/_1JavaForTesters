@@ -4,8 +4,8 @@ package playground1.experimentMAR17.battle_board;
  * Main game runner
  */
 
-
 public class Main {
+    // TODO read my code tomorrow , see if it is readable and understandable without comments
 
     public static void printBoard(Board board) {
         MyPoint p = new MyPoint();
@@ -18,8 +18,10 @@ public class Main {
                 p.x = i;
                 p.y = j;
                 System.out.print(String.format("[%d,%d]:%s", i, j, board.getFigureFromBoard(p)));
+                cellCounter++;
             }
         }
+        System.out.println("\nTotal cells : " + cellCounter);
     }
 
     public static void fillBoard(Board board) {
