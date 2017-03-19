@@ -50,7 +50,7 @@ public class Main {
                 countFigures += 1;
             }
         }
-
+        // TODO use switch for null , winning streak and draw
         if ((countFigures == 3)) {
             System.out.printf("figure \"%s\" has winning combo!%n", figure);
 
