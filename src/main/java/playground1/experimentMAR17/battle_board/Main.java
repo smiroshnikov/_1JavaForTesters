@@ -25,9 +25,10 @@ public class Main {
     }
 
     public static void fillBoard(Board board) {
-        /** jus a filler , ignore logic
-         *
+        /** just a filler , ignore logic with reminders
+         *  fills board with valid "winning" combination
          */
+
         MyPoint p = new MyPoint();
         for (int i = 0; i < board.getBoardSize(); i++) {
             p.x = i % 3;
@@ -36,7 +37,26 @@ public class Main {
         }
     }
 
-    public void checkIfTriple(Board board, String figure) {
+    public static void checkIfTriple(Board board, String figure) {
+        // TODO check if [0,0] == [1,0] == [2,0] if yes return ?
+        MyPoint p = new MyPoint();
+        int countFigures = 0;
+
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            p.x = i;
+            p.y = 0;
+
+            if (board.getFigureFromBoard(p).equals(figure)) {
+                countFigures += 1;
+            }
+        }
+
+        if ((countFigures == 3)) {
+            System.out.printf("figure \"%s\" has winning combo!%n", figure);
+
+        } else {
+            System.out.printf("figure \"%s\" has no winning combination!%n", figure);
+        }
 
     }
 
@@ -46,6 +66,8 @@ public class Main {
 
         fillBoard(board);
         printBoard(board);
+        checkIfTriple(board, "X");
+        checkIfTriple(board, "O");
 
 
     }
