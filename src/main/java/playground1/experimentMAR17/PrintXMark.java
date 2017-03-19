@@ -1,7 +1,7 @@
 package playground1.experimentMAR17;
 
 
-public class printMatrix {
+public class PrintXMark {
     public static void main(String[] args) {
         int size = 5;
         for (int i = 0; i < size; i++) {

@@ -6,6 +6,7 @@ package playground1.experimentMAR17;
 public class SolverXO {
     private static String[][] field = new String[][]{{"A", "B", "C"}, {"A", "B", "C"}, {"A", "B", "C"}};
 
+
     public static void main(String[] args) {
         String desiredFigure = "A";
         for (String[] line : field) {
