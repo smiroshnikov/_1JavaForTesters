@@ -24,7 +24,7 @@ public class Main {
         System.out.println("\nTotal cells : " + cellCounter);
     }
 
-    public static void fillBoard(Board board) {
+    public static void fillBoardVertical(Board board) {
         /** just a filler , ignore logic with reminders
          *  fills board with valid "winning" combination
          */
@@ -37,17 +37,25 @@ public class Main {
         }
     }
 
+    public static void fillBoardDiagonal(Board board) {
+
+    }
+
     public static void checkIfTriple(Board board, String figure) {
         // TODO check if [0,0] == [1,0] == [2,0] if yes return ?
         MyPoint p = new MyPoint();
         int countFigures = 0;
 
         for (int i = 0; i < board.getBoardSize(); i++) {
-            p.x = i;
-            p.y = 0;
+            for (int j = 0; j < board.getBoardSize(); j++) {
 
-            if (board.getFigureFromBoard(p).equals(figure)) {
-                countFigures += 1;
+                p.x = i;
+                p.y = j;
+
+                if (figure.equals(board.getFigureFromBoard(p))) {
+                    System.out.println("Match found ");
+                }
+
             }
         }
         // TODO use switch for null , winning streak and draw
@@ -64,10 +72,10 @@ public class Main {
 
         Board board = new Board();
 
-        fillBoard(board);
+        fillBoardVertical(board);
         printBoard(board);
         checkIfTriple(board, "X");
-        checkIfTriple(board, "O");
+//        checkIfTriple(board, "O");
 
 
     }
