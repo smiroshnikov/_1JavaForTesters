@@ -17,7 +17,7 @@ public class Main {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 p.x = i;
                 p.y = j;
-                System.out.print(String.format("[%d,%d]:%s", i, j, board.getFigureFromBoard(p)));
+                System.out.print(String.format("%d%d:[%s]", i, j, board.getFigureFromBoard(p)));
                 cellCounter++;
             }
         }
