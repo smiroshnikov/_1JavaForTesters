@@ -7,6 +7,18 @@ package playground1.experimentMAR17.battle_board;
 public class Main {
     // TODO read my code tomorrow , see if it is readable and understandable without comments
 
+    public static void resetBoard(Board board) {
+        MyPoint p = new MyPoint();
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            for (int j = 0; j < board.getBoardSize(); j++) {
+                p.x = i;
+                p.y = j;
+                board.putFigureOnBoard(p, null);
+            }
+        }
+
+    }
+
     public static void printBoard(Board board) {
         MyPoint p = new MyPoint();
         int cellCounter = 0;
@@ -37,12 +49,32 @@ public class Main {
         }
     }
 
-    public static void fillBoardDiagonal(Board board) {
+    public static void fillBoardDiagonal1(Board board, String figure) {
+        MyPoint p = new MyPoint();
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            p.x = i;
+            p.y = i;
+            board.putFigureOnBoard(p, figure);
+        }
 
     }
 
-    public static void checkIfTriple(Board board, String figure) {
-        // TODO check if [0,0] == [1,0] == [2,0] if yes return ?
+    public static void fillBoardDiagonal2(Board board, String figure) {
+        MyPoint p = new MyPoint();
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            p.x = i;
+            p.y = board.getBoardSize() - i - 1;
+            board.putFigureOnBoard(p, figure);
+        }
+
+    }
+
+    public static void checkIfWon(Board board, String figure) {
+        // TODO need multiple checks here .
+        // TODO What does a win mean ?
+        // TODO What does a draw mean ?
+        // TODO is this really important ? In this code ?
+
         MyPoint p = new MyPoint();
         int countFigures = 0;
 
@@ -52,21 +84,20 @@ public class Main {
                 p.x = i;
                 p.y = j;
 
-                // if I flip figure with board I will get null pointer exception! Max Why?
+                // TODO if I flip figure with board I will get null pointer exception! Max Why?
                 if (figure.equals(board.getFigureFromBoard(p))) {
                     System.out.println("Match found ");
+                    countFigures += 1;
                 }
-
             }
         }
-        // TODO use switch for null , winning streak and draw
+
         if ((countFigures == 3)) {
             System.out.printf("figure \"%s\" has winning combo!%n", figure);
 
         } else {
             System.out.printf("figure \"%s\" has no winning combination!%n", figure);
         }
-
     }
 
     public static void main(String[] args) {
@@ -75,8 +106,17 @@ public class Main {
 
         fillBoardVertical(board);
         printBoard(board);
-        checkIfTriple(board, "X");
-//        checkIfTriple(board, "O");
+        checkIfWon(board, "X");
+
+        resetBoard(board);
+        fillBoardDiagonal1(board, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardDiagonal2(board, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
 
 
     }
