@@ -52,6 +52,7 @@ public class Main {
                 p.x = i;
                 p.y = j;
 
+                // if I flip figure with board I will get null pointer exception! Max Why?
                 if (figure.equals(board.getFigureFromBoard(p))) {
                     System.out.println("Match found ");
                 }
