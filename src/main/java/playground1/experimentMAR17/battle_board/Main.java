@@ -70,6 +70,9 @@ public class Main {
     }
 
     public static void checkIfWon(Board board, String figure) {
+        // FIXME: 3/20/2017 this method is incorrect , I am just counting If I have three figures , without any logic 
+        // FIXME: 3/20/2017 rewrite the whole method as intended ! 
+        
         // TODO need multiple checks here .
         // TODO What does a win mean ?
         // TODO What does a draw mean ?
