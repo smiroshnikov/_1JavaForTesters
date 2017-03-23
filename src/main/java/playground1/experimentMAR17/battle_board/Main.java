@@ -29,7 +29,7 @@ public class Main {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 p.x = i;
                 p.y = j;
-                System.out.print(String.format("%d%d:[%s]", i, j, board.getFigureFromBoard(p)));
+                System.out.print(String.format("i=%dj=%d:[%s]", i, j, board.getFigureFromBoard(p)));
                 cellCounter++;
             }
         }
@@ -72,7 +72,7 @@ public class Main {
     public static void checkIfWon(Board board, String figure) {
         // FIXME: 3/20/2017 this method is incorrect , I am just counting If I have three figures , without any logic 
         // FIXME: 3/20/2017 rewrite the whole method as intended ! 
-        
+
         // TODO need multiple checks here .
         // TODO What does a win mean ?
         // TODO What does a draw mean ?
@@ -80,12 +80,15 @@ public class Main {
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
+        int diagonalLeft = 0;
+        int diagonalRight = 0;
 
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
 
                 p.x = i;
                 p.y = j;
+
 
                 // TODO if I flip figure with board I will get null pointer exception! Max Why?
                 if (figure.equals(board.getFigureFromBoard(p))) {
@@ -101,6 +104,12 @@ public class Main {
         } else {
             System.out.printf("figure \"%s\" has no winning combination!%n", figure);
         }
+    }
+
+    public static boolean checkWin(Board board, String figure) {
+        return false;
+
+
     }
 
     public static void main(String[] args) {
