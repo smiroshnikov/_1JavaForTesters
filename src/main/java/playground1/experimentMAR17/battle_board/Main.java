@@ -29,11 +29,15 @@ public class Main {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 p.x = i;
                 p.y = j;
-                System.out.print(String.format("i=%dj=%d:[%s]", i, j, board.getFigureFromBoard(p)));
-                cellCounter++;
+                if (board.getFigureFromBoard(p) == null) {
+                    System.out.print("\t[ ]\t");
+                } else {
+                    System.out.print(String.format("\t[%s]\t", board.getFigureFromBoard(p)));
+                    cellCounter++;
+                }
             }
         }
-        System.out.println("\nTotal cells : " + cellCounter);
+        //System.out.println("\nTotal cells : " + cellCounter);
     }
 
     public static void fillBoardVertical(Board board) {
@@ -48,6 +52,20 @@ public class Main {
             board.putFigureOnBoard(p, "X");
         }
     }
+
+    public static void fillBoardHorizontally(Board board) {
+        /** just a filler , ignore logic with reminders
+         *  fills board with valid "winning" combination
+         */
+
+        MyPoint p = new MyPoint();
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            p.y = i % 3;
+            p.x = (i - i % 3) / 3;
+            board.putFigureOnBoard(p, "O");
+        }
+    }
+
 
     public static void fillBoardDiagonal1(Board board, String figure) {
         MyPoint p = new MyPoint();
@@ -80,8 +98,7 @@ public class Main {
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
-        int diagonalLeft = 0;
-        int diagonalRight = 0;
+
 
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
@@ -89,28 +106,43 @@ public class Main {
                 p.x = i;
                 p.y = j;
 
+                switch (p.x) {
+                    case 0: {
+                        if (figure.equals(board.getFigureFromBoard(p))) {
+                            countFigures += 1;
+                        }
+                        break;
+                    }
+                    case 1: {
+                        if (figure.equals(board.getFigureFromBoard(p))) {
+                            countFigures += 1;
+                        }
+                        break;
+                    }
+                    case 2: {
+                        if (figure.equals(board.getFigureFromBoard(p))) {
+                            countFigures += 1;
+                        }
+                        break;
+                    }
 
-                // TODO if I flip figure with board I will get null pointer exception! Max Why?
-                if (figure.equals(board.getFigureFromBoard(p))) {
-                    System.out.println("Match found ");
-                    countFigures += 1;
                 }
+
+//                if (figure.equals(board.getFigureFromBoard(p))) {
+//                    System.out.println("\nMatch found ");
+//                    countFigures += 1;
+//                }
             }
         }
 
         if ((countFigures == 3)) {
-            System.out.printf("figure \"%s\" has winning combo!%n", figure);
+            System.out.printf("\nfigure \"%s\" has winning combo!%n", figure);
 
         } else {
-            System.out.printf("figure \"%s\" has no winning combination!%n", figure);
+            System.out.printf("\nfigure \"%s\" has no winning combination!%n", figure);
         }
     }
 
-    public static boolean checkWin(Board board, String figure) {
-        return false;
-
-
-    }
 
     public static void main(String[] args) {
 
@@ -121,14 +153,14 @@ public class Main {
         checkIfWon(board, "X");
 
         resetBoard(board);
-        fillBoardDiagonal1(board, "O");
+        fillBoardHorizontally(board);
         printBoard(board);
         checkIfWon(board, "O");
-
-        resetBoard(board);
-        fillBoardDiagonal2(board, "O");
-        printBoard(board);
-        checkIfWon(board, "O");
+//
+//        resetBoard(board);
+//        fillBoardDiagonal2(board, "O");
+//        printBoard(board);
+//        checkIfWon(board, "O");
 
 
     }

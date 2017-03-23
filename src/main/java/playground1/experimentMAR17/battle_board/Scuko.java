@@ -8,27 +8,26 @@ public class Scuko {
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
             System.out.println("");
-
             for (int j = 0; j < 3; j++) {
 
                 //region Horizontal check
-//                switch (i) {
-//                    case 0: {
-//                        System.out.print("*");
-//                        break;
-//                    }
-//                    case 1: {
-//                        System.out.print("#");
-//                        break;
-//                    }
-//                    case 2: {
-//                        System.out.print("@");
-//                        break;
-//                    }
-//                }
+                switch (i) { //i=0 , j=012
+                    case 0: {
+                        System.out.print("*");
+                        break;
+                    }
+                    case 1: { // i=1, j=012
+                        System.out.print("#");
+                        break;
+                    }
+                    case 2: { // i=2 ,j=012
+                        System.out.print("@");
+                        break;
+                    }
+                }
                 //endregion
 
-                //region Vertical check
+//                region Vertical check
 //                switch (j) {
 //                    case 0: {
 //                        System.out.print("\t%\t");
@@ -44,17 +43,17 @@ public class Scuko {
 //                    }
 //                }
                 //endregion
-
-                if (i == j) {
-                    // normal diagonal
-                    System.out.print("\t*");
-                } else if ((2 - i) == j) {
-                    // reverted diagonal
-                    System.out.print("\t#");
-                } else {
-                    //NON DIAGONAL CHARACTERS!
-                    System.out.print("\t" + i);
-                }
+//
+//                if (i == j) {
+//                    // normal diagonal
+//                    System.out.print("\t*");
+//                } else if ((2 - i) == j) {
+//                    // reverted diagonal
+//                    System.out.print("\t#");
+//                } else {
+//                    //NON DIAGONAL CHARACTERS!
+//                    System.out.print("\t" + i);
+//                }
             }
         }
     }
