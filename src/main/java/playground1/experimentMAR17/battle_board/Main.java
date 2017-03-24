@@ -40,16 +40,14 @@ public class Main {
         //System.out.println("\nTotal cells : " + cellCounter);
     }
 
-    public static void fillBoardVertical(Board board) {
-        /** just a filler , ignore logic with reminders
-         *  fills board with valid "winning" combination
-         */
+    public static void fillBoardVertical(Board board, int row, String figure) {
+
 
         MyPoint p = new MyPoint();
         for (int i = 0; i < board.getBoardSize(); i++) {
             p.x = i % 3;
-            p.y = (i - i % 3) / 3;
-            board.putFigureOnBoard(p, "X");
+            p.y = row;
+            board.putFigureOnBoard(p, figure);
         }
     }
 
@@ -151,30 +149,32 @@ public class Main {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.y, countFigures);
                         }
-                        if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
+                        if (countFigures < 3 && p.x == board.getBoardSize() - 1 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
                         }
 
                         break;
                     }
+
                     case 1: {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.y, countFigures);
                         }
                         if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
                             countFigures = 0;
                         }
                         break;
                     }
+
                     case 2: {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.y, countFigures);
                         }
                         if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -198,9 +198,9 @@ public class Main {
 
         Board board = new Board();
 
-        fillBoardVertical(board);
+        fillBoardVertical(board, 2, "O");
         printBoard(board);
-        checkIfWon(board, "X");
+        checkIfWon(board, "O");
 //
 //        resetBoard(board);
 //        fillBoardDiagonal2(board, "O");
@@ -212,16 +212,16 @@ public class Main {
         printBoard(board);
         checkIfWon(board, "O");
 
-        resetBoard(board);
-        fillBoardHorizontally(board, 0, "X");
-        printBoard(board);
-        checkIfWon(board, "X");
-
-        resetBoard(board);
-        fillBoardHorizontally(board, 2, "O");
-        printBoard(board);
-        checkIfWon(board, "X");
-        checkIfWon(board, "O");
+//        resetBoard(board);
+//        fillBoardHorizontally(board, 0, "X");
+//        printBoard(board);
+//        checkIfWon(board, "X");
+//
+//        resetBoard(board);
+//        fillBoardHorizontally(board, 2, "O");
+//        printBoard(board);
+//        checkIfWon(board, "X");
+//        checkIfWon(board, "O");
 
 
     }
