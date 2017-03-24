@@ -88,13 +88,6 @@ public class Main {
     }
 
     public static void checkIfWon(Board board, String figure) {
-        // FIXME: 3/20/2017 this method is incorrect , I am just counting If I have three figures , without any logic 
-        // FIXME: 3/20/2017 rewrite the whole method as intended ! 
-
-        // TODO need multiple checks here .
-        // TODO What does a win mean ?
-        // TODO What does a draw mean ?
-        // TODO is this really important ? In this code ?
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
@@ -110,25 +103,36 @@ public class Main {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
+                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                            countFigures = 0;
+                        }
+
                         break;
                     }
                     case 1: {
+
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                        }
+                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                            countFigures = 0;
                         }
                         break;
                     }
                     case 2: {
+
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
+                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                        }
+                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                            countFigures = 0;
                         }
                         break;
                     }
-
                 }
 
 //                if (figure.equals(board.getFigureFromBoard(p))) {
@@ -159,11 +163,11 @@ public class Main {
         fillBoardHorizontally(board);
         printBoard(board);
         checkIfWon(board, "O");
-
-        resetBoard(board);
-        fillBoardDiagonal2(board, "O");
-        printBoard(board);
-        checkIfWon(board, "O");
+//
+//        resetBoard(board);
+//        fillBoardDiagonal2(board, "O");
+//        printBoard(board);
+//        checkIfWon(board, "O");
 
 
     }
