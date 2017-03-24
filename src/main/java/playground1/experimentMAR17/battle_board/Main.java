@@ -110,18 +110,21 @@ public class Main {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
+                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
                         }
                         break;
                     }
                     case 1: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
+                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
                         }
                         break;
                     }
                     case 2: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
+                            System.out.printf("%n Counting %s in row %d currently have %d", figure, p.x, countFigures);
                         }
                         break;
                     }
@@ -156,11 +159,11 @@ public class Main {
         fillBoardHorizontally(board);
         printBoard(board);
         checkIfWon(board, "O");
-//
-//        resetBoard(board);
-//        fillBoardDiagonal2(board, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardDiagonal2(board, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
 
 
     }
