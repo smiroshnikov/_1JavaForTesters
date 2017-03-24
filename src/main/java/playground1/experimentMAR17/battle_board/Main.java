@@ -53,16 +53,25 @@ public class Main {
         }
     }
 
-    public static void fillBoardHorizontally(Board board) {
-        /** just a filler , ignore logic with reminders
-         *  fills board with valid "winning" combination
-         */
+//    public static void fillBoardHorizontally(Board board) {
+//        /** just a filler , ignore logic with reminders
+//         *  fills board with valid "winning" combination
+//         */
+//
+//        MyPoint p = new MyPoint();
+//        for (int i = 0; i < board.getBoardSize(); i++) {
+//            p.y = i % 3;
+//            p.x = (i - i % 3) / 3;
+//            board.putFigureOnBoard(p, "O");
+//        }
+//    }
 
+    public static void fillBoardHorizontally(Board board, int row, String figure) {
         MyPoint p = new MyPoint();
         for (int i = 0; i < board.getBoardSize(); i++) {
-            p.y = i % 3;
-            p.x = (i - i % 3) / 3;
-            board.putFigureOnBoard(p, "O");
+            p.x = row;
+            p.y = i;
+            board.putFigureOnBoard(p, figure);
         }
     }
 
@@ -99,6 +108,7 @@ public class Main {
                 p.x = i;
                 p.y = j;
 
+                // Horizontal test
                 switch (p.x) {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
@@ -134,11 +144,6 @@ public class Main {
                         break;
                     }
                 }
-
-//                if (figure.equals(board.getFigureFromBoard(p))) {
-//                    System.out.println("\nMatch found ");
-//                    countFigures += 1;
-//                }
             }
         }
 
@@ -155,22 +160,32 @@ public class Main {
 
         Board board = new Board();
 
-        fillBoardVertical(board);
-        printBoard(board);
-        checkIfWon(board, "X");
-
-        resetBoard(board);
-        fillBoardHorizontally(board);
-        printBoard(board);
-        checkIfWon(board, "O");
+//        fillBoardVertical(board);
+//        printBoard(board);
+//        checkIfWon(board, "X");
 //
 //        resetBoard(board);
 //        fillBoardDiagonal2(board, "O");
 //        printBoard(board);
 //        checkIfWon(board, "O");
 
+        resetBoard(board);
+        fillBoardHorizontally(board, 1, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 0, "X");
+        printBoard(board);
+        checkIfWon(board, "X");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 2, "O");
+        printBoard(board);
+        checkIfWon(board, "X");
+        checkIfWon(board, "O");
+
 
     }
-
 
 }
