@@ -108,14 +108,52 @@ public class Main {
                 p.x = i;
                 p.y = j;
 
-                // Horizontal test
-                switch (p.x) {
+                // Horizontal test - take to separate method named checkHorizontal
+                //region Horizontal test
+//                switch (p.x) {
+//                    case 0: {
+//                        if (figure.equals(board.getFigureFromBoard(p))) {
+//                            countFigures += 1;
+//                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+//                        }
+//                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+//                            countFigures = 0;
+//                        }
+//
+//                        break;
+//                    }
+//                    case 1: {
+//
+//                        if (figure.equals(board.getFigureFromBoard(p))) {
+//                            countFigures += 1;
+//                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+//                        }
+//                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+//                            countFigures = 0;
+//                        }
+//                        break;
+//                    }
+//                    case 2: {
+//
+//                        if (figure.equals(board.getFigureFromBoard(p))) {
+//                            countFigures += 1;
+//                            System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+//                        }
+//                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+//                            countFigures = 0;
+//                        }
+//                        break;
+//                    }
+//                }
+                //endregion
+                // Vertical test
+                switch (p.y) {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
                             System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
-                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                        if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
                             countFigures = 0;
                         }
 
@@ -127,7 +165,7 @@ public class Main {
                             countFigures += 1;
                             System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
-                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                        if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
                             countFigures = 0;
                         }
                         break;
@@ -138,7 +176,7 @@ public class Main {
                             countFigures += 1;
                             System.out.printf("%n Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
-                        if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
+                        if (countFigures < 3 && p.x == board.getBoardSize() - 1) {
                             countFigures = 0;
                         }
                         break;
@@ -160,9 +198,9 @@ public class Main {
 
         Board board = new Board();
 
-//        fillBoardVertical(board);
-//        printBoard(board);
-//        checkIfWon(board, "X");
+        fillBoardVertical(board);
+        printBoard(board);
+        checkIfWon(board, "X");
 //
 //        resetBoard(board);
 //        fillBoardDiagonal2(board, "O");
