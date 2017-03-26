@@ -150,36 +150,22 @@ public class Main {
     }
 
     public static boolean checkVertical(Board board, String figure) {
-        MyPoint p = new MyPoint();
-        int countFigures = 0;
+        MyPoint upperPoint = new MyPoint();
+        MyPoint middlePoint = new MyPoint();
+        MyPoint lowerPoint = new MyPoint();
 
-        for (int i = 0; i < board.getBoardSize(); i++) {
-            System.out.println("");
-            for (int j = 0; j < board.getBoardSize(); j++) {
-                p.x = i;
-                p.y = j;
-                System.out.printf("\n(%d[i],%d[j])\n", p.x, p.y);
+        for (int j = 0; j < board.getBoardSize(); j++) {
+            upperPoint.x = 0;
+            middlePoint.x = 1;
+            lowerPoint.x = 2;
 
-                switch (p.y) {
-                    case 0: {
-                        System.out.printf("CASE 0: p.x[%d],px+1[%d],px+2[%d]\n", p.x, p.x + 1, p.x + 2);
-                        if (p.x == p.x + 1 && p.x == p.x + 2) {
-                            return true;
-                        }
-                    }
-                    case 1: {
-                        System.out.printf("CASE 1: p.x[%d],px-1[%d],px+1[%d]\n", p.x, p.x - 1, p.x + 1);
-                        if (p.x == p.x - 1 && p.x == p.x + 1) {
-                            return true;
-                        }
-                    }
-                    case 2: {
-                        System.out.printf("CASE 2: p.x[%d],px-1[%d],px-2[%d]\n", p.x, p.x - 1, p.x - 2);
-                        if (p.x == p.x - 2 && p.x == p.x - 1) {
-                            return true;
-                        }
-                    }
-                }
+            upperPoint.y = j;
+            middlePoint.y = j;
+            lowerPoint.y = j;
+
+            if (board.getFigureFromBoard(upperPoint).equals(board.getFigureFromBoard(middlePoint)) &&
+                    board.getFigureFromBoard(middlePoint).equals(board.getFigureFromBoard(lowerPoint))) {
+                return true;
             }
         }
         return false;
@@ -191,8 +177,8 @@ public class Main {
             System.out.println("Horizontal winner not detected !");
 
         }
-        if (!checkVertical(board, figure)) {
-            System.out.println("\nVertical failed need to check diagonal !");
+        if (checkVertical(board, figure)) {
+            System.out.println("\nDETECTEED Vertical win ");
 
         }
 
