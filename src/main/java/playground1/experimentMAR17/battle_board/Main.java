@@ -163,8 +163,14 @@ public class Main {
             middlePoint.y = j;
             lowerPoint.y = j;
 
-            if (board.getFigureFromBoard(upperPoint).equals(board.getFigureFromBoard(middlePoint)) &&
+            if (board.getFigureFromBoard(upperPoint) != null &&
+                    board.getFigureFromBoard(middlePoint) != null &&
+                    board.getFigureFromBoard(lowerPoint) != null &&
+                    board.getFigureFromBoard(upperPoint).equals(board.getFigureFromBoard(middlePoint)) &&
                     board.getFigureFromBoard(middlePoint).equals(board.getFigureFromBoard(lowerPoint))) {
+
+                System.out.println("\nVertical check result : ");
+                System.out.printf("figure \"%s\" has winning combo!%n", figure);
                 return true;
             }
         }
@@ -177,11 +183,9 @@ public class Main {
             System.out.println("Horizontal winner not detected !");
 
         }
-        if (checkVertical(board, figure)) {
-            System.out.println("\nDETECTEED Vertical win ");
-
+        if (!checkVertical(board, figure)) {
+            System.out.println("\nDETECTEED Vertical win not detected moving to diagonals ");
         }
-
     }
 
 
@@ -193,12 +197,17 @@ public class Main {
         printBoard(board);
         checkIfWon(board, "O");
 
+        resetBoard(board);
+        fillBoardVertical(board, 1, "X");
+        printBoard(board);
+        checkIfWon(board, "X");
+
 //
 //        resetBoard(board);
 //        fillBoardDiagonal2(board, "O");
 //        printBoard(board);
 //        checkIfWon(board, "O");
-
+//
 //
 //        resetBoard(board);
 //        fillBoardDiagonal2(board, "O");
