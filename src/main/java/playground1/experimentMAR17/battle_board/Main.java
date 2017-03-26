@@ -88,7 +88,7 @@ public class Main {
 
     }
 
-    public static void checkIfWon(Board board, String figure) {
+    public static boolean checkHorizontal(Board board, String figure) {
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
@@ -102,7 +102,7 @@ public class Main {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\ncase 0: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\ncase 0: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -114,7 +114,7 @@ public class Main {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\n case 1: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\n case 1: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -125,7 +125,7 @@ public class Main {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -136,50 +136,66 @@ public class Main {
             }
         }
 
-        if (countFigures != 3) {
-            System.out.println("\nEXECUTION POINT ! vertical switch here ");
-            countFigures = 0;
+        if ((countFigures == 3)) {
+            System.out.println("\nHorizontal check result : ");
+            System.out.printf("figure \"%s\" has winning combo!%n", figure);
+            return true;
 
-            for (int i = 0; i < board.getBoardSize(); i++) {
-                for (int j = 0; j < board.getBoardSize(); j++) {
+        } else {
+            System.out.println("\nHorizontal check result : ");
+            System.out.printf("figure \"%s\" has no winning combination!%n", figure);
 
-                    p.x = i;
-                    p.y = j;
+        }
+        return false;
+    }
 
-                    switch (p.y) {
-                        case 0: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 0 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+    public static boolean checkVertical(Board board, String figure) {
+        MyPoint p = new MyPoint();
+        int countFigures = 0;
 
-                            }
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            System.out.println("");
+            for (int j = 0; j < board.getBoardSize(); j++) {
+                p.x = i;
+                p.y = j;
+                System.out.printf("\n(%d[i],%d[j])\n", p.x, p.y);
+
+                switch (p.y) {
+                    case 0: {
+                        System.out.printf("CASE 0: p.x[%d],px+1[%d],px+2[%d]\n", p.x, p.x + 1, p.x + 2);
+                        if (p.x == p.x + 1 && p.x == p.x + 2) {
+                            return true;
                         }
-                        case 1: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 1 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
-                            }
+                    }
+                    case 1: {
+                        System.out.printf("CASE 1: p.x[%d],px-1[%d],px+1[%d]\n", p.x, p.x - 1, p.x + 1);
+                        if (p.x == p.x - 1 && p.x == p.x + 1) {
+                            return true;
                         }
-                        case 2: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
-                            }
+                    }
+                    case 2: {
+                        System.out.printf("CASE 2: p.x[%d],px-1[%d],px-2[%d]\n", p.x, p.x - 1, p.x - 2);
+                        if (p.x == p.x - 2 && p.x == p.x - 1) {
+                            return true;
                         }
-
                     }
                 }
             }
+        }
+        return false;
+    }
+
+
+    public static void checkIfWon(Board board, String figure) {
+        if (!checkHorizontal(board, figure)) {
+            System.out.println("Horizontal winner not detected !");
+
+        }
+        if (!checkVertical(board, figure)) {
+            System.out.println("\nVertical failed need to check diagonal !");
 
         }
 
-        if ((countFigures == 3)) {
-            System.out.printf("\nfigure \"%s\" has winning combo!%n", figure);
-
-        } else {
-            System.out.printf("\nfigure \"%s\" has no winning combination!%n", figure);
-
-        }
     }
 
 
@@ -187,15 +203,15 @@ public class Main {
 
         Board board = new Board();
 
-        fillBoardVertical(board, 2, "O");
+        fillBoardVertical(board, 0, "O");
         printBoard(board);
         checkIfWon(board, "O");
 
-
-        resetBoard(board);
-        fillBoardDiagonal2(board, "O");
-        printBoard(board);
-        checkIfWon(board, "O");
+//
+//        resetBoard(board);
+//        fillBoardDiagonal2(board, "O");
+//        printBoard(board);
+//        checkIfWon(board, "O");
 
 //
 //        resetBoard(board);
