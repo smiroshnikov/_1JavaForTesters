@@ -177,14 +177,13 @@ public class Main {
         return false;
     }
 
-
     public static void checkIfWon(Board board, String figure) {
         if (!checkHorizontal(board, figure)) {
             System.out.println("Horizontal winner not detected !");
 
         }
         if (!checkVertical(board, figure)) {
-            System.out.println("\nDETECTEED Vertical win not detected moving to diagonals ");
+            System.out.println("\n Vertical win not detected moving to diagonals ");
         }
     }
 
@@ -202,33 +201,33 @@ public class Main {
         printBoard(board);
         checkIfWon(board, "X");
 
-//
-//        resetBoard(board);
-//        fillBoardDiagonal2(board, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
-//
-//
-//        resetBoard(board);
-//        fillBoardDiagonal2(board, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 1, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 0, "X");
-//        printBoard(board);
-//        checkIfWon(board, "X");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 2, "O");
-//        printBoard(board);
-//        checkIfWon(board, "X");
-//        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardDiagonal2(board, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+
+        resetBoard(board);
+        fillBoardDiagonal2(board, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 1, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 0, "X");
+        printBoard(board);
+        checkIfWon(board, "X");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 2, "O");
+        printBoard(board);
+        checkIfWon(board, "X");
+        checkIfWon(board, "O");
 
 
     }
