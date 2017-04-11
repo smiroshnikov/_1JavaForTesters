@@ -26,7 +26,8 @@ public class BaseTest {
     static final String HEROKU_URL = "https://todomvc4tasj.herokuapp.com/";
     static final Random RANDOM = new Random(System.currentTimeMillis());
   //  private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
-    private static final String MAC_CHROME_DRIVER_PATH = "/Users/sergei.miroshnikov/Downloads/./chromedriver";
+    //private static final String MAC_CHROME_DRIVER_PATH = "/Users/sergei.miroshnikov/Downloads/./chromedriver";
+    private static final String MAC_CHROME_DRIVER_PATH = "/Users/smiroshn/work/chromedriver/./chromedriver";
 
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\geckodriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\MicrosoftWebDriver.exe";
@@ -56,8 +57,8 @@ public class BaseTest {
     @AfterClass
     public static void closeDriver() {
         driver.manage().deleteAllCookies();
-        //driver.close();
-        //driver.quit();
+        driver.close();
+        driver.quit();
     }
 
     public static void open(String url) {
@@ -82,12 +83,12 @@ public class BaseTest {
         String lotsOfSpaces = "                                      ";
         String charPool = engABC + engABC.toLowerCase() + special + hebABC + numeric + rusABC + lotsOfSpaces + chiABC;
 
-        String randomSequence = "";
+        StringBuilder randomSequence = new StringBuilder();
         for (int i = 0; i < randomValueBetweenMinMax(3, 150); i++) {
             char randomChar = charPool.charAt(RANDOM.nextInt(charPool.length()));
-            randomSequence += randomChar;
+            randomSequence.append(randomChar);
         }
-        return randomSequence;
+        return randomSequence.toString();
     }
 
     public void hoverOverAnElement(WebElement targetHotHovering) {
