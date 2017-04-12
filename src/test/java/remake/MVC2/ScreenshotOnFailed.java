@@ -14,6 +14,7 @@ import java.io.IOException;
 /**
  * Utility class , that is required to force JUnit take screenshots on failure
  */
+
 public class ScreenshotOnFailed extends TestWatcher {
 
 

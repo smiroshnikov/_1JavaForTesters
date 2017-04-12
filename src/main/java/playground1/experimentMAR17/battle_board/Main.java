@@ -4,6 +4,8 @@ package playground1.experimentMAR17.battle_board;
  * Main game runner
  */
 
+// TODO read the code after 2 weeks , and see if you can understand what you have coded ?
+
 public class Main {
 
     public static void resetBoard(Board board) {
