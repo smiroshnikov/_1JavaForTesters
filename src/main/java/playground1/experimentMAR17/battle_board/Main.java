@@ -4,6 +4,8 @@ package playground1.experimentMAR17.battle_board;
  * Main game runner
  */
 
+// TODO read the code after 2 weeks , and see if you can understand what you have coded ?
+
 public class Main {
 
     public static void resetBoard(Board board) {
@@ -88,7 +90,7 @@ public class Main {
 
     }
 
-    public static void checkIfWon(Board board, String figure) {
+    public static boolean checkHorizontal(Board board, String figure) {
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
@@ -102,7 +104,7 @@ public class Main {
                     case 0: {
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\ncase 0: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\ncase 0: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -114,7 +116,7 @@ public class Main {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\n case 1: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\n case 1: Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -125,7 +127,7 @@ public class Main {
 
                         if (figure.equals(board.getFigureFromBoard(p))) {
                             countFigures += 1;
-                            System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
+                            //System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
                         }
                         if (countFigures < 3 && p.y == board.getBoardSize() - 1) {
                             countFigures = 0;
@@ -136,49 +138,54 @@ public class Main {
             }
         }
 
-        if (countFigures != 3) {
-            System.out.println("\nEXECUTION POINT ! vertical switch here ");
-            countFigures = 0;
-
-            for (int i = 0; i < board.getBoardSize(); i++) {
-                for (int j = 0; j < board.getBoardSize(); j++) {
-
-                    p.x = i;
-                    p.y = j;
-
-                    switch (p.y) {
-                        case 0: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 0 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
-
-                            }
-                        }
-                        case 1: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 1 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
-                            }
-                        }
-                        case 2: {
-                            if (figure.equals(board.getFigureFromBoard(p))) {
-                                countFigures += 1;
-                                System.out.printf("\n case 2 :Counting '%s' in row %d currently have %d", figure, p.x, countFigures);
-                            }
-                        }
-
-                    }
-                }
-            }
-
-        }
-
         if ((countFigures == 3)) {
-            System.out.printf("\nfigure \"%s\" has winning combo!%n", figure);
+            System.out.println("\nHorizontal check result : ");
+            System.out.printf("figure \"%s\" has winning combo!%n", figure);
+            return true;
 
         } else {
-            System.out.printf("\nfigure \"%s\" has no winning combination!%n", figure);
+            System.out.println("\nHorizontal check result : ");
+            System.out.printf("figure \"%s\" has no winning combination!%n", figure);
 
+        }
+        return false;
+    }
+
+    public static boolean checkVertical(Board board, String figure) {
+        MyPoint upperPoint = new MyPoint();
+        MyPoint middlePoint = new MyPoint();
+        MyPoint lowerPoint = new MyPoint();
+
+        for (int j = 0; j < board.getBoardSize(); j++) {
+            upperPoint.x = 0;
+            middlePoint.x = 1;
+            lowerPoint.x = 2;
+
+            upperPoint.y = j;
+            middlePoint.y = j;
+            lowerPoint.y = j;
+
+            if (board.getFigureFromBoard(upperPoint) != null &&
+                    board.getFigureFromBoard(middlePoint) != null &&
+                    board.getFigureFromBoard(lowerPoint) != null &&
+                    board.getFigureFromBoard(upperPoint).equals(board.getFigureFromBoard(middlePoint)) &&
+                    board.getFigureFromBoard(middlePoint).equals(board.getFigureFromBoard(lowerPoint))) {
+
+                System.out.println("\nVertical check result : ");
+                System.out.printf("figure \"%s\" has winning combo!%n", figure);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void checkIfWon(Board board, String figure) {
+        if (!checkHorizontal(board, figure)) {
+            System.out.println("Horizontal winner not detected !");
+
+        }
+        if (!checkVertical(board, figure)) {
+            System.out.println("\n Vertical win not detected moving to diagonals ");
         }
     }
 
@@ -187,7 +194,18 @@ public class Main {
 
         Board board = new Board();
 
-        fillBoardVertical(board, 2, "O");
+        fillBoardVertical(board, 0, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardVertical(board, 1, "X");
+        printBoard(board);
+        checkIfWon(board, "X");
+
+
+        resetBoard(board);
+        fillBoardDiagonal2(board, "O");
         printBoard(board);
         checkIfWon(board, "O");
 
@@ -197,27 +215,21 @@ public class Main {
         printBoard(board);
         checkIfWon(board, "O");
 
-//
-//        resetBoard(board);
-//        fillBoardDiagonal2(board, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 1, "O");
-//        printBoard(board);
-//        checkIfWon(board, "O");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 0, "X");
-//        printBoard(board);
-//        checkIfWon(board, "X");
-//
-//        resetBoard(board);
-//        fillBoardHorizontally(board, 2, "O");
-//        printBoard(board);
-//        checkIfWon(board, "X");
-//        checkIfWon(board, "O");
+        resetBoard(board);
+        fillBoardHorizontally(board, 1, "O");
+        printBoard(board);
+        checkIfWon(board, "O");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 0, "X");
+        printBoard(board);
+        checkIfWon(board, "X");
+
+        resetBoard(board);
+        fillBoardHorizontally(board, 2, "O");
+        printBoard(board);
+        checkIfWon(board, "X");
+        checkIfWon(board, "O");
 
 
     }
