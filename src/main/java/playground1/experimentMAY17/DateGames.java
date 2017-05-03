@@ -30,6 +30,7 @@ public class DateGames {
 
         String dd = new SimpleDateFormat("dd-MM-yyyy").format(calendar.getTime());
         System.out.println(dd);
+        System.out.println("Zaebal git");
 
 
     }
