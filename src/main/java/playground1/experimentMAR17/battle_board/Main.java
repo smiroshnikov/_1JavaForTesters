@@ -8,7 +8,11 @@ package playground1.experimentMAR17.battle_board;
 
 public class Main {
 
+    /**
+     * Fills board with null values
+     */
     public static void resetBoard(Board board) {
+
         MyPoint p = new MyPoint();
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
@@ -19,6 +23,12 @@ public class Main {
         }
 
     }
+
+    /**
+     * prints board via console
+     *
+     * @param board NxN gaming field
+     */
 
     public static void printBoard(Board board) {
         MyPoint p = new MyPoint();
@@ -91,6 +101,9 @@ public class Main {
     }
 
     public static boolean checkHorizontal(Board board, String figure) {
+
+        // TODO this method was written my way , before understanding a proper solution , while it uses switch and works
+        // TODO I am still unable to see any advantages over hard coded winning solution for tic tac toe
 
         MyPoint p = new MyPoint();
         int countFigures = 0;
