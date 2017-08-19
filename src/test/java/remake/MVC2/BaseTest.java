@@ -25,9 +25,9 @@ public class BaseTest {
 
     static final String HEROKU_URL = "https://todomvc4tasj.herokuapp.com/";
     static final Random RANDOM = new Random(System.currentTimeMillis());
-  //  private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH = "C:\\webdrivers\\chromedriver.exe";
     //private static final String MAC_CHROME_DRIVER_PATH = "/Users/sergei.miroshnikov/Downloads/./chromedriver";
-    private static final String MAC_CHROME_DRIVER_PATH = "/Users/smiroshn/work/chromedriver/./chromedriver";
+//    private static final String MAC_CHROME_DRIVER_PATH = "/Users/smiroshn/work/chromedriver/./chromedriver";
 
     private static final String FIREFOX_DRIVER_PATH = "C:\\webdrivers\\geckodriver.exe";
     private static final String EDGE_DRIVER_PATH = "C:\\webdrivers\\MicrosoftWebDriver.exe";
@@ -41,7 +41,7 @@ public class BaseTest {
     @BeforeClass
     public static void driverSetup() {
         if (System.getProperty("webdriver.chrome.driver") == null) {
-            System.setProperty("webdriver.chrome.driver", MAC_CHROME_DRIVER_PATH);
+            System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         }
         if (System.getProperty("webdriver.gecko.driver") == null) {
             System.setProperty("webdriver.gecko.driver", FIREFOX_DRIVER_PATH);

@@ -61,6 +61,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void a_CreateAndDeleteActiveTask() {
+        executionWait(3);
         String taskText = "Task to be deleted, Delete Me !";
         page.createNewTodo(taskText);
         hoverOverAnElement(page.findTodoByText(taskText));
@@ -76,8 +77,10 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void b_CreateAndDeleteCompletedTask() {
+        executionWait(3);
         String taskText = "Task to be completed and deleted!";
         page.createNewTodo(taskText);
+        page.toggleTask(taskText);
         page.toggleTask(taskText);
         hoverOverAnElement(page.findTodoByText(taskText));
         if (page.findTodoByText(taskText).isDisplayed()) {
@@ -96,6 +99,7 @@ public class TodoMVCTest extends BaseTest {
      */
     @Test
     public void c_CompleteAndUncompleteTask() {
+        executionWait(3);
         String taskText = "toggle me as complete";
         page.createNewTodo(taskText);
         // toggle completed
@@ -108,6 +112,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void d_CreateMultipleTasksAndCompleteOneByOneAndClear() {
+        executionWait(3);
         int expectedTasks = randomValueBetweenMinMax(50, 100);
         for (int i = 0; i < expectedTasks; i++) {
             String taskText = randomCharsetMix();
@@ -122,6 +127,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void e_FilterActiveCompletedAllTasks() {
+        executionWait(3);
         page.createNewTodo("Complete and Uncomplete me 1");
         page.createNewTodo("Complete me 2");
         page.createNewTodo("Complete me 3");
@@ -143,6 +149,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void editExistingActiveTask() {
+        executionWait(3);
         String taskText = "banana";
         String additionalTaskText = " and milk";
         page.createNewTodo(taskText);
@@ -157,6 +164,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void editExistingCompleteTask() {
+        executionWait(3);
         String taskText = "pineapple";
         String additionalTaskText = " pen";
         page.createNewTodo(taskText);
@@ -171,6 +179,7 @@ public class TodoMVCTest extends BaseTest {
 
     @Test
     public void addTwoTasks() {
+        executionWait(3);
         String taskText = "Task1";
         page.createNewTodo(taskText);
         page.createNewTodo(taskText);
